@@ -8,10 +8,10 @@ description: >-
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - Documentation
   - API Changelog
-  - OpenAPI
   - AsyncAPI
+  - Documentation
+  - OpenAPI
 url: >-
   https://raw.githubusercontent.com/api-evangelist/bump-sh/refs/heads/main/apis.yml
 created: '2026-03-16'
@@ -26,8 +26,8 @@ apis:
       API hubs and team collaboration.
     humanURL: https://bump.sh
     tags:
-      - Documentation
       - API Changelog
+      - Documentation
       - OpenAPI
     properties:
       - type: Documentation
