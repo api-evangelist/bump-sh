@@ -6,7 +6,7 @@ description: >-
   specifications. It provides diff-based changelogs, API hubs, webhooks, and
   team collaboration features for API-first organizations.
 type: Index
-x-type: company
+kind: company
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
   - API Changelog
@@ -39,9 +39,9 @@ apis:
     properties:
       - type: Documentation
         url: https://docs.bump.sh
-      - type: Getting Started
+      - type: GettingStarted
         url: https://docs.bump.sh/help/getting-started/
-      - type: GitHub Repository
+      - type: GitHubRepository
         url: https://github.com/bump-sh
       - type: OpenAPI
         url: https://developers.bump.sh/openapi.yaml
@@ -63,19 +63,19 @@ common:
     url: https://bump.sh
   - type: Documentation
     url: https://docs.bump.sh
-  - type: GitHub Organization
+  - type: GitHubOrganization
     url: https://github.com/bump-sh
   - type: Blog
     url: https://bump.sh/blog
   - type: Pricing
     url: https://bump.sh/pricing
-  - type: Changelog
+  - type: ChangeLog
     url: https://bump.sh/changelog
-  - type: Sign Up
+  - type: SignUp
     url: https://bump.sh/users/sign_up
   - type: Login
     url: https://bump.sh/users/sign_in
-  - type: Status
+  - type: StatusPage
     url: https://bumpsh.statuspage.io/
 maintainers:
   - FN: Kin Lane
