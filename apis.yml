@@ -59,6 +59,8 @@ apis:
       - Manage API portals for multiple APIs
       - Notify stakeholders of breaking changes
 common:
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/bump-sh
   - type: Website
     url: https://bump.sh
   - type: Documentation
