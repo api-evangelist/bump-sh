@@ -1,10 +1,11 @@
 aid: bump-sh
 name: Bump.sh
 description: >-
-  Bump.sh is an API documentation and changelog platform that automatically
-  generates beautiful, interactive documentation from OpenAPI and AsyncAPI
-  specifications. It provides diff-based changelogs, API hubs, webhooks, and
-  team collaboration features for API-first organizations.
+  Bump.sh is "the modern API doc platform" — automatic, diff-aware
+  documentation for OpenAPI and AsyncAPI specifications, plus a managed
+  Model Context Protocol (MCP) platform that compiles Flower or Arazzo
+  workflow documents into deterministic, observable MCP servers for AI
+  agents. Customers include Aviobook, MongoDB, Elastic, Lightspeed, and BigID.
 type: Index
 kind: company
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
@@ -12,61 +13,131 @@ tags:
   - API Changelog
   - API Documentation
   - API Hub
+  - API Governance
+  - Arazzo
   - AsyncAPI
   - CI/CD
+  - Flower
+  - MCP
   - OpenAPI
+  - Workflows
 url: >-
   https://raw.githubusercontent.com/api-evangelist/bump-sh/refs/heads/main/apis.yml
 created: '2026-03-16'
-modified: '2026-04-21'
+modified: '2026-05-22'
 specificationVersion: '0.19'
 apis:
   - aid: bump-sh:bump-sh-api
     name: Bump.sh API
     description: >-
-      The Bump.sh REST API allows programmatic management of API documentation,
-      deployments, and changelogs. Integrates with CI/CD pipelines to
-      automatically publish OpenAPI and AsyncAPI spec changes as versioned
-      documentation with visual diffs.
+      Official Bump.sh REST API (v1) for documentation, branches, hubs,
+      diffs, previews, validations, and MCP-server deployments. Powers the
+      CLI, the GitHub Action, and direct CI integrations. 15 operations
+      across 9 tags, with one outbound webhook (DocStructureChange).
     humanURL: https://bump.sh
     baseURL: https://bump.sh/api/v1
     tags:
       - API Changelog
       - API Documentation
+      - Branches
       - CI/CD
       - Deployments
+      - Diffs
+      - Hubs
+      - MCP Servers
       - OpenAPI
+      - Previews
+      - Validations
+      - Versions
+      - Webhooks
     properties:
       - type: Documentation
         url: https://docs.bump.sh
       - type: GettingStarted
         url: https://docs.bump.sh/help/getting-started/
+      - type: APIReference
+        url: https://developers.bump.sh
+      - type: OpenAPI
+        url: https://github.com/api-evangelist/bump-sh/blob/main/openapi/bump-sh-openapi.yaml
       - type: GitHubRepository
         url: https://github.com/bump-sh
-      - type: OpenAPI
-        url: https://developers.bump.sh/openapi.yaml
+      - type: SpectralRules
+        url: https://github.com/api-evangelist/bump-sh/blob/main/rules/bump-sh-api-rules.yml
+      - type: JSONSchema
+        url: https://github.com/api-evangelist/bump-sh/tree/main/json-schema
+      - type: JSONStructure
+        url: https://github.com/api-evangelist/bump-sh/tree/main/json-structure
+      - type: JSONLD
+        url: https://github.com/api-evangelist/bump-sh/blob/main/json-ld/bump-sh-context.jsonld
+      - type: Examples
+        url: https://github.com/api-evangelist/bump-sh/tree/main/examples
+      - type: NaftikoCapabilities
+        url: https://github.com/api-evangelist/bump-sh/tree/main/capabilities
+      - type: Vocabulary
+        url: https://github.com/api-evangelist/bump-sh/blob/main/vocabulary/bump-sh-vocabulary.yml
+      - type: Plans
+        url: https://github.com/api-evangelist/bump-sh/blob/main/plans/bump-sh-plans-pricing.yml
+      - type: RateLimits
+        url: https://github.com/api-evangelist/bump-sh/blob/main/rate-limits/bump-sh-rate-limits.yml
+      - type: FinOps
+        url: https://github.com/api-evangelist/bump-sh/blob/main/finops/bump-sh-finops.yml
+      - type: Webhook
+        url: https://docs.bump.sh
+        description: DocStructureChange webhook fires on every structural change to a documentation.
     x-features:
       - Automated documentation generation from OpenAPI/AsyncAPI specs
       - Diff-based API changelog with visual diffs
-      - API hubs for multi-API organizations
-      - Webhook notifications on spec changes
-      - CI/CD pipeline integration
-      - Team collaboration and access controls
-      - Custom domains and branding
+      - Multi-API hubs with custom domains, branding, and login
+      - Branches that mirror source-control workflow
+      - Previews for pull-request review without publishing
+      - Validations endpoint for spec linting
+      - CI integration (GitHub Actions, GitLab CI, CircleCI, Travis, Azure DevOps)
+      - Open-source CLI (TypeScript) for CI deploys
+      - Webhook notifications on spec changes (DocStructureChange)
+      - Managed MCP platform - compile Flower or Arazzo workflows into hosted MCP servers
+      - Deterministic, observable agent execution with built-in authentication
+      - Ask AI and Markdown rendering inside published docs
+      - Embed mode, SSO, reverse proxy, and 99.99% SLA on enterprise tier
     x-use-cases:
       - Publish API documentation automatically on every commit
-      - Generate API changelogs for consumers
-      - Manage API portals for multiple APIs
-      - Notify stakeholders of breaking changes
+      - Generate API changelogs for downstream consumers
+      - Run multi-API portals for internal and external developer audiences
+      - Notify stakeholders of breaking changes via webhook
+      - Preview spec changes on pull requests
+      - Validate OpenAPI/AsyncAPI definitions before deploy
+      - Compile Arazzo workflows into MCP servers for ChatGPT, Claude, and Cursor agents
+    x-specifications:
+      - OpenAPI 2.x / 3.0.x / 3.1.x
+      - AsyncAPI 2.x / 3.x
+      - JSON Schema
+      - Arazzo 1.0.0 (OAI workflow spec)
+      - Flower (Bump.sh-native workflow spec)
 common:
-  - type: LinkedIn
-    url: https://www.linkedin.com/company/bump-sh
   - type: Website
     url: https://bump.sh
   - type: Documentation
     url: https://docs.bump.sh
+  - type: APIReference
+    url: https://developers.bump.sh
+  - type: OpenAPI
+    url: https://developers.bump.sh/source.yaml
   - type: GitHubOrganization
     url: https://github.com/bump-sh
+  - type: GitHubRepository
+    description: Open-source Bump.sh CLI (TypeScript, MIT).
+    url: https://github.com/bump-sh/cli
+  - type: GitHubRepository
+    description: GitHub Action to deploy API docs from CI.
+    url: https://github.com/bump-sh/github-action
+  - type: GitHubRepository
+    description: Flower workflow specification (powers MCP servers).
+    url: https://github.com/bump-sh/flower-spec
+  - type: GitHubRepository
+    description: CI integration examples (GitHub Actions, Travis, CircleCI, GitLab CI).
+    url: https://github.com/bump-sh/bump-ci-example
+  - type: GitHubRepository
+    description: Curated public OpenAPI / AsyncAPI example specs.
+    url: https://github.com/bump-sh/examples
   - type: Blog
     url: https://bump.sh/blog
   - type: Pricing
@@ -79,6 +150,8 @@ common:
     url: https://bump.sh/users/sign_in
   - type: StatusPage
     url: https://bumpsh.statuspage.io/
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/bump-sh
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

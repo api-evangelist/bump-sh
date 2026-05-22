@@ -1,0 +1,139 @@
+extends: [[spectral:oas, all]]
+documentationUrl: https://github.com/api-evangelist/bump-sh
+rules:
+
+  # Bump.sh conventions distilled from developers.bump.sh/source.yaml
+  # and the docs at https://docs.bump.sh/
+
+  bump-sh-title-case-summaries:
+    description: Operation summaries must be Title Case (Bump.sh convention).
+    message: "{{property}} should use Title Case"
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].summary
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[A-Z]"
+
+  bump-sh-operation-id-camel-case:
+    description: operationId must be camelCase.
+    message: "operationId '{{value}}' should be camelCase"
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete].operationId
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-zA-Z0-9]*$"
+
+  bump-sh-tag-title-case:
+    description: All tag names must be Title Case (Bump.sh navigation convention).
+    message: "Tag '{{value}}' should be Title Case"
+    severity: warn
+    given: $.tags[*].name
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[A-Z][A-Za-z0-9 ]+$"
+
+  bump-sh-token-auth-required:
+    description: Bump.sh APIs use HTTP Token (Bearer-style) authentication.
+    message: At least one securityScheme of type http+token must be present.
+    severity: error
+    given: $.components.securitySchemes
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          patternProperties:
+            ".+":
+              type: object
+              properties:
+                type:
+                  type: string
+                  enum: [http, apiKey, oauth2, openIdConnect]
+
+  bump-sh-server-versioned:
+    description: Server URL should include /api/{version} segment.
+    message: "Server URL '{{value}}' should include /api/v{n} path segment"
+    severity: warn
+    given: $.servers[*].url
+    then:
+      function: pattern
+      functionOptions:
+        match: "/api/v[0-9]+"
+
+  bump-sh-uuid-id-fields:
+    description: Top-level `id` fields should be UUIDs (Bump.sh convention).
+    message: "Schema property 'id' should specify format: uuid"
+    severity: info
+    given: "$.components.schemas[*].properties.id"
+    then:
+      field: format
+      function: truthy
+
+  bump-sh-error-component:
+    description: An Error schema should be defined to standardize error responses.
+    message: components.schemas.Error must be defined.
+    severity: warn
+    given: $.components.schemas
+    then:
+      field: Error
+      function: truthy
+
+  bump-sh-diff-and-version-tagged:
+    description: Diff and Version operations must be tagged correctly.
+    message: Operation path '{{path}}' must include the matching tag.
+    severity: info
+    given: "$.paths['/diffs','/diffs/{id}'][*]"
+    then:
+      field: tags
+      function: schema
+      functionOptions:
+        schema:
+          type: array
+          contains:
+            const: Diffs
+
+  bump-sh-webhook-defined:
+    description: Bump.sh-style providers should publish a webhook surface for change notifications.
+    message: webhooks section should be present (DocStructureChange or equivalent).
+    severity: info
+    given: $
+    then:
+      field: webhooks
+      function: truthy
+
+  bump-sh-mcp-deploy-tag:
+    description: MCP server deployment operations should be tagged 'MCP Servers'.
+    message: Operations on /mcp_servers/* must carry tag 'MCP Servers'.
+    severity: warn
+    given: "$.paths[?(@property.match(/^\\/mcp_servers/))][*].tags"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: array
+          contains:
+            const: MCP Servers
+
+  bump-sh-info-contact-required:
+    description: info.contact must be populated.
+    message: info.contact is missing.
+    severity: warn
+    given: $.info
+    then:
+      field: contact
+      function: truthy
+
+  bump-sh-pagination-params:
+    description: Collection-list operations should accept page + per_page query parameters.
+    message: "List operation '{{path}}' should accept pagination parameters."
+    severity: info
+    given: "$.paths[?(@property.match(/s$/))].get.parameters"
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: array
+          minItems: 1

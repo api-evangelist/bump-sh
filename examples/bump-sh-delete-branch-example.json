@@ -1,0 +1,16 @@
+{
+  "operation": "DELETE /docs/{doc_id_or_slug}/branches/{slug}",
+  "operationId": "deleteBranch",
+  "summary": "Delete a Branch",
+  "request": {
+    "method": "DELETE",
+    "url": "https://bump.sh/api/v1/docs/my-api/branches/feature-x",
+    "headers": {
+      "Authorization": "Token {documentation_token}"
+    }
+  },
+  "response": {
+    "status": 204,
+    "body": null
+  }
+}

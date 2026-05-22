@@ -1,0 +1,22 @@
+apiVersion: naftiko.io/v1
+kind: Capability
+metadata:
+  id: multi-api-hub-index
+  name: Multi API Hub Index
+  provider: bump-sh
+  description: >-
+    Enumerate organizational hubs and the APIs they contain, so a portal can
+    render a single index across every published documentation for an
+    organization.
+spec:
+  inputs: []
+  steps:
+    - id: list-hubs
+      uses: bump-sh-api.listHubs
+    - id: fetch-hub
+      uses: bump-sh-api.getHub
+      with:
+        hub_id_or_slug: ${{ each(steps.list-hubs.outputs).slug }}
+  outputs:
+    hubs: ${{ steps.list-hubs.outputs }}
+    apisByHub: ${{ steps.fetch-hub.outputs.apis }}

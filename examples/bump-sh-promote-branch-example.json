@@ -1,0 +1,16 @@
+{
+  "operation": "PATCH /docs/{doc_id_or_slug}/branches/{slug}/set_default",
+  "operationId": "setDefaultBranch",
+  "summary": "Promote Branch as the Default One",
+  "request": {
+    "method": "PATCH",
+    "url": "https://bump.sh/api/v1/docs/my-api/branches/feature-x/set_default",
+    "headers": {
+      "Authorization": "Token {documentation_token}"
+    }
+  },
+  "response": {
+    "status": 204,
+    "body": null
+  }
+}

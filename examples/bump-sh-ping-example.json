@@ -1,0 +1,19 @@
+{
+  "operation": "GET /ping",
+  "operationId": "ping",
+  "summary": "Check the API Status",
+  "request": {
+    "method": "GET",
+    "url": "https://bump.sh/api/v1/ping",
+    "headers": {
+      "Authorization": "Token {documentation_token}",
+      "Accept": "application/json"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "pong": "OK"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "operation": "POST /docs/{doc_id_or_slug}/branches",
+  "operationId": "createBranch",
+  "summary": "Create a New Branch",
+  "request": {
+    "method": "POST",
+    "url": "https://bump.sh/api/v1/docs/my-api/branches",
+    "headers": {
+      "Authorization": "Token {documentation_token}",
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    "body": {
+      "name": "feature-x"
+    }
+  },
+  "response": {
+    "status": 201,
+    "body": {
+      "slug": "feature-x",
+      "name": "feature-x",
+      "default": false,
+      "url": "https://bump.sh/platform-apis/doc/my-api?branch=feature-x"
+    }
+  }
+}

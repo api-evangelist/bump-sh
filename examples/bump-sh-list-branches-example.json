@@ -1,0 +1,30 @@
+{
+  "operation": "GET /docs/{doc_id_or_slug}/branches",
+  "operationId": "listBranches",
+  "summary": "List Available Branches",
+  "request": {
+    "method": "GET",
+    "url": "https://bump.sh/api/v1/docs/my-api/branches",
+    "headers": {
+      "Authorization": "Token {documentation_token}",
+      "Accept": "application/json"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": [
+      {
+        "slug": "main",
+        "name": "main",
+        "default": true,
+        "url": "https://bump.sh/platform-apis/doc/my-api"
+      },
+      {
+        "slug": "feature-x",
+        "name": "feature-x",
+        "default": false,
+        "url": "https://bump.sh/platform-apis/doc/my-api?branch=feature-x"
+      }
+    ]
+  }
+}

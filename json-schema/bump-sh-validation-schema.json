@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/bump-sh/main/json-schema/bump-sh-validation-schema.json",
+  "title": "Validation",
+  "description": "Result of validating an OpenAPI or AsyncAPI definition against Bump.sh.",
+  "type": "object",
+  "required": ["valid"],
+  "properties": {
+    "specification": {
+      "type": "string",
+      "description": "Detected specification family (e.g. `openapi/3.1.0`, `asyncapi/2.6.0`)."
+    },
+    "valid": { "type": "boolean" },
+    "errors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "message": { "type": "string" },
+          "path":    { "type": "string" },
+          "severity":{ "type": "string" }
+        }
+      }
+    }
+  }
+}

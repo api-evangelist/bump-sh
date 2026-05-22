@@ -1,0 +1,42 @@
+{
+  "@context": {
+    "@vocab": "https://bump.sh/vocab#",
+    "schema": "https://schema.org/",
+    "bump":   "https://bump.sh/vocab#",
+    "id":     "@id",
+    "type":   "@type",
+
+    "Documentation":   "bump:Documentation",
+    "Version":         "bump:Version",
+    "Diff":            "bump:Diff",
+    "DiffItem":        "bump:DiffItem",
+    "Hub":             "bump:Hub",
+    "Branch":          "bump:Branch",
+    "Preview":         "bump:Preview",
+    "Validation":      "bump:Validation",
+    "McpServer":       "bump:McpServer",
+    "WorkflowDocument":"bump:WorkflowDocument",
+
+    "name":          "schema:name",
+    "slug":          "bump:slug",
+    "public":        "bump:isPublic",
+    "publicUrl":     { "@id": "bump:publicUrl", "@type": "@id" },
+    "url":           { "@id": "schema:url",    "@type": "@id" },
+    "documentation": { "@id": "bump:documentation", "@type": "@id" },
+    "version":       { "@id": "bump:version", "@type": "@id" },
+    "branch":        { "@id": "bump:branch", "@type": "@id" },
+    "previous":      { "@id": "bump:previous", "@type": "@id" },
+    "definition":    "bump:definition",
+    "specification": "bump:specification",
+    "breaking":      "bump:breaking",
+    "summary":       "schema:abstract",
+    "deployedAt":    { "@id": "bump:deployedAt", "@type": "schema:DateTime" },
+    "expiresAt":     { "@id": "bump:expiresAt",  "@type": "schema:DateTime" },
+    "details":       "bump:diffItems",
+    "type":          "@type",
+
+    "Add":    "bump:Add",
+    "Remove": "bump:Remove",
+    "Update": "bump:Update"
+  }
+}

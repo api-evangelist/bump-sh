@@ -1,0 +1,24 @@
+{
+  "operation": "POST /previews",
+  "operationId": "createPreview",
+  "summary": "Create a Preview",
+  "request": {
+    "method": "POST",
+    "url": "https://bump.sh/api/v1/previews",
+    "headers": {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    "body": {
+      "definition": "{\"openapi\":\"3.1.0\",\"info\":{\"title\":\"My API\",\"version\":\"2.0.0\"},\"paths\":{}}"
+    }
+  },
+  "response": {
+    "status": 201,
+    "body": {
+      "id": "preview-abc123",
+      "public_url": "https://bump.sh/preview/preview-abc123",
+      "expires_at": "2026-05-23T10:15:00Z"
+    }
+  }
+}

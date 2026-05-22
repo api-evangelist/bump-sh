@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/bump-sh/main/json-schema/bump-sh-version-schema.json",
+  "title": "Version",
+  "description": "A documentation version published to Bump.sh.",
+  "type": "object",
+  "required": ["id"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "doc_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Identifier of the documentation this version belongs to."
+    },
+    "doc_public_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "Public URL of the rendered documentation."
+    },
+    "diff_summary": {
+      "type": "string",
+      "description": "Short summary of changes vs. previous version."
+    },
+    "diff_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL of the full diff."
+    },
+    "diff_breaking": {
+      "type": "boolean",
+      "description": "Whether the new version introduces breaking changes."
+    },
+    "deployed_at": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

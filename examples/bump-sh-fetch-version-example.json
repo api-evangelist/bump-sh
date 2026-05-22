@@ -1,0 +1,23 @@
+{
+  "operation": "GET /versions/{version_id}",
+  "operationId": "getVersion",
+  "summary": "Fetch a Full Documentation Version Including Diff Summary",
+  "request": {
+    "method": "GET",
+    "url": "https://bump.sh/api/v1/versions/deadbeef-1234-5678-9abc-deadbeefcafe",
+    "headers": {
+      "Authorization": "Token {documentation_token}",
+      "Accept": "application/json"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "id": "deadbeef-1234-5678-9abc-deadbeefcafe",
+      "diff_summary": "5 endpoints added, 2 modified",
+      "diff_public_url": "https://bump.sh/diffs/9b71f8e2-3c0c-4a59-9d2a-2c5e8e5f3f3d",
+      "diff_breaking": false,
+      "deployed_at": "2026-05-22T10:15:00Z"
+    }
+  }
+}

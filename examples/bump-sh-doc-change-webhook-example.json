@@ -1,0 +1,37 @@
+{
+  "operation": "WEBHOOK DocStructureChange",
+  "summary": "Notification of a structural change in a documentation version",
+  "request": {
+    "method": "POST",
+    "url": "https://example.com/webhook-receiver",
+    "headers": {
+      "Content-Type": "application/json",
+      "User-Agent": "Bump-Webhook/1.0",
+      "X-Bump-Signature": "sha256={hmac_signature}"
+    },
+    "body": {
+      "type": "documentation_change",
+      "documentation": {
+        "id": "11111111-aaaa-bbbb-cccc-dddddddddddd",
+        "name": "Billing API",
+        "slug": "billing-api"
+      },
+      "version": {
+        "id": "deadbeef-1234-5678-9abc-deadbeefcafe",
+        "deployed_at": "2026-05-22T10:15:00Z"
+      },
+      "diff": {
+        "id": "9b71f8e2-3c0c-4a59-9d2a-2c5e8e5f3f3d",
+        "summary": "5 endpoints added, 2 modified",
+        "breaking": false,
+        "public_url": "https://bump.sh/diffs/9b71f8e2-3c0c-4a59-9d2a-2c5e8e5f3f3d"
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "received": true
+    }
+  }
+}

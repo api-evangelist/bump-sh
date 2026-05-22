@@ -1,0 +1,31 @@
+{
+  "operation": "GET /hubs/{hub_id_or_slug}",
+  "operationId": "getHub",
+  "summary": "Fetch Information of an Existing Hub",
+  "request": {
+    "method": "GET",
+    "url": "https://bump.sh/api/v1/hubs/platform-apis",
+    "headers": {
+      "Authorization": "Token {organization_token}",
+      "Accept": "application/json"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "id": "a1b2c3d4-1111-2222-3333-444455556666",
+      "name": "Platform APIs",
+      "slug": "platform-apis",
+      "url": "https://bump.sh/platform-apis",
+      "public": true,
+      "apis": [
+        {
+          "id": "11111111-aaaa-bbbb-cccc-dddddddddddd",
+          "name": "Billing API",
+          "slug": "billing-api",
+          "url": "https://bump.sh/platform-apis/doc/billing-api"
+        }
+      ]
+    }
+  }
+}

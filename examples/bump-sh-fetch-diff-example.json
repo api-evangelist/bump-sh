@@ -1,0 +1,37 @@
+{
+  "operation": "GET /diffs/{id}",
+  "operationId": "getDiff",
+  "summary": "Fetch Detailed Information from an Existing Diff",
+  "request": {
+    "method": "GET",
+    "url": "https://bump.sh/api/v1/diffs/9b71f8e2-3c0c-4a59-9d2a-2c5e8e5f3f3d?formats[]=html&formats[]=text&formats[]=json",
+    "headers": {
+      "Authorization": "Token {documentation_or_hub_token}",
+      "Accept": "application/json"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "id": "9b71f8e2-3c0c-4a59-9d2a-2c5e8e5f3f3d",
+      "public_url": "https://bump.sh/diffs/9b71f8e2-3c0c-4a59-9d2a-2c5e8e5f3f3d",
+      "title": "API changes for v2.0.0",
+      "breaking": true,
+      "diff_summary": "Added 3 endpoints, removed 1 endpoint, modified 5 endpoints",
+      "diff_markdown": "## Added\n- GET /v2/pets\n\n## Removed\n- DELETE /v1/orders/{id}\n",
+      "diff_html": "<h2>Added</h2><ul><li>GET /v2/pets</li></ul>",
+      "details": [
+        {
+          "type": "add",
+          "name": "GET /v2/pets",
+          "breaking": false
+        },
+        {
+          "type": "remove",
+          "name": "DELETE /v1/orders/{id}",
+          "breaking": true
+        }
+      ]
+    }
+  }
+}

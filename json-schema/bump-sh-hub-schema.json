@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/bump-sh/main/json-schema/bump-sh-hub-schema.json",
+  "title": "Hub",
+  "description": "A Bump.sh hub: an organizational container grouping multiple API documentations.",
+  "type": "object",
+  "required": ["id", "name", "slug"],
+  "properties": {
+    "id":   { "type": "string", "format": "uuid" },
+    "name": { "type": "string" },
+    "slug": { "type": "string" },
+    "url":  { "type": "string", "format": "uri" },
+    "public": { "type": "boolean" },
+    "apis": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/Api" }
+    }
+  },
+  "$defs": {
+    "Api": {
+      "type": "object",
+      "required": ["id", "name", "slug"],
+      "properties": {
+        "id":   { "type": "string", "format": "uuid" },
+        "name": { "type": "string" },
+        "slug": { "type": "string" },
+        "url":  { "type": "string", "format": "uri" }
+      }
+    }
+  }
+}

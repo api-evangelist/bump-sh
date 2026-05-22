@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/bump-sh/main/json-schema/bump-sh-mcp-deployment-schema.json",
+  "title": "McpDeployment",
+  "description": "A deployment of a Model Context Protocol (MCP) server compiled from a Flower or Arazzo workflow document.",
+  "type": "object",
+  "required": ["id"],
+  "properties": {
+    "id":          { "type": "string" },
+    "public_url":  { "type": "string", "format": "uri", "description": "Public MCP server URL agents connect to." },
+    "deployed_at": { "type": "string", "format": "date-time" },
+    "specification": {
+      "type": "string",
+      "description": "Workflow specification used (e.g. `arazzo/1.0.0`, `flower/0.1.0`)."
+    }
+  }
+}

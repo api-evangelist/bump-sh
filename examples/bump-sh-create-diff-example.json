@@ -1,0 +1,37 @@
+{
+  "operation": "POST /diffs",
+  "operationId": "createDiff",
+  "summary": "Create a Diff",
+  "request": {
+    "method": "POST",
+    "url": "https://bump.sh/api/v1/diffs",
+    "headers": {
+      "Authorization": "Token {documentation_or_hub_token}",
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    "body": {
+      "documentation": "my-api",
+      "previous_definition_url": "https://example.com/previous-openapi.yaml",
+      "definition_url": "https://example.com/current-openapi.yaml",
+      "expires_at": "2026-06-22T12:00:00Z"
+    }
+  },
+  "response": {
+    "status": 201,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": {
+      "id": "9b71f8e2-3c0c-4a59-9d2a-2c5e8e5f3f3d",
+      "public_url": "https://bump.sh/diffs/9b71f8e2-3c0c-4a59-9d2a-2c5e8e5f3f3d",
+      "details": [
+        {
+          "type": "update",
+          "name": "GET /pets",
+          "breaking": false
+        }
+      ]
+    }
+  }
+}

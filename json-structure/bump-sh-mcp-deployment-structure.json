@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-structure.org/draft/2025-09/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/bump-sh/main/json-structure/bump-sh-mcp-deployment-structure.json",
+  "title": "McpDeployment",
+  "type": "object",
+  "properties": {
+    "id":            { "type": "string" },
+    "public_url":    { "type": "string", "format": "uri" },
+    "deployed_at":   { "type": "string", "format": "date-time" },
+    "specification": { "type": "string" }
+  }
+}

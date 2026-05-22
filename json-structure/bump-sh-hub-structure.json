@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-structure.org/draft/2025-09/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/bump-sh/main/json-structure/bump-sh-hub-structure.json",
+  "title": "Hub",
+  "type": "object",
+  "properties": {
+    "id":     { "type": "string", "format": "uuid" },
+    "name":   { "type": "string" },
+    "slug":   { "type": "string" },
+    "url":    { "type": "string", "format": "uri" },
+    "public": { "type": "boolean" },
+    "apis": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id":   { "type": "string", "format": "uuid" },
+          "name": { "type": "string" },
+          "slug": { "type": "string" },
+          "url":  { "type": "string", "format": "uri" }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/bump-sh/main/json-schema/bump-sh-preview-schema.json",
+  "title": "Preview",
+  "description": "An ephemeral, unauthenticated rendering of an OpenAPI or AsyncAPI specification.",
+  "type": "object",
+  "required": ["id", "public_url"],
+  "properties": {
+    "id":         { "type": "string" },
+    "public_url": { "type": "string", "format": "uri" },
+    "expires_at": { "type": "string", "format": "date-time" }
+  }
+}

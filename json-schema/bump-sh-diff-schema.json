@@ -1,0 +1,70 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/bump-sh/main/json-schema/bump-sh-diff-schema.json",
+  "title": "Diff",
+  "description": "A computed diff between two versions of an API definition, as produced by the Bump.sh /diffs endpoint.",
+  "type": "object",
+  "required": ["id", "public_url"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique diff identifier."
+    },
+    "public_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "Public URL for the diff."
+    },
+    "title": {
+      "type": "string",
+      "description": "Human-readable diff title."
+    },
+    "breaking": {
+      "type": "boolean",
+      "description": "Whether the diff contains breaking changes."
+    },
+    "diff_summary": {
+      "type": "string",
+      "description": "Short summary of diff contents."
+    },
+    "diff_markdown": {
+      "type": "string",
+      "description": "Markdown rendering of the diff."
+    },
+    "diff_html": {
+      "type": "string",
+      "description": "HTML rendering of the diff."
+    },
+    "diff_json": {
+      "type": "object",
+      "description": "Structured JSON diff representation."
+    },
+    "details": {
+      "type": "array",
+      "description": "List of detected change items.",
+      "items": { "$ref": "#/$defs/DiffItem" }
+    }
+  },
+  "$defs": {
+    "DiffItem": {
+      "type": "object",
+      "required": ["type", "name"],
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": ["add", "remove", "update"],
+          "description": "Kind of change."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the changed element (path, operation, schema)."
+        },
+        "breaking": {
+          "type": "boolean",
+          "description": "Whether this individual change is breaking."
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/bump-sh/main/json-schema/bump-sh-branch-schema.json",
+  "title": "Branch",
+  "description": "A named branch of an API documentation (analogous to a source-control branch).",
+  "type": "object",
+  "required": ["slug", "name"],
+  "properties": {
+    "slug": { "type": "string" },
+    "name": { "type": "string" },
+    "default": {
+      "type": "boolean",
+      "description": "Whether this branch is the default-displayed branch."
+    },
+    "url": { "type": "string", "format": "uri" }
+  }
+}

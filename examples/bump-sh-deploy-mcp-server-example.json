@@ -1,0 +1,26 @@
+{
+  "operation": "POST /mcp_servers/{mcp_server_id_or_slug}/deploy",
+  "operationId": "deployMcpServer",
+  "summary": "Deploy a New MCP Server Document",
+  "request": {
+    "method": "POST",
+    "url": "https://bump.sh/api/v1/mcp_servers/my-mcp-server/deploy",
+    "headers": {
+      "Authorization": "Token {mcp_server_token}",
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    "body": {
+      "document": "arazzo: 1.0.0\ninfo:\n  title: Customer onboarding workflow\n  version: 1.0.0\nsourceDescriptions:\n  - name: customer-api\n    url: https://example.com/openapi.yaml\n    type: openapi\nworkflows:\n  - workflowId: createCustomer\n    steps:\n      - stepId: create\n        operationId: customer-api.createCustomer\n",
+      "specification": "arazzo/1.0.0"
+    }
+  },
+  "response": {
+    "status": 201,
+    "body": {
+      "id": "mcp-deploy-abc123",
+      "public_url": "https://mcp.bump.sh/my-mcp-server",
+      "deployed_at": "2026-05-22T10:15:00Z"
+    }
+  }
+}

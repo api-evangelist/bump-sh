@@ -1,0 +1,41 @@
+apiVersion: naftiko.io/v1
+kind: Capability
+metadata:
+  id: continuous-api-documentation
+  name: Continuous API Documentation
+  provider: bump-sh
+  description: >-
+    Validate, preview, and publish OpenAPI/AsyncAPI specifications from a CI
+    pipeline, producing visual diffs and versioned documentation on every
+    commit.
+spec:
+  inputs:
+    - name: documentation
+      description: Slug of the target Bump.sh documentation.
+    - name: definitionFile
+      description: Local path or URL of the OpenAPI/AsyncAPI definition.
+    - name: branch
+      description: Branch name to publish under (e.g. main, feature-x).
+      required: false
+  steps:
+    - id: validate-spec
+      uses: bump-sh-api.validate
+      with:
+        documentation: ${{ inputs.documentation }}
+        definition: ${{ inputs.definitionFile }}
+    - id: create-preview
+      uses: bump-sh-api.createPreview
+      with:
+        definition: ${{ inputs.definitionFile }}
+      condition: ${{ steps.validate-spec.outputs.valid == true }}
+    - id: publish-version
+      uses: bump-sh-api.createVersion
+      with:
+        documentation: ${{ inputs.documentation }}
+        branch_name: ${{ inputs.branch }}
+        definition: ${{ inputs.definitionFile }}
+      condition: ${{ steps.validate-spec.outputs.valid == true }}
+  outputs:
+    docPublicUrl: ${{ steps.publish-version.outputs.doc_public_url }}
+    diffUrl: ${{ steps.publish-version.outputs.diff_url }}
+    diffBreaking: ${{ steps.publish-version.outputs.diff_breaking }}

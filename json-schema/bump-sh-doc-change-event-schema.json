@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/bump-sh/main/json-schema/bump-sh-doc-change-event-schema.json",
+  "title": "DocStructureChangeEvent",
+  "description": "Webhook event delivered by Bump.sh when a documentation structure changes.",
+  "type": "object",
+  "required": ["type", "documentation", "version"],
+  "properties": {
+    "type": {
+      "type": "string",
+      "const": "documentation_change"
+    },
+    "documentation": {
+      "type": "object",
+      "required": ["id", "slug"],
+      "properties": {
+        "id":   { "type": "string", "format": "uuid" },
+        "name": { "type": "string" },
+        "slug": { "type": "string" }
+      }
+    },
+    "version": {
+      "type": "object",
+      "required": ["id"],
+      "properties": {
+        "id":          { "type": "string", "format": "uuid" },
+        "deployed_at": { "type": "string", "format": "date-time" }
+      }
+    },
+    "diff": {
+      "type": "object",
+      "properties": {
+        "id":         { "type": "string", "format": "uuid" },
+        "summary":    { "type": "string" },
+        "breaking":   { "type": "boolean" },
+        "public_url": { "type": "string", "format": "uri" }
+      }
+    }
+  }
+}

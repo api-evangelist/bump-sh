@@ -4,7 +4,7 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Bump.sh
 providerId: bump-sh
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-22'
 tags:
   - API Changelog
   - API Documentation
@@ -12,137 +12,214 @@ tags:
   - AsyncAPI
   - CI/CD
   - OpenAPI
-description: Machine-readable plans and pricing scaffold for this API provider. Conforms to the API Commons
-  Plans schema. Tier limits and prices are scaffold defaults; replace with provider-published values.
+description: >-
+  Machine-readable plans and pricing for Bump.sh, sourced from
+  https://bump.sh/pricing. Bump.sh meters seats and API documentations rather
+  than API requests; the same SaaS subscription includes API access for
+  publishing documentation from CI. An Open Source program also offers free
+  Pro-equivalent access on application.
+sourceUrl: https://bump.sh/pricing
 plans:
-  - id: bump-sh-free
-    name: Free
-    type: freemium
-    description: Free entry tier for the Bump.sh API surface. Intended for evaluation, prototyping, and
-      low-volume integrations. Real limits and pricing must be reconciled with the provider's published
-      plan documentation.
+  - id: bump-sh-basic
+    name: Basic
+    type: paid
+    description: >-
+      Entry SaaS tier with OpenAPI/AsyncAPI support, CLI, GitHub integration,
+      custom domain/logo, and documentation hubs.
     entries:
-      - label: API Requests
-        description: Monthly API request quota across all included endpoints
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 1000
+      - label: Monthly Price
+        description: Flat monthly subscription
+        name: subscription
+        type: subscription
+        metric: month
+        limit: 1
         timeFrame: month
         geo: global
         domains:
-          - https://bump.sh/api/v1
+          - https://bump.sh
+        unit: 1
+        price: '50.00'
+        currency: USD
+        userMultiplied: false
+      - label: API Documentations
+        description: Number of distinct API documentations included
+        name: api_docs
+        type: quota
+        metric: api_docs
+        limit: 10
+        timeFrame: month
         unit: 1
         price: '0.00'
         userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the free tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 10
-        timeFrame: minute
-        geo: global
-        domains:
-          - https://bump.sh/api/v1
+      - label: Internal Users
+        description: Internal team members with editor access
+        name: internal_users
+        type: quota
+        metric: users
+        limit: 3
+        timeFrame: month
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+      - label: External Guests
+        description: External read-only guests
+        name: external_guests
+        type: quota
+        metric: users
+        limit: 20
+        timeFrame: month
         unit: 1
         price: '0.00'
         userMultiplied: false
     elements:
-      - name: Public Documentation
-      - name: Community Support
-      - name: Sandbox Access
+      - name: OpenAPI Support
+      - name: AsyncAPI Support
+      - name: CLI
+      - name: GitHub Integration
+      - name: Custom Domain
+      - name: Custom Logo
+      - name: Documentation Hubs
       - name: Bump.sh API
   - id: bump-sh-pro
-    name: Professional
+    name: Pro
     type: paid
-    description: Production tier for Bump.sh. Provides higher quotas, priority support, and access to
-      the broader API portfolio. Pricing placeholder; align with the provider's pricing page.
+    description: >-
+      Includes everything in Basic plus branches management, API Explorer,
+      CI integration, release rollback, and automatic changelog.
     entries:
-      - label: API Requests
-        description: Monthly API request quota
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 100000
+      - label: Monthly Price
+        description: Flat monthly subscription
+        name: subscription
+        type: subscription
+        metric: month
+        limit: 1
         timeFrame: month
         geo: global
         domains:
-          - https://bump.sh/api/v1
+          - https://bump.sh
         unit: 1
-        price: TBD
+        price: '250.00'
+        currency: USD
         userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the professional tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 100
-        timeFrame: minute
-        geo: global
-        domains:
-          - https://bump.sh/api/v1
+      - label: API Documentations
+        description: Number of distinct API documentations included
+        name: api_docs
+        type: quota
+        metric: api_docs
+        limit: 30
+        timeFrame: month
         unit: 1
         price: '0.00'
         userMultiplied: false
-      - label: Overage
-        description: Per-request price after monthly quota is exceeded
-        name: overage
-        type: metered
-        metric: requests
-        limit: -1
-        timeFrame: month
-        geo: global
-        domains:
-          - https://bump.sh/api/v1
-        unit: 1000
-        price: TBD
-        userMultiplied: false
-    elements:
-      - name: All Production Endpoints
-      - name: Email Support
-      - name: SLA Targets
-      - name: Webhook Subscriptions
-      - name: Bump.sh API
-  - id: bump-sh-enterprise
-    name: Enterprise
-    type: enterprise
-    description: Custom-negotiated tier for Bump.sh. Includes dedicated capacity, contractual SLAs, security
-      review, data residency options, and named technical account management.
-    entries:
-      - label: API Requests
-        description: Negotiated request volume; -1 indicates uncapped subject to fair use
-        name: api_requests
+      - label: Internal Users
+        description: Internal team members with editor access
+        name: internal_users
         type: quota
-        metric: requests
-        limit: -1
+        metric: users
+        limit: 5
+        timeFrame: month
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+      - label: External Guests
+        description: External read-only guests
+        name: external_guests
+        type: quota
+        metric: users
+        limit: 40
+        timeFrame: month
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+    elements:
+      - name: Branches Management
+      - name: API Explorer
+      - name: CI Integration
+      - name: Release Rollback
+      - name: Automatic Changelog
+      - name: All Basic Features
+      - name: Bump.sh API
+  - id: bump-sh-custom
+    name: Custom
+    type: enterprise
+    description: >-
+      Contact-for-pricing enterprise tier with unlimited docs, users and
+      guests; adds SSO, reverse proxy, embed mode, custom analytics/reports,
+      custom legal/invoicing, and a 99.99% SLA.
+    entries:
+      - label: Monthly Price
+        description: Negotiated; contact sales
+        name: subscription
+        type: subscription
+        metric: month
+        limit: 1
         timeFrame: month
         geo: configurable
         domains:
-          - https://bump.sh/api/v1
+          - https://bump.sh
         unit: 1
         price: custom
+        currency: USD
         userMultiplied: false
-      - label: Rate Limit
-        description: Negotiated burst and steady-state rate
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 1000
-        timeFrame: minute
-        geo: configurable
-        domains:
-          - https://bump.sh/api/v1
+      - label: API Documentations
+        description: Unlimited documentations
+        name: api_docs
+        type: quota
+        metric: api_docs
+        limit: -1
+        timeFrame: month
         unit: 1
-        price: custom
+        price: '0.00'
+        userMultiplied: false
+      - label: Internal Users
+        description: Unlimited internal users
+        name: internal_users
+        type: quota
+        metric: users
+        limit: -1
+        timeFrame: month
+        unit: 1
+        price: '0.00'
+        userMultiplied: false
+      - label: External Guests
+        description: Unlimited external guests
+        name: external_guests
+        type: quota
+        metric: users
+        limit: -1
+        timeFrame: month
+        unit: 1
+        price: '0.00'
         userMultiplied: false
     elements:
-      - name: Unlimited / Negotiated Volume
-      - name: 24/7 Dedicated Support
-      - name: Contractual SLA
-      - name: Security & Compliance Review
-      - name: Dedicated Account Manager
-      - name: Custom Data Residency
+      - name: SSO
+      - name: Reverse Proxy
+      - name: Embed Mode
+      - name: Custom Analytics And Reports
+      - name: Custom Legal And Invoicing
+      - name: 99.99% SLA
+      - name: All Pro Features
+      - name: Bump.sh API
+  - id: bump-sh-open-source
+    name: Open Source Program
+    type: freemium
+    description: >-
+      Free Pro-equivalent access for qualifying open source projects, granted
+      on application.
+    entries:
+      - label: Monthly Price
+        description: Granted free upon approval
+        name: subscription
+        type: subscription
+        metric: month
+        limit: 1
+        timeFrame: month
+        unit: 1
+        price: '0.00'
+        currency: USD
+        userMultiplied: false
+    elements:
+      - name: All Pro Features
       - name: Bump.sh API
 maintainers:
   - FN: Kin Lane

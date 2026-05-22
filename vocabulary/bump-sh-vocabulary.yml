@@ -1,0 +1,110 @@
+vocabulary: Bump.sh
+description: >-
+  Domain vocabulary for the Bump.sh API documentation, diff, and MCP-server
+  platform. Captures the terms a governance program needs to discuss what
+  Bump.sh manages: documentations, versions, diffs, branches, hubs, previews,
+  validations, and MCP servers compiled from Flower / Arazzo workflows.
+version: 0.2.0
+source:
+  - https://docs.bump.sh
+  - https://developers.bump.sh
+  - https://bump.sh
+
+terms:
+
+  - term: Documentation
+    definition: >-
+      A named, versioned rendering of an API specification published to
+      Bump.sh. Identified by a slug; addressable at a public URL.
+    aliases: [Doc, API Documentation]
+
+  - term: Version
+    definition: >-
+      A point-in-time snapshot of a documentation, created by deploying a
+      definition file. Versions belong to a documentation and optionally a
+      branch.
+
+  - term: Branch
+    definition: >-
+      A named lane of a documentation that mirrors a source-control branch.
+      Exactly one branch is marked default at any time.
+
+  - term: Hub
+    definition: >-
+      An organizational container that groups multiple documentations under a
+      single navigable portal, public or private.
+
+  - term: Diff
+    definition: >-
+      A computed comparison between two API definitions. Surfaces
+      added/removed/updated operations and flags breaking changes.
+
+  - term: Breaking Change
+    definition: >-
+      A modification to an API contract that requires consumers to change
+      their code or risk failure. Bump.sh classifies each DiffItem as
+      breaking or non-breaking.
+
+  - term: Preview
+    definition: >-
+      An ephemeral rendering of an OpenAPI or AsyncAPI definition, sharable
+      by URL, that does not modify a permanent documentation.
+
+  - term: Validation
+    definition: >-
+      The result of checking a definition against its declared specification
+      (OpenAPI 3.x, AsyncAPI 2.x/3.x) and Bump.sh-specific constraints.
+
+  - term: Webhook
+    definition: >-
+      An outbound HTTP notification (Bump.sh ships `DocStructureChange`) that
+      fires when a documentation structure changes.
+
+  - term: MCP Server
+    definition: >-
+      A Bump.sh-hosted Model Context Protocol endpoint that exposes a
+      Flower or Arazzo workflow to AI agents. Calls are deterministic and
+      observable; credentials never reach the model.
+
+  - term: Flower
+    definition: >-
+      Bump.sh's lightweight workflow specification (github.com/bump-sh/flower-spec)
+      for defining API call sequences powering MCP servers.
+
+  - term: Arazzo
+    definition: >-
+      The OpenAPI Initiative workflow specification that describes
+      multi-operation API workflows; Bump.sh compiles Arazzo documents into
+      MCP servers.
+
+  - term: OpenAPI
+    definition: >-
+      Primary REST API specification format Bump.sh consumes (OpenAPI 2.x,
+      3.0.x, 3.1.x).
+
+  - term: AsyncAPI
+    definition: >-
+      Event-driven API specification format Bump.sh consumes (AsyncAPI 2.x,
+      3.x).
+
+  - term: JSON Schema
+    definition: >-
+      Schema language supported within OpenAPI/AsyncAPI definitions and
+      validated by Bump.sh.
+
+  - term: Deployment
+    definition: >-
+      The act of publishing a new version via the API, CLI, or GitHub Action.
+
+  - term: Token
+    definition: >-
+      Bump.sh access credential scoped to a documentation, hub, or
+      organization; sent as `Authorization: Token {token}`.
+
+categories:
+  - Authoring
+  - Publishing
+  - Diffing
+  - Governance
+  - Agents
+  - CI

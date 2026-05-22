@@ -1,0 +1,34 @@
+apiVersion: naftiko.io/v1
+kind: Capability
+metadata:
+  id: breaking-change-governance
+  name: Breaking Change Governance
+  provider: bump-sh
+  description: >-
+    Compare two API specifications, classify breaking versus non-breaking
+    changes, and surface a reviewable diff for the API design council before a
+    new version is promoted.
+spec:
+  inputs:
+    - name: documentation
+      description: Documentation slug to compare against.
+    - name: previousDefinitionUrl
+      description: URL or content of the previous spec version.
+    - name: currentDefinitionUrl
+      description: URL or content of the new spec version.
+  steps:
+    - id: create-diff
+      uses: bump-sh-api.createDiff
+      with:
+        documentation: ${{ inputs.documentation }}
+        previous_definition_url: ${{ inputs.previousDefinitionUrl }}
+        definition_url: ${{ inputs.currentDefinitionUrl }}
+    - id: fetch-diff-details
+      uses: bump-sh-api.getDiff
+      with:
+        id: ${{ steps.create-diff.outputs.id }}
+  outputs:
+    diffPublicUrl: ${{ steps.create-diff.outputs.public_url }}
+    breaking: ${{ steps.fetch-diff-details.outputs.breaking }}
+    summary: ${{ steps.fetch-diff-details.outputs.diff_summary }}
+    markdown: ${{ steps.fetch-diff-details.outputs.diff_markdown }}

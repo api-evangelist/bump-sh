@@ -11,7 +11,7 @@ providerId: bump-sh
 publisherName: Bump.sh
 serviceCategory: API
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-22'
 tags:
   - API Changelog
   - API Documentation
@@ -22,8 +22,13 @@ tags:
   - FinOps
   - Cost Management
   - FOCUS
-description: FinOps framework definition for the Bump.sh API surface. Provides a FOCUS-aligned mapping
-  for cost allocation, usage measurement, and unit-economics reporting across the provider's APIs.
+description: >-
+  FinOps framework definition for the Bump.sh SaaS + API surface. Bump.sh
+  meters subscription tier, internal seats, external guests, and number of
+  API documentations (not raw API requests), with the addition of MCP-server
+  workflow executions for AI-agent consumers. Provides a FOCUS-aligned
+  mapping for cost allocation, usage measurement, and unit-economics
+  reporting.
 principles:
   - name: Visibility
     description: Make API consumption costs visible to engineering, product, and finance teams in near
@@ -86,32 +91,45 @@ focusColumns:
   BillingCurrency: USD
   ChargeCategory: Usage
 meters:
+  - name: subscription_seats
+    description: Internal seats consumed under the active plan
+    unit: seat
+    aggregation: max
+    dimensions:
+      - tier
+      - organization
+  - name: external_guests
+    description: External read-only guests on a documentation
+    unit: seat
+    aggregation: max
+    dimensions:
+      - tier
+      - organization
+  - name: api_docs
+    description: Number of distinct API documentations published
+    unit: documentation
+    aggregation: max
+    dimensions:
+      - tier
+      - organization
+      - hub
   - name: api_requests
-    description: Count of billable API requests
+    description: Count of API requests against the Bump.sh REST API (CI/CD deploys, diffs, validations, MCP deploys)
     unit: request
     aggregation: sum
     dimensions:
-      - api
       - endpoint
       - tier
-      - region
       - consumer
-  - name: data_egress
-    description: Bytes returned over the network in API responses
-    unit: GB
+  - name: mcp_executions
+    description: Executions of a hosted MCP-server workflow on behalf of an AI agent
+    unit: execution
     aggregation: sum
     dimensions:
-      - api
-      - region
-      - consumer
-  - name: compute_seconds
-    description: Server-side compute consumed by the request, where applicable
-    unit: second
-    aggregation: sum
-    dimensions:
-      - api
-      - endpoint
+      - mcp_server
+      - workflow
       - tier
+      - consumer
 apis:
   - name: Bump.sh API
     baseURL: https://bump.sh/api/v1

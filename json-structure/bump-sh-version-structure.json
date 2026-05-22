@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-structure.org/draft/2025-09/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/bump-sh/main/json-structure/bump-sh-version-structure.json",
+  "title": "Version",
+  "type": "object",
+  "properties": {
+    "id":             { "type": "string", "format": "uuid" },
+    "doc_id":         { "type": "string", "format": "uuid" },
+    "doc_public_url": { "type": "string", "format": "uri" },
+    "diff_summary":   { "type": "string" },
+    "diff_url":       { "type": "string", "format": "uri" },
+    "diff_breaking":  { "type": "boolean" },
+    "deployed_at":    { "type": "string", "format": "date-time" }
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "operation": "POST /validations",
+  "operationId": "validate",
+  "summary": "Validate a Documentation Definition",
+  "request": {
+    "method": "POST",
+    "url": "https://bump.sh/api/v1/validations",
+    "headers": {
+      "Authorization": "Token {documentation_token}",
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    "body": {
+      "documentation": "my-api",
+      "definition": "{\"openapi\":\"3.1.0\",\"info\":{\"title\":\"My API\",\"version\":\"2.0.0\"},\"paths\":{}}"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "specification": "openapi/3.1.0",
+      "valid": true,
+      "errors": []
+    }
+  }
+}
