@@ -152,6 +152,8 @@ common:
     url: https://bumpsh.statuspage.io/
   - type: LinkedIn
     url: https://www.linkedin.com/company/bump-sh
+  - type: LLMsTxt
+    url: https://developers.bump.sh/llms.txt
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
