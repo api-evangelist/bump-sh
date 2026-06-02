@@ -2,13 +2,13 @@
   "repo": "bump-sh",
   "feeds": [
     {
-      "source": "https://bump.sh/blog",
-      "feed_url": "",
+      "source": "https://github.com/bump-sh/examples",
+      "feed_url": "https://github.com/bump-sh/examples",
       "title": "",
       "saved": 0,
-      "error": "no_feed"
+      "method": "none"
     }
   ],
-  "fetched": "2026-05-17T20:48:52Z",
+  "fetched": "2026-06-01T23:35:02Z",
   "post_count": 0
 }
