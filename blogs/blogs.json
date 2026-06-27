@@ -3,19 +3,12 @@
   "feeds": [
     {
       "source": "https://bump.sh/blog",
-      "feed_url": "https://bump.sh/blog",
-      "title": "",
-      "saved": 0,
-      "method": "none"
-    },
-    {
-      "source": "https://github.com/bump-sh/examples",
-      "feed_url": "https://github.com/bump-sh/examples",
-      "title": "",
-      "saved": 0,
-      "method": "none"
+      "feed_url": "",
+      "saved": 1,
+      "method": "agent-scrape"
     }
   ],
-  "post_count": 0,
-  "fetched": "2026-06-14T20:42:17Z"
+  "post_count": 26,
+  "fetched": "2026-06-27T12:29:51Z",
+  "agent_pulled": "2026-06-27"
 }

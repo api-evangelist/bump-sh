@@ -71,7 +71,7 @@ apis:
         url: https://github.com/api-evangelist/bump-sh/blob/main/json-ld/bump-sh-context.jsonld
       - type: Examples
         url: https://github.com/api-evangelist/bump-sh/tree/main/examples
-      - type: NaftikoCapabilities
+      - type: X-NaftikoCapabilities
         url: https://github.com/api-evangelist/bump-sh/tree/main/capabilities
       - type: Vocabulary
         url: https://github.com/api-evangelist/bump-sh/blob/main/vocabulary/bump-sh-vocabulary.yml
@@ -81,7 +81,7 @@ apis:
         url: https://github.com/api-evangelist/bump-sh/blob/main/rate-limits/bump-sh-rate-limits.yml
       - type: FinOps
         url: https://github.com/api-evangelist/bump-sh/blob/main/finops/bump-sh-finops.yml
-      - type: Webhook
+      - type: Webhooks
         url: https://docs.bump.sh
         description: DocStructureChange webhook fires on every structural change to a documentation.
     x-features:
@@ -144,7 +144,7 @@ common:
     url: https://bump.sh/pricing
   - type: ChangeLog
     url: https://bump.sh/changelog
-  - type: SignUp
+  - type: Signup
     url: https://bump.sh/users/sign_up
   - type: Login
     url: https://bump.sh/users/sign_in
@@ -152,7 +152,7 @@ common:
     url: https://bumpsh.statuspage.io/
   - type: LinkedIn
     url: https://www.linkedin.com/company/bump-sh
-  - type: LLMsTxt
+  - type: LlmsText
     url: https://developers.bump.sh/llms.txt
 maintainers:
   - FN: Kin Lane
