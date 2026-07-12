@@ -113,6 +113,12 @@ apis:
       - Arazzo 1.0.0 (OAI workflow spec)
       - Flower (Bump.sh-native workflow spec)
 common:
+  - type: VulnerabilityDisclosure
+    url: security/bump-sh-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/bump-sh-domain-security.yml
+  - type: Authentication
+    url: authentication/bump-sh-authentication.yml
   - type: Website
     url: https://bump.sh
   - type: Documentation

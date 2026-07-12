@@ -1,0 +1,17 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/bump-sh-openapi.yaml
+summary:
+  types:
+  - http
+schemes:
+- name: Authorization token
+  type: http
+  scheme: token
+  sources:
+  - openapi/bump-sh-openapi.yaml
+- name: Basic token
+  type: http
+  scheme: basic
+  sources:
+  - openapi/bump-sh-openapi.yaml
