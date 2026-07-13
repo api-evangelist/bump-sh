@@ -2,13 +2,14 @@
   "repo": "bump-sh",
   "feeds": [
     {
-      "source": "https://bump.sh/blog",
-      "feed_url": "",
-      "saved": 1,
-      "method": "agent-scrape"
+      "source": "https://github.com/bump-sh/examples",
+      "feed_url": "https://github.com/bump-sh/examples",
+      "title": "",
+      "saved": 0,
+      "method": "none"
     }
   ],
   "post_count": 26,
-  "fetched": "2026-06-27T12:29:51Z",
+  "fetched": "2026-07-11T11:50:51Z",
   "agent_pulled": "2026-06-27"
 }
