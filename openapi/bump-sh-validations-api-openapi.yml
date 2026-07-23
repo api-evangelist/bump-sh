@@ -1,0 +1,209 @@
+openapi: 3.2.0
+info:
+  title: Bump.sh Api Branches Validations API
+  description: 'This is the official Bump.sh API documentation.  Obviously created
+
+    with Bump.sh.
+
+
+    The Bump.sh API is a REST API. It enables you to [create, update](#operation-post-versions)
+
+    or [preview](#operation-post-previews) your API(s) documentation,
+
+    [create stand-alone documentation diffs](#operation-post-diffs) or
+
+    [validate a documentation definition](#operation-post-validations)
+
+    (currently in OpenAPI or AsyncAPI).
+
+
+    Our [webhook](#webhook-documentation-change) also lets you get
+
+    notifications every time a change is introduced in your API.
+
+    '
+  version: '1.0'
+servers:
+- url: https://bump.sh/api/v1
+  name: Production
+security:
+- Authorization token: []
+- Basic token: []
+tags:
+- name: Validations
+paths:
+  /validations:
+    post:
+      tags:
+      - Validations
+      summary: Validate a Documentation Definition
+      description: 'Validate a definition against its schema (OpenAPI or AsyncAPI) and return errors without creating a new version. This is useful in a CI process, to validate that a changed definition file is valid and won''t fail when being deployed on Bump.sh.
+
+        '
+      security:
+      - {}
+      - Authorization token: []
+      - Basic token: []
+      requestBody:
+        $ref: '#/components/requestBodies/Validate'
+      responses:
+        '200':
+          summary: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Validation'
+        '400':
+          summary: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDisabledOwner'
+        '422':
+          $ref: '#/components/responses/InvalidDefinition'
+components:
+  schemas:
+    Validation:
+      properties:
+        specification:
+          type: string
+          description: 'Specification of the given definition as a path: `speficiation_name/specification_version/format`.'
+          enum:
+          - openapi/v2/yaml
+          - openapi/v2/json
+          - openapi/v3/yaml
+          - openapi/v3/json
+          - asyncapi/v2/yaml
+          - asyncapi/v2/json
+          example: openapi/v3/json
+    DocumentationRequest:
+      type: object
+      required:
+      - documentation
+      properties:
+        documentation:
+          type: string
+          description: UUID or slug of the documentation.
+          example: 0776d85d-e097-47c1-8c60-cb1190d11945
+        hub:
+          type: string
+          description: UUID or slug of the hub if the documentation is part of a hub.
+          example: my_hub_slug
+        documentation_name:
+          type: string
+          description: Name of the documentation to create. Used only if `auto_create_documentation` is set.
+        auto_create_documentation:
+          type: boolean
+          default: false
+          description: Create the documentation if it does not exist yet. Must be used with a `hub` and a `documentation`.
+    Error:
+      properties:
+        message:
+          type: string
+          description: Human readable error message.
+          example: Invalid definition file
+        errors:
+          type: object
+          description: Hash of invalid attributes with their error messages.
+          example:
+            raw_definition:
+            - The property '#/paths//docs/{:id}/validations/post' contains additional properties ["yolo"] outside of the schema when none are allowed
+    ErrorDisabledOwner:
+      properties:
+        message:
+          type: string
+          description: Human readable error message for status 400.
+          example: You need to upgrade your subscription plan to perform this request.
+    Reference:
+      type: object
+      properties:
+        location:
+          type: string
+          description: Location of the external reference as it's called from `definition`, without the relative path (the part after `#/`). Can be an URL of a file system path.
+          example: https://example.com/api/models/pet.yml
+        content:
+          type: string
+          description: Content of the external reference, as a string.
+    Preview:
+      type: object
+      properties:
+        definition:
+          writeOnly: true
+          type: string
+          description: '<small>==**REQUIRED**==</small> if `url` is not present.
+
+
+            Serialized definition. This should be an OpenAPI 2.x, 3.x
+
+            or AsyncAPI 2.x file serialized as a string, in YAML or
+
+            JSON.
+
+            '
+          example: '{"openapi": "3.0", "info": { "title": … }}
+
+            '
+        references:
+          writeOnly: true
+          type: array
+          description: Import external references used by `definition`. It's usually resources not accessible by Bump.sh servers, like local files or internal URLs.
+          items:
+            $ref: '#/components/schemas/Reference'
+        url:
+          writeOnly: true
+          type: string
+          format: uri
+          description: '<small>==**REQUIRED**==</small> if `definition` is not present.
+
+
+            Target definition URL. It should be accessible through
+
+            HTTP by Bump.sh servers.
+
+            '
+        id:
+          readOnly: true
+          type: string
+          description: 'Unique id for the preview URL: `https://bump.sh/preview/:id`.'
+          example: 3ef8f52f-9056-4113-840e-2f7183b90e06
+        expires_at:
+          readOnly: true
+          type: string
+          format: date-time
+          description: Preview expiration date and time.
+          example: 2010-04-14 17:05:00+01:00
+        public_url:
+          readOnly: true
+          type: string
+          description: The public URL where the preview will be visible.
+          example: https://bump.sh/preview/3ef8f52f-9056-4113-840e-2f7183b90e06
+  responses:
+    InvalidDefinition:
+      summary: Definition is not valid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  requestBodies:
+    Validate:
+      description: The version validation request object
+      content:
+        application/json:
+          schema:
+            allOf:
+            - $ref: '#/components/schemas/DocumentationRequest'
+            - $ref: '#/components/schemas/Preview'
+  securitySchemes:
+    Authorization token:
+      type: http
+      scheme: token
+    Basic token:
+      type: http
+      scheme: basic
+      deprecated: true
+x-topics:
+- title: Authentication
+  content:
+    $ref: ./authentication.md
+  example:
+    $ref: ./authentication-example.md

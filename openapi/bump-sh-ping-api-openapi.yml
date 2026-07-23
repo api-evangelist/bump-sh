@@ -1,0 +1,72 @@
+openapi: 3.2.0
+info:
+  title: Bump.sh Api Branches Ping API
+  description: 'This is the official Bump.sh API documentation.  Obviously created
+
+    with Bump.sh.
+
+
+    The Bump.sh API is a REST API. It enables you to [create, update](#operation-post-versions)
+
+    or [preview](#operation-post-previews) your API(s) documentation,
+
+    [create stand-alone documentation diffs](#operation-post-diffs) or
+
+    [validate a documentation definition](#operation-post-validations)
+
+    (currently in OpenAPI or AsyncAPI).
+
+
+    Our [webhook](#webhook-documentation-change) also lets you get
+
+    notifications every time a change is introduced in your API.
+
+    '
+  version: '1.0'
+servers:
+- url: https://bump.sh/api/v1
+  name: Production
+security:
+- Authorization token: []
+- Basic token: []
+tags:
+- name: Ping
+paths:
+  /ping:
+    get:
+      tags:
+      - Ping
+      summary: Check the API Status
+      description: Responds a pong if the API is up and running.
+      security: []
+      responses:
+        '200':
+          summary: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Pong'
+        default:
+          summary: API is currently down
+components:
+  schemas:
+    Pong:
+      properties:
+        pong:
+          type: string
+          description: Sentence about ping and pong
+          example: And that's how ping-pong ball is bumped
+  securitySchemes:
+    Authorization token:
+      type: http
+      scheme: token
+    Basic token:
+      type: http
+      scheme: basic
+      deprecated: true
+x-topics:
+- title: Authentication
+  content:
+    $ref: ./authentication.md
+  example:
+    $ref: ./authentication-example.md

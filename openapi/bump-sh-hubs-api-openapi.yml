@@ -1,0 +1,235 @@
+openapi: 3.2.0
+info:
+  title: Bump.sh Api Branches Hubs API
+  description: 'This is the official Bump.sh API documentation.  Obviously created
+
+    with Bump.sh.
+
+
+    The Bump.sh API is a REST API. It enables you to [create, update](#operation-post-versions)
+
+    or [preview](#operation-post-previews) your API(s) documentation,
+
+    [create stand-alone documentation diffs](#operation-post-diffs) or
+
+    [validate a documentation definition](#operation-post-validations)
+
+    (currently in OpenAPI or AsyncAPI).
+
+
+    Our [webhook](#webhook-documentation-change) also lets you get
+
+    notifications every time a change is introduced in your API.
+
+    '
+  version: '1.0'
+servers:
+- url: https://bump.sh/api/v1
+  name: Production
+security:
+- Authorization token: []
+- Basic token: []
+tags:
+- name: Hubs
+paths:
+  /hubs:
+    get:
+      operationId: listHubs
+      tags:
+      - Hubs
+      summary: List All Hubs
+      security:
+      - Authorization token: []
+      description: 'List all hubs belonging to the authenticated organization.
+
+        The API key used to make the request must be set at the organization level.
+
+        '
+      responses:
+        '200':
+          summary: Hubs successfully retrieved
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Hub'
+        '401':
+          description: Unauthorized
+  /hubs/{hub_id_or_slug}:
+    get:
+      tags:
+      - Hubs
+      summary: Fetch Information of an Existing Hub
+      description: 'Fetch information of an existing Hub including the list of
+
+        APIs it contains. The response follows the [APIs.json
+
+        specification](http://apisjson.org/).
+
+        '
+      parameters:
+      - in: path
+        name: hub_id_or_slug
+        schema:
+          type: string
+          description: UUID or slug of a Hub
+        required: true
+        description: UUID or slug of a Hub which can be Automatic Deployment settings page of your hub
+      responses:
+        '200':
+          summary: Hub successfully retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HubWithApis'
+        '400':
+          summary: Bad request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorDisabledOwner'
+        '404':
+          summary: Hub not found
+components:
+  schemas:
+    Api:
+      type: object
+      properties:
+        id:
+          type: string
+          description: UUID of this API
+          example: 3ef8f52f-9056-4113-840e-2f7183b90e06
+        name:
+          type: string
+          description: Name of this API
+          example: Bump.sh
+        description:
+          type: string
+          description: Description of this API from the latest definition
+          example: This is the official Bump.sh API documentation. Obviously created with Bump.sh
+        slug:
+          type: string
+          description: Slug of this API
+          example: bump
+        url:
+          type: string
+          deprecated: true
+        humanUrl:
+          type: string
+          description: public documentation URL
+          example: https://developers.bump.sh/
+        tags:
+          type: array
+          items:
+            type: string
+          description: a list of descriptive strings which identify the API within a Hub
+        version:
+          type: string
+          description: Version of this API taken from the latest definition
+          example: '1.0'
+        properties:
+          type: array
+          description: Extra properties attached to this API
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+                description: Type of the extra property
+                enum:
+                - OpenAPI
+                - AsyncAPI
+                - x-access-level
+                - x-definition-type
+              data:
+                type: string
+                description: Content of the extra property (`data` or `url`)
+              url:
+                type: string
+                description: Content of the extra property (`data` or `url`)
+            example:
+              type: OpenAPI
+              url: https://developers.bump.sh/source.json
+        created:
+          type: date
+          description: Creation date of this API
+          example: '2022-01-07'
+        modified:
+          type: date
+          description: Last udpate date of this API
+          example: '2022-04-07'
+    Hub:
+      type: object
+      properties:
+        id:
+          type: string
+          description: UUID of this Hub
+          example: 3ef8f52f-9056-4113-840e-2f7183b90e06
+        name:
+          type: string
+          description: The name of the Hub
+          example: My train company hub
+        description:
+          type: string
+          description: The description of the Hub
+          example: '# Welcome to my train company
+
+
+            This hub contains all APIs belonging to [my train company](https://demo.bump.sh/).
+
+            Feel free to visit the documentation or changes of our APIs lifecycle.
+
+            '
+        url:
+          type: string
+          description: The public URL of the hub
+          example: https://demo.bump.sh/
+        created:
+          type: string
+          format: date
+          description: Creation date of this Hub
+          example: '2022-01-07'
+        modified:
+          type: string
+          format: date
+          description: Last udpate date of this Hub
+          example: '2022-04-07'
+        specificationVersion:
+          type: string
+          description: 'version of the [APIs.json
+
+            specification](http://apisjson.org/) specification in use.
+
+            '
+          example: '0.16'
+    ErrorDisabledOwner:
+      properties:
+        message:
+          type: string
+          description: Human readable error message for status 400.
+          example: You need to upgrade your subscription plan to perform this request.
+    HubWithApis:
+      allOf:
+      - $ref: '#/components/schemas/Hub'
+      - type: object
+        properties:
+          apis:
+            type: array
+            description: The list of APIs belonging to this Hub
+            items:
+              $ref: '#/components/schemas/Api'
+  securitySchemes:
+    Authorization token:
+      type: http
+      scheme: token
+    Basic token:
+      type: http
+      scheme: basic
+      deprecated: true
+x-topics:
+- title: Authentication
+  content:
+    $ref: ./authentication.md
+  example:
+    $ref: ./authentication-example.md

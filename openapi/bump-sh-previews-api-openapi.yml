@@ -1,0 +1,186 @@
+openapi: 3.2.0
+info:
+  title: Bump.sh Api Branches Previews API
+  description: 'This is the official Bump.sh API documentation.  Obviously created
+
+    with Bump.sh.
+
+
+    The Bump.sh API is a REST API. It enables you to [create, update](#operation-post-versions)
+
+    or [preview](#operation-post-previews) your API(s) documentation,
+
+    [create stand-alone documentation diffs](#operation-post-diffs) or
+
+    [validate a documentation definition](#operation-post-validations)
+
+    (currently in OpenAPI or AsyncAPI).
+
+
+    Our [webhook](#webhook-documentation-change) also lets you get
+
+    notifications every time a change is introduced in your API.
+
+    '
+  version: '1.0'
+servers:
+- url: https://bump.sh/api/v1
+  name: Production
+security:
+- Authorization token: []
+- Basic token: []
+tags:
+- name: Previews
+paths:
+  /previews:
+    post:
+      tags:
+      - Previews
+      summary: Create a Preview
+      description: 'Create a preview for a given documentation file. The preview will have a unique temporary URL, and will be active for 30 minutes.
+
+        '
+      security: []
+      requestBody:
+        $ref: '#/components/requestBodies/Preview'
+      responses:
+        '201':
+          summary: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Preview'
+        '422':
+          $ref: '#/components/responses/InvalidDefinition'
+  /previews/{preview_id}:
+    put:
+      tags:
+      - Previews
+      summary: Update an Existing Preview
+      description: 'Update a preview with the given documentation file. The preview will stay active for 30 minutes after the last update.
+
+        '
+      security: []
+      parameters:
+      - in: path
+        name: preview_id
+        schema:
+          type: string
+        required: true
+        description: UUID of an existing preview you wish to update.
+      requestBody:
+        $ref: '#/components/requestBodies/Preview'
+      responses:
+        '200':
+          summary: Success
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Preview'
+        '422':
+          $ref: '#/components/responses/InvalidDefinition'
+components:
+  responses:
+    InvalidDefinition:
+      summary: Definition is not valid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    Error:
+      properties:
+        message:
+          type: string
+          description: Human readable error message.
+          example: Invalid definition file
+        errors:
+          type: object
+          description: Hash of invalid attributes with their error messages.
+          example:
+            raw_definition:
+            - The property '#/paths//docs/{:id}/validations/post' contains additional properties ["yolo"] outside of the schema when none are allowed
+    Reference:
+      type: object
+      properties:
+        location:
+          type: string
+          description: Location of the external reference as it's called from `definition`, without the relative path (the part after `#/`). Can be an URL of a file system path.
+          example: https://example.com/api/models/pet.yml
+        content:
+          type: string
+          description: Content of the external reference, as a string.
+    Preview:
+      type: object
+      properties:
+        definition:
+          writeOnly: true
+          type: string
+          description: '<small>==**REQUIRED**==</small> if `url` is not present.
+
+
+            Serialized definition. This should be an OpenAPI 2.x, 3.x
+
+            or AsyncAPI 2.x file serialized as a string, in YAML or
+
+            JSON.
+
+            '
+          example: '{"openapi": "3.0", "info": { "title": … }}
+
+            '
+        references:
+          writeOnly: true
+          type: array
+          description: Import external references used by `definition`. It's usually resources not accessible by Bump.sh servers, like local files or internal URLs.
+          items:
+            $ref: '#/components/schemas/Reference'
+        url:
+          writeOnly: true
+          type: string
+          format: uri
+          description: '<small>==**REQUIRED**==</small> if `definition` is not present.
+
+
+            Target definition URL. It should be accessible through
+
+            HTTP by Bump.sh servers.
+
+            '
+        id:
+          readOnly: true
+          type: string
+          description: 'Unique id for the preview URL: `https://bump.sh/preview/:id`.'
+          example: 3ef8f52f-9056-4113-840e-2f7183b90e06
+        expires_at:
+          readOnly: true
+          type: string
+          format: date-time
+          description: Preview expiration date and time.
+          example: 2010-04-14 17:05:00+01:00
+        public_url:
+          readOnly: true
+          type: string
+          description: The public URL where the preview will be visible.
+          example: https://bump.sh/preview/3ef8f52f-9056-4113-840e-2f7183b90e06
+  requestBodies:
+    Preview:
+      description: The preview creation request object
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Preview'
+  securitySchemes:
+    Authorization token:
+      type: http
+      scheme: token
+    Basic token:
+      type: http
+      scheme: basic
+      deprecated: true
+x-topics:
+- title: Authentication
+  content:
+    $ref: ./authentication.md
+  example:
+    $ref: ./authentication-example.md
