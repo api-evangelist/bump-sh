@@ -1,0 +1,297 @@
+{
+  "info": {
+    "_postman_id": "e0d25be1-3bcc-44fe-897f-1510f34206db",
+    "name": "Bump.sh Api Branches MCP servers API",
+    "description": "This is the official Bump.sh API documentation.  Obviously created\nwith Bump.sh.\n\nThe Bump.sh API is a REST API. It enables you to [create, update](#operation-post-versions)\nor [preview](#operation-post-previews) your API(s) documentation,\n[create stand-alone documentation diffs](#operation-post-diffs) or\n[validate a documentation definition](#operation-post-validations)\n(currently in OpenAPI or AsyncAPI).\n\nOur [webhook](#webhook-documentation-change) also lets you get\nnotifications every time a change is introduced in your API.\n",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:16:33.000Z",
+    "updatedAt": "2026-07-28T01:16:33.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e0d25be1-3bcc-44fe-897f-1510f34206db"
+  },
+  "item": [
+    {
+      "name": "mcp_servers",
+      "item": [
+        {
+          "name": "{mcp_server_id_or_slug}",
+          "item": [
+            {
+              "name": "deploy",
+              "item": [
+                {
+                  "name": "Deploy a New MCP Server Document",
+                  "id": "323ca56e-7e22-4ad1-9d9d-d57dff5783d1",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"definition\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/mcp_servers/:mcp_server_id_or_slug/deploy",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "mcp_servers",
+                        ":mcp_server_id_or_slug",
+                        "deploy"
+                      ],
+                      "variable": [
+                        {
+                          "id": "9d0601fa-7f35-4dd2-b696-ec397a329ff4",
+                          "key": "mcp_server_id_or_slug",
+                          "value": "<string>",
+                          "description": "(Required) UUID or slug of a MCP server"
+                        }
+                      ]
+                    },
+                    "description": "Deploy a new workflow document for a given MCP server.\n"
+                  },
+                  "response": [
+                    {
+                      "id": "3f9e3d9c-00fe-48f8-b596-2452f88cae70",
+                      "name": "201 response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"definition\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/mcp_servers/:mcp_server_id_or_slug/deploy",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "mcp_servers",
+                            ":mcp_server_id_or_slug",
+                            "deploy"
+                          ],
+                          "variable": [
+                            {
+                              "key": "mcp_server_id_or_slug"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"mcp_server_id\": \"<string>\"\n}",
+                      "createdAt": "2026-07-28T01:16:34.000Z",
+                      "updatedAt": "2026-07-28T01:16:34.000Z",
+                      "uid": "35240-3f9e3d9c-00fe-48f8-b596-2452f88cae70"
+                    },
+                    {
+                      "id": "8499bf82-6865-4a6d-aacc-352953ee1311",
+                      "name": "204 response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"definition\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/mcp_servers/:mcp_server_id_or_slug/deploy",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "mcp_servers",
+                            ":mcp_server_id_or_slug",
+                            "deploy"
+                          ],
+                          "variable": [
+                            {
+                              "key": "mcp_server_id_or_slug"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:16:34.000Z",
+                      "updatedAt": "2026-07-28T01:16:34.000Z",
+                      "uid": "35240-8499bf82-6865-4a6d-aacc-352953ee1311"
+                    },
+                    {
+                      "id": "306779c3-8510-44e9-88c5-8f6c66b2ba82",
+                      "name": "422 response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"definition\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/mcp_servers/:mcp_server_id_or_slug/deploy",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "mcp_servers",
+                            ":mcp_server_id_or_slug",
+                            "deploy"
+                          ],
+                          "variable": [
+                            {
+                              "key": "mcp_server_id_or_slug"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                      "code": 422,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"errors\": {}\n}",
+                      "createdAt": "2026-07-28T01:16:34.000Z",
+                      "updatedAt": "2026-07-28T01:16:34.000Z",
+                      "uid": "35240-306779c3-8510-44e9-88c5-8f6c66b2ba82"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:16:34.000Z",
+                  "updatedAt": "2026-07-28T01:16:34.000Z",
+                  "uid": "35240-323ca56e-7e22-4ad1-9d9d-d57dff5783d1"
+                }
+              ],
+              "id": "a0a224eb-caf8-43bd-951a-53dc0eb760c5",
+              "createdAt": "2026-07-28T01:16:34.000Z",
+              "updatedAt": "2026-07-28T01:16:34.000Z",
+              "uid": "35240-a0a224eb-caf8-43bd-951a-53dc0eb760c5"
+            }
+          ],
+          "id": "9bccd6da-c194-404f-b2a3-57a8061f6828",
+          "createdAt": "2026-07-28T01:16:34.000Z",
+          "updatedAt": "2026-07-28T01:16:34.000Z",
+          "uid": "35240-9bccd6da-c194-404f-b2a3-57a8061f6828"
+        }
+      ],
+      "id": "fa421714-ff07-4c9a-bcc2-dea06d4e6e51",
+      "createdAt": "2026-07-28T01:16:34.000Z",
+      "updatedAt": "2026-07-28T01:16:34.000Z",
+      "uid": "35240-fa421714-ff07-4c9a-bcc2-dea06d4e6e51"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://bump.sh/api/v1"
+    }
+  ]
+}

@@ -1,0 +1,833 @@
+{
+  "info": {
+    "_postman_id": "f9ea1838-ccd9-4103-892b-372ab63ffa91",
+    "name": "Bump.sh Api Branches API",
+    "description": "This is the official Bump.sh API documentation.  Obviously created\nwith Bump.sh.\n\nThe Bump.sh API is a REST API. It enables you to [create, update](#operation-post-versions)\nor [preview](#operation-post-previews) your API(s) documentation,\n[create stand-alone documentation diffs](#operation-post-diffs) or\n[validate a documentation definition](#operation-post-validations)\n(currently in OpenAPI or AsyncAPI).\n\nOur [webhook](#webhook-documentation-change) also lets you get\nnotifications every time a change is introduced in your API.\n",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:16:16.000Z",
+    "updatedAt": "2026-07-28T01:16:16.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-f9ea1838-ccd9-4103-892b-372ab63ffa91"
+  },
+  "item": [
+    {
+      "name": "docs",
+      "item": [
+        {
+          "name": "{doc_id_or_slug}",
+          "item": [
+            {
+              "name": "branches",
+              "item": [
+                {
+                  "name": "{slug}",
+                  "item": [
+                    {
+                      "name": "set_default",
+                      "item": [
+                        {
+                          "name": "Promote Branch as the Default One",
+                          "id": "4586b5cb-f602-400c-8607-0f1445dd7719",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "PATCH",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/docs/:doc_id_or_slug/branches/:slug/set_default",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "docs",
+                                ":doc_id_or_slug",
+                                "branches",
+                                ":slug",
+                                "set_default"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "04aab821-3f19-44be-a6c7-3ac8b9f4c1c9",
+                                  "key": "doc_id_or_slug",
+                                  "value": "<string>",
+                                  "description": "(Required) UUID or slug of a documentation which can be seen in the Automatic Deployment settings page of your documentation"
+                                },
+                                {
+                                  "id": "91f116a7-013b-442f-b9de-f91161a3ef8f",
+                                  "key": "slug",
+                                  "value": "<string>",
+                                  "description": "(Required) Slug of a branch which can be seen in the branches settings page of your documentation"
+                                }
+                              ]
+                            }
+                          },
+                          "response": [
+                            {
+                              "id": "4ca4c172-939e-4d7a-95ee-35f45ebe6b72",
+                              "name": "200 response",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/docs/:doc_id_or_slug/branches/:slug/set_default",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "docs",
+                                    ":doc_id_or_slug",
+                                    "branches",
+                                    ":slug",
+                                    "set_default"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "doc_id_or_slug"
+                                    },
+                                    {
+                                      "key": "slug"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T01:16:16.000Z",
+                              "updatedAt": "2026-07-28T01:16:16.000Z",
+                              "uid": "35240-4ca4c172-939e-4d7a-95ee-35f45ebe6b72"
+                            },
+                            {
+                              "id": "b0b16c44-9ff4-412a-b257-c0bab1a4cd91",
+                              "name": "204 response",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/docs/:doc_id_or_slug/branches/:slug/set_default",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "docs",
+                                    ":doc_id_or_slug",
+                                    "branches",
+                                    ":slug",
+                                    "set_default"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "doc_id_or_slug"
+                                    },
+                                    {
+                                      "key": "slug"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "No Content",
+                              "code": 204,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T01:16:16.000Z",
+                              "updatedAt": "2026-07-28T01:16:16.000Z",
+                              "uid": "35240-b0b16c44-9ff4-412a-b257-c0bab1a4cd91"
+                            },
+                            {
+                              "id": "bc94d52c-4fb4-4ed6-b998-97c0c0d99d24",
+                              "name": "404 response",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/docs/:doc_id_or_slug/branches/:slug/set_default",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "docs",
+                                    ":doc_id_or_slug",
+                                    "branches",
+                                    ":slug",
+                                    "set_default"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "doc_id_or_slug"
+                                    },
+                                    {
+                                      "key": "slug"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T01:16:16.000Z",
+                              "updatedAt": "2026-07-28T01:16:16.000Z",
+                              "uid": "35240-bc94d52c-4fb4-4ed6-b998-97c0c0d99d24"
+                            },
+                            {
+                              "id": "1a26cc40-e0f8-4338-943d-5f3976bf3525",
+                              "name": "422 response",
+                              "originalRequest": {
+                                "method": "PATCH",
+                                "header": [
+                                  {
+                                    "description": "Added as a part of security scheme: basic",
+                                    "key": "Authorization",
+                                    "value": "Basic <credentials>"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/docs/:doc_id_or_slug/branches/:slug/set_default",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "docs",
+                                    ":doc_id_or_slug",
+                                    "branches",
+                                    ":slug",
+                                    "set_default"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "doc_id_or_slug"
+                                    },
+                                    {
+                                      "key": "slug"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                              "code": 422,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-07-28T01:16:16.000Z",
+                              "updatedAt": "2026-07-28T01:16:16.000Z",
+                              "uid": "35240-1a26cc40-e0f8-4338-943d-5f3976bf3525"
+                            }
+                          ],
+                          "createdAt": "2026-07-28T01:16:16.000Z",
+                          "updatedAt": "2026-07-28T01:16:16.000Z",
+                          "uid": "35240-4586b5cb-f602-400c-8607-0f1445dd7719"
+                        }
+                      ],
+                      "id": "75b0ef57-e050-49f0-8b55-465ae15718ea",
+                      "createdAt": "2026-07-28T01:16:16.000Z",
+                      "updatedAt": "2026-07-28T01:16:16.000Z",
+                      "uid": "35240-75b0ef57-e050-49f0-8b55-465ae15718ea"
+                    },
+                    {
+                      "name": "Delete a Branch",
+                      "id": "65f0381a-fe32-4d40-9508-2789d95dfe60",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/docs/:doc_id_or_slug/branches/:slug",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "docs",
+                            ":doc_id_or_slug",
+                            "branches",
+                            ":slug"
+                          ],
+                          "variable": [
+                            {
+                              "id": "e4773421-4909-46da-85cc-72a6c1f0435d",
+                              "key": "doc_id_or_slug",
+                              "value": "<string>",
+                              "description": "(Required) UUID or slug of a documentation which can be seen in the Automatic Deployment settings page of your documentation"
+                            },
+                            {
+                              "id": "29aea8ab-1c8e-45c4-9a94-451c9355eb9d",
+                              "key": "slug",
+                              "value": "<string>",
+                              "description": "(Required) Slug of a branch which can be seen in the branches settings page of your documentation"
+                            }
+                          ]
+                        }
+                      },
+                      "response": [
+                        {
+                          "id": "a1cec818-e7fb-454c-80d7-89e9f9dc17e0",
+                          "name": "204 response",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/docs/:doc_id_or_slug/branches/:slug",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "docs",
+                                ":doc_id_or_slug",
+                                "branches",
+                                ":slug"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "doc_id_or_slug"
+                                },
+                                {
+                                  "key": "slug"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "No Content",
+                          "code": 204,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T01:16:16.000Z",
+                          "updatedAt": "2026-07-28T01:16:16.000Z",
+                          "uid": "35240-a1cec818-e7fb-454c-80d7-89e9f9dc17e0"
+                        },
+                        {
+                          "id": "0ba41e1c-d40f-490c-ac88-906c9914df6a",
+                          "name": "404 response",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/docs/:doc_id_or_slug/branches/:slug",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "docs",
+                                ":doc_id_or_slug",
+                                "branches",
+                                ":slug"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "doc_id_or_slug"
+                                },
+                                {
+                                  "key": "slug"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T01:16:16.000Z",
+                          "updatedAt": "2026-07-28T01:16:16.000Z",
+                          "uid": "35240-0ba41e1c-d40f-490c-ac88-906c9914df6a"
+                        },
+                        {
+                          "id": "ab20cacd-4b42-432f-a926-c18d08db3319",
+                          "name": "422 response",
+                          "originalRequest": {
+                            "method": "DELETE",
+                            "header": [
+                              {
+                                "description": "Added as a part of security scheme: basic",
+                                "key": "Authorization",
+                                "value": "Basic <credentials>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/docs/:doc_id_or_slug/branches/:slug",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "docs",
+                                ":doc_id_or_slug",
+                                "branches",
+                                ":slug"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "doc_id_or_slug"
+                                },
+                                {
+                                  "key": "slug"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                          "code": 422,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-07-28T01:16:16.000Z",
+                          "updatedAt": "2026-07-28T01:16:16.000Z",
+                          "uid": "35240-ab20cacd-4b42-432f-a926-c18d08db3319"
+                        }
+                      ],
+                      "createdAt": "2026-07-28T01:16:16.000Z",
+                      "updatedAt": "2026-07-28T01:16:16.000Z",
+                      "uid": "35240-65f0381a-fe32-4d40-9508-2789d95dfe60"
+                    }
+                  ],
+                  "id": "d80e001b-1b00-48b4-871a-d992d0bdc25e",
+                  "createdAt": "2026-07-28T01:16:16.000Z",
+                  "updatedAt": "2026-07-28T01:16:16.000Z",
+                  "uid": "35240-d80e001b-1b00-48b4-871a-d992d0bdc25e"
+                },
+                {
+                  "name": "List Available Branches",
+                  "id": "895ff3fe-8ba8-4890-8a11-09e648f5f69b",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/docs/:doc_id_or_slug/branches",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "docs",
+                        ":doc_id_or_slug",
+                        "branches"
+                      ],
+                      "variable": [
+                        {
+                          "id": "98759f63-157a-433b-8b49-626c521a101d",
+                          "key": "doc_id_or_slug",
+                          "value": "<string>",
+                          "description": "(Required) UUID or slug of a documentation which can be seen in the Automatic Deployment settings page of your documentation"
+                        }
+                      ]
+                    },
+                    "description": "List the available branches of a given documentation.\n"
+                  },
+                  "response": [
+                    {
+                      "id": "9b154ebd-7d7f-46ca-8174-9b4897bf7d55",
+                      "name": "200 response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/docs/:doc_id_or_slug/branches",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "docs",
+                            ":doc_id_or_slug",
+                            "branches"
+                          ],
+                          "variable": [
+                            {
+                              "key": "doc_id_or_slug"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"name\": \"<string>\",\n    \"slug\": \"<string>\",\n    \"is_default\": false\n  },\n  {\n    \"name\": \"<string>\",\n    \"slug\": \"<string>\",\n    \"is_default\": false\n  }\n]",
+                      "createdAt": "2026-07-28T01:16:16.000Z",
+                      "updatedAt": "2026-07-28T01:16:16.000Z",
+                      "uid": "35240-9b154ebd-7d7f-46ca-8174-9b4897bf7d55"
+                    },
+                    {
+                      "id": "8a94392a-188e-4688-bb86-e5c757c62f74",
+                      "name": "404 response",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/docs/:doc_id_or_slug/branches",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "docs",
+                            ":doc_id_or_slug",
+                            "branches"
+                          ],
+                          "variable": [
+                            {
+                              "key": "doc_id_or_slug"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:16:16.000Z",
+                      "updatedAt": "2026-07-28T01:16:16.000Z",
+                      "uid": "35240-8a94392a-188e-4688-bb86-e5c757c62f74"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:16:16.000Z",
+                  "updatedAt": "2026-07-28T01:16:16.000Z",
+                  "uid": "35240-895ff3fe-8ba8-4890-8a11-09e648f5f69b"
+                },
+                {
+                  "name": "Create a New Branch",
+                  "id": "83cbd9dc-95ce-4a81-987c-83e381f195f6",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/docs/:doc_id_or_slug/branches",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "docs",
+                        ":doc_id_or_slug",
+                        "branches"
+                      ],
+                      "variable": [
+                        {
+                          "id": "f73ab8f5-3114-4619-9a98-032a28118c9d",
+                          "key": "doc_id_or_slug",
+                          "value": "<string>",
+                          "description": "(Required) UUID or slug of a documentation which can be seen in the Automatic Deployment settings page of your documentation"
+                        }
+                      ]
+                    },
+                    "description": "Create an empty new branch.\n"
+                  },
+                  "response": [
+                    {
+                      "id": "a5bc885d-f921-45cb-95cf-4921da3cd21d",
+                      "name": "201 response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/docs/:doc_id_or_slug/branches",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "docs",
+                            ":doc_id_or_slug",
+                            "branches"
+                          ],
+                          "variable": [
+                            {
+                              "key": "doc_id_or_slug"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"name\": \"<string>\",\n  \"slug\": \"<string>\",\n  \"is_default\": false\n}",
+                      "createdAt": "2026-07-28T01:16:16.000Z",
+                      "updatedAt": "2026-07-28T01:16:16.000Z",
+                      "uid": "35240-a5bc885d-f921-45cb-95cf-4921da3cd21d"
+                    },
+                    {
+                      "id": "dc3d041f-431f-497c-8704-e8b535f00662",
+                      "name": "204 response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/docs/:doc_id_or_slug/branches",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "docs",
+                            ":doc_id_or_slug",
+                            "branches"
+                          ],
+                          "variable": [
+                            {
+                              "key": "doc_id_or_slug"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:16:16.000Z",
+                      "updatedAt": "2026-07-28T01:16:16.000Z",
+                      "uid": "35240-dc3d041f-431f-497c-8704-e8b535f00662"
+                    },
+                    {
+                      "id": "ff32c6f4-3e69-4c36-bcf5-4e30c7accb30",
+                      "name": "422 response",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: basic",
+                            "key": "Authorization",
+                            "value": "Basic <credentials>"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"name\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/docs/:doc_id_or_slug/branches",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "docs",
+                            ":doc_id_or_slug",
+                            "branches"
+                          ],
+                          "variable": [
+                            {
+                              "key": "doc_id_or_slug"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                      "code": 422,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-07-28T01:16:16.000Z",
+                      "updatedAt": "2026-07-28T01:16:16.000Z",
+                      "uid": "35240-ff32c6f4-3e69-4c36-bcf5-4e30c7accb30"
+                    }
+                  ],
+                  "createdAt": "2026-07-28T01:16:16.000Z",
+                  "updatedAt": "2026-07-28T01:16:16.000Z",
+                  "uid": "35240-83cbd9dc-95ce-4a81-987c-83e381f195f6"
+                }
+              ],
+              "id": "2c859c46-78b5-4d4d-89df-28901da6aaaf",
+              "createdAt": "2026-07-28T01:16:16.000Z",
+              "updatedAt": "2026-07-28T01:16:16.000Z",
+              "uid": "35240-2c859c46-78b5-4d4d-89df-28901da6aaaf"
+            }
+          ],
+          "id": "3610fe72-e6d1-476d-8c2a-169950647219",
+          "createdAt": "2026-07-28T01:16:16.000Z",
+          "updatedAt": "2026-07-28T01:16:16.000Z",
+          "uid": "35240-3610fe72-e6d1-476d-8c2a-169950647219"
+        }
+      ],
+      "id": "947a30b9-f3a1-4b21-9762-b19b787cffee",
+      "createdAt": "2026-07-28T01:16:16.000Z",
+      "updatedAt": "2026-07-28T01:16:16.000Z",
+      "uid": "35240-947a30b9-f3a1-4b21-9762-b19b787cffee"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://bump.sh/api/v1"
+    }
+  ]
+}

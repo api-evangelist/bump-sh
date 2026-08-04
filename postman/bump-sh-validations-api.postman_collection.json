@@ -1,0 +1,245 @@
+{
+  "info": {
+    "_postman_id": "2f9e47c9-14f2-45b3-84cb-8b299bf86c7c",
+    "name": "Bump.sh Api Branches Validations API",
+    "description": "This is the official Bump.sh API documentation.  Obviously created\nwith Bump.sh.\n\nThe Bump.sh API is a REST API. It enables you to [create, update](#operation-post-versions)\nor [preview](#operation-post-previews) your API(s) documentation,\n[create stand-alone documentation diffs](#operation-post-diffs) or\n[validate a documentation definition](#operation-post-validations)\n(currently in OpenAPI or AsyncAPI).\n\nOur [webhook](#webhook-documentation-change) also lets you get\nnotifications every time a change is introduced in your API.\n",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:16:43.000Z",
+    "updatedAt": "2026-07-28T01:16:43.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-2f9e47c9-14f2-45b3-84cb-8b299bf86c7c"
+  },
+  "item": [
+    {
+      "name": "validations",
+      "item": [
+        {
+          "name": "Validate a Documentation Definition",
+          "id": "1fb1f887-0693-4339-b1f7-e735ab590b31",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"documentation\": \"<string>\",\n  \"hub\": \"<string>\",\n  \"documentation_name\": \"<string>\",\n  \"auto_create_documentation\": false,\n  \"definition\": \"<string>\",\n  \"references\": [\n    {\n      \"location\": \"<string>\",\n      \"content\": \"<string>\"\n    },\n    {\n      \"location\": \"<string>\",\n      \"content\": \"<string>\"\n    }\n  ],\n  \"url\": \"<uri>\",\n  \"id\": \"<string>\",\n  \"expires_at\": \"<dateTime>\",\n  \"public_url\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/validations",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "validations"
+              ]
+            },
+            "description": "Validate a definition against its schema (OpenAPI or AsyncAPI) and return errors without creating a new version. This is useful in a CI process, to validate that a changed definition file is valid and won't fail when being deployed on Bump.sh.\n"
+          },
+          "response": [
+            {
+              "id": "707979b8-f5e8-4b44-8dcc-51a87d7e0497",
+              "name": "200 response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"documentation\": \"<string>\",\n  \"hub\": \"<string>\",\n  \"documentation_name\": \"<string>\",\n  \"auto_create_documentation\": false,\n  \"definition\": \"<string>\",\n  \"references\": [\n    {\n      \"location\": \"<string>\",\n      \"content\": \"<string>\"\n    },\n    {\n      \"location\": \"<string>\",\n      \"content\": \"<string>\"\n    }\n  ],\n  \"url\": \"<uri>\",\n  \"id\": \"<string>\",\n  \"expires_at\": \"<dateTime>\",\n  \"public_url\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/validations",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "validations"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"specification\": \"openapi/v2/json\"\n}",
+              "createdAt": "2026-07-28T01:16:43.000Z",
+              "updatedAt": "2026-07-28T01:16:43.000Z",
+              "uid": "35240-707979b8-f5e8-4b44-8dcc-51a87d7e0497"
+            },
+            {
+              "id": "9c0493b8-b2e5-4e18-9a66-36e2305d7838",
+              "name": "400 response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"documentation\": \"<string>\",\n  \"hub\": \"<string>\",\n  \"documentation_name\": \"<string>\",\n  \"auto_create_documentation\": false,\n  \"definition\": \"<string>\",\n  \"references\": [\n    {\n      \"location\": \"<string>\",\n      \"content\": \"<string>\"\n    },\n    {\n      \"location\": \"<string>\",\n      \"content\": \"<string>\"\n    }\n  ],\n  \"url\": \"<uri>\",\n  \"id\": \"<string>\",\n  \"expires_at\": \"<dateTime>\",\n  \"public_url\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/validations",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "validations"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:16:43.000Z",
+              "updatedAt": "2026-07-28T01:16:43.000Z",
+              "uid": "35240-9c0493b8-b2e5-4e18-9a66-36e2305d7838"
+            },
+            {
+              "id": "b33e24aa-9662-4bc2-bb23-b6aef1492a4e",
+              "name": "422 response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"documentation\": \"<string>\",\n  \"hub\": \"<string>\",\n  \"documentation_name\": \"<string>\",\n  \"auto_create_documentation\": false,\n  \"definition\": \"<string>\",\n  \"references\": [\n    {\n      \"location\": \"<string>\",\n      \"content\": \"<string>\"\n    },\n    {\n      \"location\": \"<string>\",\n      \"content\": \"<string>\"\n    }\n  ],\n  \"url\": \"<uri>\",\n  \"id\": \"<string>\",\n  \"expires_at\": \"<dateTime>\",\n  \"public_url\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/validations",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "validations"
+                  ]
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"errors\": {}\n}",
+              "createdAt": "2026-07-28T01:16:43.000Z",
+              "updatedAt": "2026-07-28T01:16:43.000Z",
+              "uid": "35240-b33e24aa-9662-4bc2-bb23-b6aef1492a4e"
+            }
+          ],
+          "createdAt": "2026-07-28T01:16:43.000Z",
+          "updatedAt": "2026-07-28T01:16:43.000Z",
+          "uid": "35240-1fb1f887-0693-4339-b1f7-e735ab590b31"
+        }
+      ],
+      "id": "9fedf2dc-33fe-4b26-987a-53f9d0c7dec1",
+      "createdAt": "2026-07-28T01:16:43.000Z",
+      "updatedAt": "2026-07-28T01:16:43.000Z",
+      "uid": "35240-9fedf2dc-33fe-4b26-987a-53f9d0c7dec1"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://bump.sh/api/v1"
+    }
+  ]
+}

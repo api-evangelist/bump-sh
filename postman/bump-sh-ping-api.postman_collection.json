@@ -1,0 +1,150 @@
+{
+  "info": {
+    "_postman_id": "e1ae4bde-12a4-4b50-9679-c3f5b6d2ce5b",
+    "name": "Bump.sh Api Branches Ping API",
+    "description": "This is the official Bump.sh API documentation.  Obviously created\nwith Bump.sh.\n\nThe Bump.sh API is a REST API. It enables you to [create, update](#operation-post-versions)\nor [preview](#operation-post-previews) your API(s) documentation,\n[create stand-alone documentation diffs](#operation-post-diffs) or\n[validate a documentation definition](#operation-post-validations)\n(currently in OpenAPI or AsyncAPI).\n\nOur [webhook](#webhook-documentation-change) also lets you get\nnotifications every time a change is introduced in your API.\n",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:16:41.000Z",
+    "updatedAt": "2026-07-28T01:16:41.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-e1ae4bde-12a4-4b50-9679-c3f5b6d2ce5b"
+  },
+  "item": [
+    {
+      "name": "ping",
+      "item": [
+        {
+          "name": "Check the API Status",
+          "id": "3a2856a2-919e-4883-8f37-0e2b27998bb6",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/ping",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "ping"
+              ]
+            },
+            "description": "Responds a pong if the API is up and running."
+          },
+          "response": [
+            {
+              "id": "cb3b342e-29fa-4f73-8a87-028329d8bc09",
+              "name": "200 response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/ping",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "ping"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"pong\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:16:41.000Z",
+              "updatedAt": "2026-07-28T01:16:41.000Z",
+              "uid": "35240-cb3b342e-29fa-4f73-8a87-028329d8bc09"
+            },
+            {
+              "id": "52335d27-ac5e-403e-b7f3-253e38d142b2",
+              "name": "default response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/ping",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "ping"
+                  ]
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T01:16:41.000Z",
+              "updatedAt": "2026-07-28T01:16:41.000Z",
+              "uid": "35240-52335d27-ac5e-403e-b7f3-253e38d142b2"
+            }
+          ],
+          "createdAt": "2026-07-28T01:16:41.000Z",
+          "updatedAt": "2026-07-28T01:16:41.000Z",
+          "uid": "35240-3a2856a2-919e-4883-8f37-0e2b27998bb6"
+        }
+      ],
+      "id": "af2b432a-efb3-4657-bfe2-191f067b3ba8",
+      "createdAt": "2026-07-28T01:16:41.000Z",
+      "updatedAt": "2026-07-28T01:16:41.000Z",
+      "uid": "35240-af2b432a-efb3-4657-bfe2-191f067b3ba8"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://bump.sh/api/v1"
+    }
+  ]
+}

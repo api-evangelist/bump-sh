@@ -1,0 +1,28 @@
+{
+  "provider": "bump-sh",
+  "sources": [
+    "bump-sh-branches-api-openapi.yml",
+    "bump-sh-diffs-api-openapi.yml",
+    "bump-sh-hubs-api-openapi.yml",
+    "bump-sh-mcp-servers-api-openapi.yml",
+    "bump-sh-ping-api-openapi.yml",
+    "bump-sh-previews-api-openapi.yml",
+    "bump-sh-validations-api-openapi.yml",
+    "bump-sh-versions-api-openapi.yml"
+  ],
+  "outputs": [
+    "bump-sh-branches-api-openapi.yml",
+    "bump-sh-diffs-api-openapi.yml",
+    "bump-sh-hubs-api-openapi.yml",
+    "bump-sh-mcp-servers-api-openapi.yml",
+    "bump-sh-ping-api-openapi.yml",
+    "bump-sh-previews-api-openapi.yml",
+    "bump-sh-validations-api-openapi.yml",
+    "bump-sh-versions-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

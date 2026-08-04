@@ -1,0 +1,567 @@
+{
+  "info": {
+    "_postman_id": "4d4f41fa-9f36-47de-bdf5-43afa0457aee",
+    "name": "Bump.sh Api Branches Versions API",
+    "description": "This is the official Bump.sh API documentation.  Obviously created\nwith Bump.sh.\n\nThe Bump.sh API is a REST API. It enables you to [create, update](#operation-post-versions)\nor [preview](#operation-post-previews) your API(s) documentation,\n[create stand-alone documentation diffs](#operation-post-diffs) or\n[validate a documentation definition](#operation-post-validations)\n(currently in OpenAPI or AsyncAPI).\n\nOur [webhook](#webhook-documentation-change) also lets you get\nnotifications every time a change is introduced in your API.\n",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:16:44.000Z",
+    "updatedAt": "2026-07-28T01:16:44.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-4d4f41fa-9f36-47de-bdf5-43afa0457aee"
+  },
+  "item": [
+    {
+      "name": "versions",
+      "item": [
+        {
+          "name": "{version_id}",
+          "item": [
+            {
+              "name": "Fetch a Full Documentation Version Including Diff Summary",
+              "id": "adc45fd1-c348-41b0-8732-2ca91418ba11",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/versions/:version_id?formats=<string>&formats=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "versions",
+                    ":version_id"
+                  ],
+                  "query": [
+                    {
+                      "description": "A list of formats to render in the response. Possible\nvalues are `text`, `markdown`, `html` or `json`. If not\nprovided defaults to render both `text`, `markdown` and\n`json` formats.\n",
+                      "key": "formats",
+                      "value": "<string>"
+                    },
+                    {
+                      "description": "A list of formats to render in the response. Possible\nvalues are `text`, `markdown`, `html` or `json`. If not\nprovided defaults to render both `text`, `markdown` and\n`json` formats.\n",
+                      "key": "formats",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "id": "28a79e18-5da1-4196-acda-956efcf9b589",
+                      "key": "version_id",
+                      "value": "<string>",
+                      "description": "(Required) UUID of an existing version from which to fetch a documentation change"
+                    }
+                  ]
+                },
+                "description": "Fetch a full documentation version including diff summary.\n"
+              },
+              "response": [
+                {
+                  "id": "0942ff2a-249c-47c2-8019-76dbb38c1e4f",
+                  "name": "200 response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/versions/:version_id?formats=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "versions",
+                        ":version_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "A list of formats to render in the response. Possible\nvalues are `text`, `markdown`, `html` or `json`. If not\nprovided defaults to render both `text`, `markdown` and\n`json` formats.\n",
+                          "key": "formats",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "version_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"doc_id\": \"<string>\",\n  \"doc_public_url\": \"<string>\",\n  \"diff_details\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"status\": \"removed\",\n      \"type\": \"<string>\",\n      \"breaking\": \"<boolean>\",\n      \"previous\": {},\n      \"current\": {},\n      \"breaking_details\": {\n        \"message_key\": \"<string>\",\n        \"breaking_attributes\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"children\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/DiffItem detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/DiffItem detected>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"status\": \"removed\",\n      \"type\": \"<string>\",\n      \"breaking\": \"<boolean>\",\n      \"previous\": {},\n      \"current\": {},\n      \"breaking_details\": {\n        \"message_key\": \"<string>\",\n        \"breaking_attributes\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      \"children\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/DiffItem detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/DiffItem detected>\"\n        }\n      ]\n    }\n  ],\n  \"diff_markdown\": \"<string>\",\n  \"diff_summary\": \"<string>\",\n  \"diff_public_url\": \"<string>\",\n  \"diff_breaking\": \"<boolean>\"\n}",
+                  "createdAt": "2026-07-28T01:16:44.000Z",
+                  "updatedAt": "2026-07-28T01:16:44.000Z",
+                  "uid": "35240-0942ff2a-249c-47c2-8019-76dbb38c1e4f"
+                },
+                {
+                  "id": "b7daa3c9-f529-4b26-91fa-47767a67e935",
+                  "name": "202 response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/versions/:version_id?formats=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "versions",
+                        ":version_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "A list of formats to render in the response. Possible\nvalues are `text`, `markdown`, `html` or `json`. If not\nprovided defaults to render both `text`, `markdown` and\n`json` formats.\n",
+                          "key": "formats",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "version_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Accepted",
+                  "code": 202,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:16:44.000Z",
+                  "updatedAt": "2026-07-28T01:16:44.000Z",
+                  "uid": "35240-b7daa3c9-f529-4b26-91fa-47767a67e935"
+                },
+                {
+                  "id": "a1f7c8cc-70bd-4c2f-b319-ff2c1eaf4f00",
+                  "name": "400 response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/versions/:version_id?formats=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "versions",
+                        ":version_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "A list of formats to render in the response. Possible\nvalues are `text`, `markdown`, `html` or `json`. If not\nprovided defaults to render both `text`, `markdown` and\n`json` formats.\n",
+                          "key": "formats",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "version_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:16:44.000Z",
+                  "updatedAt": "2026-07-28T01:16:44.000Z",
+                  "uid": "35240-a1f7c8cc-70bd-4c2f-b319-ff2c1eaf4f00"
+                },
+                {
+                  "id": "99f76f41-2322-45eb-8f43-4933d39f750b",
+                  "name": "Version not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/versions/:version_id?formats=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "versions",
+                        ":version_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "A list of formats to render in the response. Possible\nvalues are `text`, `markdown`, `html` or `json`. If not\nprovided defaults to render both `text`, `markdown` and\n`json` formats.\n",
+                          "key": "formats",
+                          "value": "<string>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "key": "version_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:16:44.000Z",
+                  "updatedAt": "2026-07-28T01:16:44.000Z",
+                  "uid": "35240-99f76f41-2322-45eb-8f43-4933d39f750b"
+                }
+              ],
+              "createdAt": "2026-07-28T01:16:44.000Z",
+              "updatedAt": "2026-07-28T01:16:44.000Z",
+              "uid": "35240-adc45fd1-c348-41b0-8732-2ca91418ba11"
+            }
+          ],
+          "id": "936dc008-9e9f-448c-b58b-0dacd6459c90",
+          "createdAt": "2026-07-28T01:16:44.000Z",
+          "updatedAt": "2026-07-28T01:16:44.000Z",
+          "uid": "35240-936dc008-9e9f-448c-b58b-0dacd6459c90"
+        },
+        {
+          "name": "Create a New Version",
+          "id": "38ca106d-3a18-4e81-8b80-83b0bc19a982",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"definition\": \"<string>\",\n  \"documentation\": \"<string>\",\n  \"hub\": \"<string>\",\n  \"documentation_name\": \"<string>\",\n  \"auto_create_documentation\": false,\n  \"references\": [\n    {\n      \"location\": \"<string>\",\n      \"content\": \"<string>\"\n    },\n    {\n      \"location\": \"<string>\",\n      \"content\": \"<string>\"\n    }\n  ],\n  \"branch_name\": \"<string>\",\n  \"previous_version_id\": \"<string>\",\n  \"temporary\": \"<boolean>\",\n  \"unpublished\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseUrl}}/versions",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "versions"
+              ]
+            },
+            "description": "Deploy a new version for a given documentation, which will become the current version.\n"
+          },
+          "response": [
+            {
+              "id": "c1fe76b8-87a2-44a5-89b8-d06c719e6a26",
+              "name": "201 response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"definition\": \"<string>\",\n  \"documentation\": \"<string>\",\n  \"hub\": \"<string>\",\n  \"documentation_name\": \"<string>\",\n  \"auto_create_documentation\": false,\n  \"references\": [\n    {\n      \"location\": \"<string>\",\n      \"content\": \"<string>\"\n    },\n    {\n      \"location\": \"<string>\",\n      \"content\": \"<string>\"\n    }\n  ],\n  \"branch_name\": \"<string>\",\n  \"previous_version_id\": \"<string>\",\n  \"temporary\": \"<boolean>\",\n  \"unpublished\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/versions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "versions"
+                  ]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"id\": \"<string>\",\n  \"doc_id\": \"<string>\",\n  \"doc_public_url\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:16:44.000Z",
+              "updatedAt": "2026-07-28T01:16:44.000Z",
+              "uid": "35240-c1fe76b8-87a2-44a5-89b8-d06c719e6a26"
+            },
+            {
+              "id": "3fa9ee6a-c08f-42e2-98f8-08dc7e2954cf",
+              "name": "Documentation is unchanged",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"definition\": \"<string>\",\n  \"documentation\": \"<string>\",\n  \"hub\": \"<string>\",\n  \"documentation_name\": \"<string>\",\n  \"auto_create_documentation\": false,\n  \"references\": [\n    {\n      \"location\": \"<string>\",\n      \"content\": \"<string>\"\n    },\n    {\n      \"location\": \"<string>\",\n      \"content\": \"<string>\"\n    }\n  ],\n  \"branch_name\": \"<string>\",\n  \"previous_version_id\": \"<string>\",\n  \"temporary\": \"<boolean>\",\n  \"unpublished\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/versions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "versions"
+                  ]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T01:16:44.000Z",
+              "updatedAt": "2026-07-28T01:16:44.000Z",
+              "uid": "35240-3fa9ee6a-c08f-42e2-98f8-08dc7e2954cf"
+            },
+            {
+              "id": "fe0a668d-6bf1-4b64-ad71-a1dbc1aaa332",
+              "name": "Bad request",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"definition\": \"<string>\",\n  \"documentation\": \"<string>\",\n  \"hub\": \"<string>\",\n  \"documentation_name\": \"<string>\",\n  \"auto_create_documentation\": false,\n  \"references\": [\n    {\n      \"location\": \"<string>\",\n      \"content\": \"<string>\"\n    },\n    {\n      \"location\": \"<string>\",\n      \"content\": \"<string>\"\n    }\n  ],\n  \"branch_name\": \"<string>\",\n  \"previous_version_id\": \"<string>\",\n  \"temporary\": \"<boolean>\",\n  \"unpublished\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/versions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "versions"
+                  ]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\"\n}",
+              "createdAt": "2026-07-28T01:16:44.000Z",
+              "updatedAt": "2026-07-28T01:16:44.000Z",
+              "uid": "35240-fe0a668d-6bf1-4b64-ad71-a1dbc1aaa332"
+            },
+            {
+              "id": "df3ab58f-32bc-422c-870c-44bbbeb2f534",
+              "name": "422 response",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"definition\": \"<string>\",\n  \"documentation\": \"<string>\",\n  \"hub\": \"<string>\",\n  \"documentation_name\": \"<string>\",\n  \"auto_create_documentation\": false,\n  \"references\": [\n    {\n      \"location\": \"<string>\",\n      \"content\": \"<string>\"\n    },\n    {\n      \"location\": \"<string>\",\n      \"content\": \"<string>\"\n    }\n  ],\n  \"branch_name\": \"<string>\",\n  \"previous_version_id\": \"<string>\",\n  \"temporary\": \"<boolean>\",\n  \"unpublished\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/versions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "versions"
+                  ]
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "{\n  \"message\": \"<string>\",\n  \"errors\": {}\n}",
+              "createdAt": "2026-07-28T01:16:44.000Z",
+              "updatedAt": "2026-07-28T01:16:44.000Z",
+              "uid": "35240-df3ab58f-32bc-422c-870c-44bbbeb2f534"
+            }
+          ],
+          "createdAt": "2026-07-28T01:16:44.000Z",
+          "updatedAt": "2026-07-28T01:16:44.000Z",
+          "uid": "35240-38ca106d-3a18-4e81-8b80-83b0bc19a982"
+        }
+      ],
+      "id": "49cad596-436b-4bce-9df4-18290b818aba",
+      "createdAt": "2026-07-28T01:16:44.000Z",
+      "updatedAt": "2026-07-28T01:16:44.000Z",
+      "uid": "35240-49cad596-436b-4bce-9df4-18290b818aba"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://bump.sh/api/v1"
+    }
+  ]
+}

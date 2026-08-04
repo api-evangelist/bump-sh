@@ -1,0 +1,334 @@
+{
+  "info": {
+    "_postman_id": "8ac283de-98d9-4fd4-83d5-437f7f7cc13a",
+    "name": "Bump.sh Api Branches Hubs API",
+    "description": "This is the official Bump.sh API documentation.  Obviously created\nwith Bump.sh.\n\nThe Bump.sh API is a REST API. It enables you to [create, update](#operation-post-versions)\nor [preview](#operation-post-previews) your API(s) documentation,\n[create stand-alone documentation diffs](#operation-post-diffs) or\n[validate a documentation definition](#operation-post-validations)\n(currently in OpenAPI or AsyncAPI).\n\nOur [webhook](#webhook-documentation-change) also lets you get\nnotifications every time a change is introduced in your API.\n",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-07-28T01:16:32.000Z",
+    "updatedAt": "2026-07-28T01:16:32.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-8ac283de-98d9-4fd4-83d5-437f7f7cc13a"
+  },
+  "item": [
+    {
+      "name": "hubs",
+      "item": [
+        {
+          "name": "{hub_id_or_slug}",
+          "item": [
+            {
+              "name": "Fetch Information of an Existing Hub",
+              "id": "e86b367a-9ac9-4834-ba69-8d9bf64ff2a7",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/hubs/:hub_id_or_slug",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "hubs",
+                    ":hub_id_or_slug"
+                  ],
+                  "variable": [
+                    {
+                      "id": "fd3d56c2-7fcd-4f8d-b728-718015402cb1",
+                      "key": "hub_id_or_slug",
+                      "value": "<string>",
+                      "description": "(Required) UUID or slug of a Hub which can be Automatic Deployment settings page of your hub"
+                    }
+                  ]
+                },
+                "description": "Fetch information of an existing Hub including the list of\nAPIs it contains. The response follows the [APIs.json\nspecification](http://apisjson.org/).\n"
+              },
+              "response": [
+                {
+                  "id": "66bb867a-7a13-4f65-bbc7-c7fdd33aa0a4",
+                  "name": "200 response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/hubs/:hub_id_or_slug",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "hubs",
+                        ":hub_id_or_slug"
+                      ],
+                      "variable": [
+                        {
+                          "key": "hub_id_or_slug"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"description\": \"<string>\",\n  \"url\": \"<string>\",\n  \"created\": \"<date>\",\n  \"modified\": \"<date>\",\n  \"specificationVersion\": \"<string>\",\n  \"apis\": [\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"url\": \"<string>\",\n      \"humanUrl\": \"<string>\",\n      \"tags\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"version\": \"<string>\",\n      \"properties\": [\n        {\n          \"type\": \"AsyncAPI\",\n          \"data\": \"<string>\",\n          \"url\": \"<string>\"\n        },\n        {\n          \"type\": \"AsyncAPI\",\n          \"data\": \"<string>\",\n          \"url\": \"<string>\"\n        }\n      ],\n      \"created\": \"<date>\",\n      \"modified\": \"<date>\"\n    },\n    {\n      \"id\": \"<string>\",\n      \"name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"slug\": \"<string>\",\n      \"url\": \"<string>\",\n      \"humanUrl\": \"<string>\",\n      \"tags\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"version\": \"<string>\",\n      \"properties\": [\n        {\n          \"type\": \"OpenAPI\",\n          \"data\": \"<string>\",\n          \"url\": \"<string>\"\n        },\n        {\n          \"type\": \"AsyncAPI\",\n          \"data\": \"<string>\",\n          \"url\": \"<string>\"\n        }\n      ],\n      \"created\": \"<date>\",\n      \"modified\": \"<date>\"\n    }\n  ]\n}",
+                  "createdAt": "2026-07-28T01:16:33.000Z",
+                  "updatedAt": "2026-07-28T01:16:33.000Z",
+                  "uid": "35240-66bb867a-7a13-4f65-bbc7-c7fdd33aa0a4"
+                },
+                {
+                  "id": "b6a881e7-b24d-40ba-868d-c61815ef9a49",
+                  "name": "400 response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/hubs/:hub_id_or_slug",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "hubs",
+                        ":hub_id_or_slug"
+                      ],
+                      "variable": [
+                        {
+                          "key": "hub_id_or_slug"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-07-28T01:16:33.000Z",
+                  "updatedAt": "2026-07-28T01:16:33.000Z",
+                  "uid": "35240-b6a881e7-b24d-40ba-868d-c61815ef9a49"
+                },
+                {
+                  "id": "bba0f596-9045-4b6f-8d32-92c64350fc91",
+                  "name": "404 response",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: basic",
+                        "key": "Authorization",
+                        "value": "Basic <credentials>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/hubs/:hub_id_or_slug",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "hubs",
+                        ":hub_id_or_slug"
+                      ],
+                      "variable": [
+                        {
+                          "key": "hub_id_or_slug"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-07-28T01:16:33.000Z",
+                  "updatedAt": "2026-07-28T01:16:33.000Z",
+                  "uid": "35240-bba0f596-9045-4b6f-8d32-92c64350fc91"
+                }
+              ],
+              "createdAt": "2026-07-28T01:16:33.000Z",
+              "updatedAt": "2026-07-28T01:16:33.000Z",
+              "uid": "35240-e86b367a-9ac9-4834-ba69-8d9bf64ff2a7"
+            }
+          ],
+          "id": "83698b30-f4ad-45df-9aac-e1af0b044c6a",
+          "createdAt": "2026-07-28T01:16:33.000Z",
+          "updatedAt": "2026-07-28T01:16:33.000Z",
+          "uid": "35240-83698b30-f4ad-45df-9aac-e1af0b044c6a"
+        },
+        {
+          "name": "List All Hubs",
+          "id": "75d1f2c2-560c-4f63-bf94-6c0952b78120",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/hubs",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "hubs"
+              ]
+            },
+            "description": "List all hubs belonging to the authenticated organization.\nThe API key used to make the request must be set at the organization level.\n"
+          },
+          "response": [
+            {
+              "id": "a316cfaf-dec0-44fe-bb91-7a5811211f34",
+              "name": "200 response",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/hubs",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "hubs"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"url\": \"<string>\",\n    \"created\": \"<date>\",\n    \"modified\": \"<date>\",\n    \"specificationVersion\": \"<string>\"\n  },\n  {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"url\": \"<string>\",\n    \"created\": \"<date>\",\n    \"modified\": \"<date>\",\n    \"specificationVersion\": \"<string>\"\n  }\n]",
+              "createdAt": "2026-07-28T01:16:33.000Z",
+              "updatedAt": "2026-07-28T01:16:33.000Z",
+              "uid": "35240-a316cfaf-dec0-44fe-bb91-7a5811211f34"
+            },
+            {
+              "id": "20ddef90-93d6-4823-aabd-b2361cd58f81",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "description": "Added as a part of security scheme: basic",
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/hubs",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "hubs"
+                  ]
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "_postman_previewlanguage": "text",
+              "header": [],
+              "cookie": [],
+              "responseTime": null,
+              "body": null,
+              "createdAt": "2026-07-28T01:16:33.000Z",
+              "updatedAt": "2026-07-28T01:16:33.000Z",
+              "uid": "35240-20ddef90-93d6-4823-aabd-b2361cd58f81"
+            }
+          ],
+          "createdAt": "2026-07-28T01:16:33.000Z",
+          "updatedAt": "2026-07-28T01:16:33.000Z",
+          "uid": "35240-75d1f2c2-560c-4f63-bf94-6c0952b78120"
+        }
+      ],
+      "id": "c8f33cc0-d0cb-411f-9336-6f3889fd50d2",
+      "createdAt": "2026-07-28T01:16:33.000Z",
+      "updatedAt": "2026-07-28T01:16:33.000Z",
+      "uid": "35240-c8f33cc0-d0cb-411f-9336-6f3889fd50d2"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}",
+        "type": "string"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://bump.sh/api/v1"
+    }
+  ]
+}
