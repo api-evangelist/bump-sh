@@ -1,0 +1,110 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Bump.sh Api Branches API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Branches",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Promote Branch as the Default One",
+            "type": "http"
+          },
+          "http": {
+            "method": "PATCH",
+            "url": "https://bump.sh/api/v1/docs/:doc_id_or_slug/branches/:slug/set_default",
+            "params": [
+              {
+                "name": "doc_id_or_slug",
+                "value": "",
+                "type": "path",
+                "description": "UUID or slug of a documentation which can be seen in the Automatic Deployment settings page of your documentation"
+              },
+              {
+                "name": "slug",
+                "value": "",
+                "type": "path",
+                "description": "Slug of a branch which can be seen in the branches settings page of your documentation"
+              }
+            ]
+          },
+          "docs": "Promote Branch as the Default One"
+        },
+        {
+          "info": {
+            "name": "Delete a Branch",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://bump.sh/api/v1/docs/:doc_id_or_slug/branches/:slug",
+            "params": [
+              {
+                "name": "doc_id_or_slug",
+                "value": "",
+                "type": "path",
+                "description": "UUID or slug of a documentation which can be seen in the Automatic Deployment settings page of your documentation"
+              },
+              {
+                "name": "slug",
+                "value": "",
+                "type": "path",
+                "description": "Slug of a branch which can be seen in the branches settings page of your documentation"
+              }
+            ]
+          },
+          "docs": "Delete a Branch"
+        },
+        {
+          "info": {
+            "name": "List Available Branches",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://bump.sh/api/v1/docs/:doc_id_or_slug/branches",
+            "params": [
+              {
+                "name": "doc_id_or_slug",
+                "value": "",
+                "type": "path",
+                "description": "UUID or slug of a documentation which can be seen in the Automatic Deployment settings page of your documentation"
+              }
+            ]
+          },
+          "docs": "List the available branches of a given documentation.\n"
+        },
+        {
+          "info": {
+            "name": "Create a New Branch",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://bump.sh/api/v1/docs/:doc_id_or_slug/branches",
+            "params": [
+              {
+                "name": "doc_id_or_slug",
+                "value": "",
+                "type": "path",
+                "description": "UUID or slug of a documentation which can be seen in the Automatic Deployment settings page of your documentation"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an empty new branch.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,881 @@
+{
+  "item": [
+    {
+      "id": "e2b5806d-eaec-4d6c-9e5f-a1cebce34620",
+      "name": "Branches",
+      "description": {
+        "content": "Manage branches of a given documentation\n",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "75bb6273-a6f5-4981-88f1-1c2c1c1f36f8",
+          "name": "Promote Branch as the Default One",
+          "request": {
+            "name": "Promote Branch as the Default One",
+            "description": {},
+            "url": {
+              "path": [
+                "docs",
+                ":doc_id_or_slug",
+                "branches",
+                ":slug",
+                "set_default"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "doc_id_or_slug",
+                  "description": "(Required) UUID or slug of a documentation which can be seen in the Automatic Deployment settings page of your documentation"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "slug",
+                  "description": "(Required) Slug of a branch which can be seen in the branches settings page of your documentation"
+                }
+              ]
+            },
+            "method": "PATCH",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6023f7db-abd2-432c-9ebd-fba710807eee",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "docs",
+                    ":doc_id_or_slug",
+                    "branches",
+                    ":slug",
+                    "set_default"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "doc_id_or_slug",
+                      "description": "(Required) UUID or slug of a documentation which can be seen in the Automatic Deployment settings page of your documentation"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Slug of a branch which can be seen in the branches settings page of your documentation"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7662f7c2-f8f7-40e4-a89f-cecfccbe85d0",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "docs",
+                    ":doc_id_or_slug",
+                    "branches",
+                    ":slug",
+                    "set_default"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "doc_id_or_slug",
+                      "description": "(Required) UUID or slug of a documentation which can be seen in the Automatic Deployment settings page of your documentation"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Slug of a branch which can be seen in the branches settings page of your documentation"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d770c2ed-13c9-4a28-b586-2ebd158bcaa0",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "docs",
+                    ":doc_id_or_slug",
+                    "branches",
+                    ":slug",
+                    "set_default"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "doc_id_or_slug",
+                      "description": "(Required) UUID or slug of a documentation which can be seen in the Automatic Deployment settings page of your documentation"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Slug of a branch which can be seen in the branches settings page of your documentation"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "304ef278-e5db-42b2-b346-bd8edde2fb0f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "docs",
+                    ":doc_id_or_slug",
+                    "branches",
+                    ":slug",
+                    "set_default"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "doc_id_or_slug",
+                      "description": "(Required) UUID or slug of a documentation which can be seen in the Automatic Deployment settings page of your documentation"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Slug of a branch which can be seen in the branches settings page of your documentation"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cd505960-592a-4684-b501-e457ca07bff6",
+          "name": "Delete a Branch",
+          "request": {
+            "name": "Delete a Branch",
+            "description": {},
+            "url": {
+              "path": [
+                "docs",
+                ":doc_id_or_slug",
+                "branches",
+                ":slug"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "doc_id_or_slug",
+                  "description": "(Required) UUID or slug of a documentation which can be seen in the Automatic Deployment settings page of your documentation"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "slug",
+                  "description": "(Required) Slug of a branch which can be seen in the branches settings page of your documentation"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "416b0326-45d3-4888-b665-6780892c1863",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "docs",
+                    ":doc_id_or_slug",
+                    "branches",
+                    ":slug"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "doc_id_or_slug",
+                      "description": "(Required) UUID or slug of a documentation which can be seen in the Automatic Deployment settings page of your documentation"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Slug of a branch which can be seen in the branches settings page of your documentation"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "336ae3e7-9c77-4262-b735-0e94dbebe97a",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "docs",
+                    ":doc_id_or_slug",
+                    "branches",
+                    ":slug"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "doc_id_or_slug",
+                      "description": "(Required) UUID or slug of a documentation which can be seen in the Automatic Deployment settings page of your documentation"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Slug of a branch which can be seen in the branches settings page of your documentation"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "73b32903-dd44-4630-bcc6-cc9fa6d6ddec",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "docs",
+                    ":doc_id_or_slug",
+                    "branches",
+                    ":slug"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "doc_id_or_slug",
+                      "description": "(Required) UUID or slug of a documentation which can be seen in the Automatic Deployment settings page of your documentation"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "slug",
+                      "description": "(Required) Slug of a branch which can be seen in the branches settings page of your documentation"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "61d01020-1842-4ca3-a701-844364f5a4bd",
+          "name": "List Available Branches",
+          "request": {
+            "name": "List Available Branches",
+            "description": {
+              "content": "List the available branches of a given documentation.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "docs",
+                ":doc_id_or_slug",
+                "branches"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "doc_id_or_slug",
+                  "description": "(Required) UUID or slug of a documentation which can be seen in the Automatic Deployment settings page of your documentation"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c18bcaf7-a60e-4521-b6cb-4472f7f2878d",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "docs",
+                    ":doc_id_or_slug",
+                    "branches"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "doc_id_or_slug",
+                      "description": "(Required) UUID or slug of a documentation which can be seen in the Automatic Deployment settings page of your documentation"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"3ef8f52f-9056-4113-840e-2f7183b90e06\",\n    \"slug\": \"my-branch\",\n    \"is_default\": false\n  },\n  {\n    \"name\": \"3ef8f52f-9056-4113-840e-2f7183b90e06\",\n    \"slug\": \"my-branch\",\n    \"is_default\": false\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "127d23be-4dc6-4e4b-9f3d-567af3f1bfa1",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "docs",
+                    ":doc_id_or_slug",
+                    "branches"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "doc_id_or_slug",
+                      "description": "(Required) UUID or slug of a documentation which can be seen in the Automatic Deployment settings page of your documentation"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "573f5692-9453-4f7c-a2f7-abb68cdffb29",
+          "name": "Create a New Branch",
+          "request": {
+            "name": "Create a New Branch",
+            "description": {
+              "content": "Create an empty new branch.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "docs",
+                ":doc_id_or_slug",
+                "branches"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "doc_id_or_slug",
+                  "description": "(Required) UUID or slug of a documentation which can be seen in the Automatic Deployment settings page of your documentation"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "46bdc6ee-4628-4de0-9170-efb39693f497",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "docs",
+                    ":doc_id_or_slug",
+                    "branches"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "doc_id_or_slug",
+                      "description": "(Required) UUID or slug of a documentation which can be seen in the Automatic Deployment settings page of your documentation"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"3ef8f52f-9056-4113-840e-2f7183b90e06\",\n  \"slug\": \"my-branch\",\n  \"is_default\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ce74ff24-a12b-4df1-ac06-2422fbb189c2",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "docs",
+                    ":doc_id_or_slug",
+                    "branches"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "doc_id_or_slug",
+                      "description": "(Required) UUID or slug of a documentation which can be seen in the Automatic Deployment settings page of your documentation"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "95520230-d9b7-4a41-b4e2-c78696f14e0a",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "docs",
+                    ":doc_id_or_slug",
+                    "branches"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "doc_id_or_slug",
+                      "description": "(Required) UUID or slug of a documentation which can be seen in the Automatic Deployment settings page of your documentation"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://bump.sh/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "78b1d9e0-c011-4083-970d-a6b4a351dd58",
+    "name": "Bump.sh Api Branches API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is the official Bump.sh API documentation.  Obviously created\nwith Bump.sh.\n\nThe Bump.sh API is a REST API. It enables you to [create, update](#operation-post-versions)\nor [preview](#operation-post-previews) your API(s) documentation,\n[create stand-alone documentation diffs](#operation-post-diffs) or\n[validate a documentation definition](#operation-post-validations)\n(currently in OpenAPI or AsyncAPI).\n\nOur [webhook](#webhook-documentation-change) also lets you get\nnotifications every time a change is introduced in your API.\n",
+      "type": "text/plain"
+    }
+  }
+}

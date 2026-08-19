@@ -1,0 +1,58 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Bump.sh Api Branches Versions API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Versions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a New Version",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://bump.sh/api/v1/versions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Deploy a new version for a given documentation, which will become the current version.\n"
+        },
+        {
+          "info": {
+            "name": "Fetch a Full Documentation Version Including Diff Summary",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://bump.sh/api/v1/versions/:version_id",
+            "params": [
+              {
+                "name": "version_id",
+                "value": "",
+                "type": "path",
+                "description": "UUID of an existing version from which to fetch a documentation change"
+              },
+              {
+                "name": "formats",
+                "value": "",
+                "type": "query",
+                "description": "A list of formats to render in the response. Possible\nvalues are `text`, `markdown`, `html` or `json`. If not\nprovided defaults to render both `text`, `markdown` and\n`json` formats.\n"
+              }
+            ]
+          },
+          "docs": "Fetch a full documentation version including diff summary.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

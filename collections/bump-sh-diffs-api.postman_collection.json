@@ -1,0 +1,408 @@
+{
+  "item": [
+    {
+      "id": "441de1b6-957f-4463-b198-4f0ed0fdbd97",
+      "name": "Diffs",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "dbe68b6b-51f4-4c17-a160-0e82694745ff",
+          "name": "Create a Diff",
+          "request": {
+            "name": "Create a Diff",
+            "description": {
+              "content": "Create a diff between any two given API definitions.\n\nThe diff result will be available asynchronously and needs\nto be retrieved with the [`GET /diffs/:id` API endpoint](#operation-get-diffs-parameter).\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "diffs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"url\": \"<uri>\",\n  \"previous_url\": \"<uri>\",\n  \"previous_definition\": \"<string>\",\n  \"previous_references\": [\n    {\n      \"location\": \"<string>\",\n      \"content\": \"<string>\"\n    },\n    {\n      \"location\": \"<string>\",\n      \"content\": \"<string>\"\n    }\n  ],\n  \"definition\": \"<string>\",\n  \"references\": [\n    {\n      \"location\": \"<string>\",\n      \"content\": \"<string>\"\n    },\n    {\n      \"location\": \"<string>\",\n      \"content\": \"<string>\"\n    }\n  ],\n  \"expires_at\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "04f1141b-4d23-4897-a315-8c34601eb7e8",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "diffs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"d6f00a51-a175-4a44-a0c7-df62a48548ca\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8983e962-8726-4caf-9256-fbe6c3f2bffe",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "diffs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Invalid definition file\",\n  \"errors\": {\n    \"raw_definition\": [\n      \"The property '#/paths//docs/{:id}/validations/post' contains additional properties [\\\"yolo\\\"] outside of the schema when none are allowed\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "aa0f874a-241d-4664-a666-588a7f8a2536",
+          "name": "Fetch Detailed Information from an Existing Diff",
+          "request": {
+            "name": "Fetch Detailed Information from an Existing Diff",
+            "description": {
+              "content": "Fetch the result of a previously created diff with the\n[`POST /diffs` API endpoint](#operation-post-diffs).\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "diffs",
+                ":id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "formats",
+                  "value": "<string>",
+                  "description": "A list of formats to render in the response. Possible\nvalues are `text`, `markdown`, `html` or `json`. If not\nprovided defaults to render both `text` and `markdown`\nformats.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "formats",
+                  "value": "<string>",
+                  "description": "A list of formats to render in the response. Possible\nvalues are `text`, `markdown`, `html` or `json`. If not\nprovided defaults to render both `text` and `markdown`\nformats.\n"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "id",
+                  "description": "(Required) UUID of an existing diff from which to fetch diff details"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4740ea4d-45e0-450d-84cb-9bbb93552680",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "diffs",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "formats",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "formats",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) UUID of an existing diff from which to fetch diff details"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"2361df99-1234-4c80-a0cc-45c9fe565812\",\n  \"public_url\": \"https://bump.sh/diff/2361df99-3467-4c80-a0cc-45c9fe565812\",\n  \"breaking\": false,\n  \"previous_version_url\": \"https://bump.sh/diff/2361df99-3467-4c80-a0cc-45c9fe565812/previous.json\",\n  \"current_version_url\": \"https://bump.sh/diff/2361df99-3467-4c80-a0cc-45c9fe565812/current.json\",\n  \"text\": \"Updated: POST /versions\\n  Response modified: 201\\n    Body attribute added: doc_id\\n\",\n  \"markdown\": \"## Modified (1)\\n\\n* `POST /user`\\n  * Path parameters added: `id`, `email`\\n  * Query parameters added: `period`, `limit`\\n\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "25fcea31-737a-41ac-8d93-ad165c14ccf7",
+              "name": "Diff is still being processed. Please try again later",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "diffs",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "formats",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "formats",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) UUID of an existing diff from which to fetch diff details"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1098f768-df5e-420b-85f3-88c7d3c08166",
+              "name": "Diff not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "diffs",
+                    ":id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "formats",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "formats",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "id",
+                      "description": "(Required) UUID of an existing diff from which to fetch diff details"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://bump.sh/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "979e78c4-e473-454d-9cd9-65deb3bab38d",
+    "name": "Bump.sh Api Branches Diffs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is the official Bump.sh API documentation.  Obviously created\nwith Bump.sh.\n\nThe Bump.sh API is a REST API. It enables you to [create, update](#operation-post-versions)\nor [preview](#operation-post-previews) your API(s) documentation,\n[create stand-alone documentation diffs](#operation-post-diffs) or\n[validate a documentation definition](#operation-post-validations)\n(currently in OpenAPI or AsyncAPI).\n\nOur [webhook](#webhook-documentation-change) also lets you get\nnotifications every time a change is introduced in your API.\n",
+      "type": "text/plain"
+    }
+  }
+}

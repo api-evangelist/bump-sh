@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Bump.sh Api Branches Ping API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Ping",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Check the API Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://bump.sh/api/v1/ping"
+          },
+          "docs": "Responds a pong if the API is up and running."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,58 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Bump.sh Api Branches Diffs API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Diffs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a Diff",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://bump.sh/api/v1/diffs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a diff between any two given API definitions.\n\nThe diff result will be available asynchronously and needs\nto be retrieved with the [`GET /diffs/:id` API endpoint](#operation-get-diffs-parameter).\n"
+        },
+        {
+          "info": {
+            "name": "Fetch Detailed Information from an Existing Diff",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://bump.sh/api/v1/diffs/:id",
+            "params": [
+              {
+                "name": "id",
+                "value": "",
+                "type": "path",
+                "description": "UUID of an existing diff from which to fetch diff details"
+              },
+              {
+                "name": "formats",
+                "value": "",
+                "type": "query",
+                "description": "A list of formats to render in the response. Possible\nvalues are `text`, `markdown`, `html` or `json`. If not\nprovided defaults to render both `text` and `markdown`\nformats.\n"
+              }
+            ]
+          },
+          "docs": "Fetch the result of a previously created diff with the\n[`POST /diffs` API endpoint](#operation-post-diffs).\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

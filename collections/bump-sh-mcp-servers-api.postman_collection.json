@@ -1,0 +1,278 @@
+{
+  "item": [
+    {
+      "id": "16659162-5033-43d1-b116-20c7e66b1343",
+      "name": "MCP servers",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "973172e3-9655-45d0-8ad3-2023e4e281f0",
+          "name": "Deploy a New MCP Server Document",
+          "request": {
+            "name": "Deploy a New MCP Server Document",
+            "description": {
+              "content": "Deploy a new workflow document for a given MCP server.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "mcp_servers",
+                ":mcp_server_id_or_slug",
+                "deploy"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "mcp_server_id_or_slug",
+                  "description": "(Required) UUID or slug of a MCP server"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"definition\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d967b665-7414-42c9-b53d-212e0b21fc69",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "mcp_servers",
+                    ":mcp_server_id_or_slug",
+                    "deploy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "mcp_server_id_or_slug",
+                      "description": "(Required) UUID or slug of a MCP server"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"definition\": \"{\\\"flower\\\": \\\"0.1\\\", \\\"title\\\": \\\"About crabs\\\"}\\n\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"mcp_server_id\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8f74f3a5-3efd-4f09-94f0-94a170c50d63",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "mcp_servers",
+                    ":mcp_server_id_or_slug",
+                    "deploy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "mcp_server_id_or_slug",
+                      "description": "(Required) UUID or slug of a MCP server"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"definition\": \"{\\\"flower\\\": \\\"0.1\\\", \\\"title\\\": \\\"About crabs\\\"}\\n\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "f5e7a326-2924-4a7a-bf0a-7eede208c698",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "mcp_servers",
+                    ":mcp_server_id_or_slug",
+                    "deploy"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "mcp_server_id_or_slug",
+                      "description": "(Required) UUID or slug of a MCP server"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"definition\": \"{\\\"flower\\\": \\\"0.1\\\", \\\"title\\\": \\\"About crabs\\\"}\\n\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Invalid definition file\",\n  \"errors\": {\n    \"raw_definition\": [\n      \"The property '#/paths//docs/{:id}/validations/post' contains additional properties [\\\"yolo\\\"] outside of the schema when none are allowed\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://bump.sh/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "adbaa82c-da1d-4edf-bfaa-24ce296642f1",
+    "name": "Bump.sh Api Branches MCP servers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is the official Bump.sh API documentation.  Obviously created\nwith Bump.sh.\n\nThe Bump.sh API is a REST API. It enables you to [create, update](#operation-post-versions)\nor [preview](#operation-post-previews) your API(s) documentation,\n[create stand-alone documentation diffs](#operation-post-diffs) or\n[validate a documentation definition](#operation-post-validations)\n(currently in OpenAPI or AsyncAPI).\n\nOur [webhook](#webhook-documentation-change) also lets you get\nnotifications every time a change is introduced in your API.\n",
+      "type": "text/plain"
+    }
+  }
+}

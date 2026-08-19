@@ -1,0 +1,353 @@
+{
+  "item": [
+    {
+      "id": "774e8562-a488-4c0d-86ba-22da23cc991e",
+      "name": "Hubs",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "780bb496-9bc8-4783-9726-100401470120",
+          "name": "List All Hubs",
+          "request": {
+            "name": "List All Hubs",
+            "description": {
+              "content": "List all hubs belonging to the authenticated organization.\nThe API key used to make the request must be set at the organization level.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "hubs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET"
+          },
+          "response": [
+            {
+              "id": "ef2c7c19-2e44-40c0-9d86-a8e12b7067a9",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hubs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"3ef8f52f-9056-4113-840e-2f7183b90e06\",\n    \"name\": \"My train company hub\",\n    \"description\": \"# Welcome to my train company\\n\\nThis hub contains all APIs belonging to [my train company](https://demo.bump.sh/).\\nFeel free to visit the documentation or changes of our APIs lifecycle.\\n\",\n    \"url\": \"https://demo.bump.sh/\",\n    \"created\": \"2022-01-07\",\n    \"modified\": \"2022-04-07\",\n    \"specificationVersion\": \"0.16\"\n  },\n  {\n    \"id\": \"3ef8f52f-9056-4113-840e-2f7183b90e06\",\n    \"name\": \"My train company hub\",\n    \"description\": \"# Welcome to my train company\\n\\nThis hub contains all APIs belonging to [my train company](https://demo.bump.sh/).\\nFeel free to visit the documentation or changes of our APIs lifecycle.\\n\",\n    \"url\": \"https://demo.bump.sh/\",\n    \"created\": \"2022-01-07\",\n    \"modified\": \"2022-04-07\",\n    \"specificationVersion\": \"0.16\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "adecc248-844a-4675-86bb-d84c77cf840f",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hubs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ea08af39-7569-4523-9af7-e72c3dae6519",
+          "name": "Fetch Information of an Existing Hub",
+          "request": {
+            "name": "Fetch Information of an Existing Hub",
+            "description": {
+              "content": "Fetch information of an existing Hub including the list of\nAPIs it contains. The response follows the [APIs.json\nspecification](http://apisjson.org/).\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "hubs",
+                ":hub_id_or_slug"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "hub_id_or_slug",
+                  "description": "(Required) UUID or slug of a Hub which can be Automatic Deployment settings page of your hub"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6e3215ae-f951-40e4-a3e1-a52c906395ac",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hubs",
+                    ":hub_id_or_slug"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "hub_id_or_slug",
+                      "description": "(Required) UUID or slug of a Hub which can be Automatic Deployment settings page of your hub"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"3ef8f52f-9056-4113-840e-2f7183b90e06\",\n  \"name\": \"My train company hub\",\n  \"description\": \"# Welcome to my train company\\n\\nThis hub contains all APIs belonging to [my train company](https://demo.bump.sh/).\\nFeel free to visit the documentation or changes of our APIs lifecycle.\\n\",\n  \"url\": \"https://demo.bump.sh/\",\n  \"created\": \"2022-01-07\",\n  \"modified\": \"2022-04-07\",\n  \"specificationVersion\": \"0.16\",\n  \"apis\": [\n    {\n      \"id\": \"3ef8f52f-9056-4113-840e-2f7183b90e06\",\n      \"name\": \"Bump.sh\",\n      \"description\": \"This is the official Bump.sh API documentation. Obviously created with Bump.sh\",\n      \"slug\": \"bump\",\n      \"url\": \"string\",\n      \"humanUrl\": \"https://developers.bump.sh/\",\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"version\": \"1.0\",\n      \"properties\": [\n        {\n          \"type\": \"OpenAPI\",\n          \"url\": \"https://developers.bump.sh/source.json\"\n        },\n        {\n          \"type\": \"OpenAPI\",\n          \"url\": \"https://developers.bump.sh/source.json\"\n        }\n      ],\n      \"created\": \"2022-01-07\",\n      \"modified\": \"2022-04-07\"\n    },\n    {\n      \"id\": \"3ef8f52f-9056-4113-840e-2f7183b90e06\",\n      \"name\": \"Bump.sh\",\n      \"description\": \"This is the official Bump.sh API documentation. Obviously created with Bump.sh\",\n      \"slug\": \"bump\",\n      \"url\": \"string\",\n      \"humanUrl\": \"https://developers.bump.sh/\",\n      \"tags\": [\n        \"string\",\n        \"string\"\n      ],\n      \"version\": \"1.0\",\n      \"properties\": [\n        {\n          \"type\": \"OpenAPI\",\n          \"url\": \"https://developers.bump.sh/source.json\"\n        },\n        {\n          \"type\": \"OpenAPI\",\n          \"url\": \"https://developers.bump.sh/source.json\"\n        }\n      ],\n      \"created\": \"2022-01-07\",\n      \"modified\": \"2022-04-07\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "208ad9c3-7dfe-486e-b4b6-e4d63a160bb1",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hubs",
+                    ":hub_id_or_slug"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "hub_id_or_slug",
+                      "description": "(Required) UUID or slug of a Hub which can be Automatic Deployment settings page of your hub"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"You need to upgrade your subscription plan to perform this request.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e1e8e45a-5c55-4ac1-a624-1ad651b412e7",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hubs",
+                    ":hub_id_or_slug"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "hub_id_or_slug",
+                      "description": "(Required) UUID or slug of a Hub which can be Automatic Deployment settings page of your hub"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://bump.sh/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a3c1231c-9be5-4680-bc2b-bb326ef915ad",
+    "name": "Bump.sh Api Branches Hubs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is the official Bump.sh API documentation.  Obviously created\nwith Bump.sh.\n\nThe Bump.sh API is a REST API. It enables you to [create, update](#operation-post-versions)\nor [preview](#operation-post-previews) your API(s) documentation,\n[create stand-alone documentation diffs](#operation-post-diffs) or\n[validate a documentation definition](#operation-post-validations)\n(currently in OpenAPI or AsyncAPI).\n\nOur [webhook](#webhook-documentation-change) also lets you get\nnotifications every time a change is introduced in your API.\n",
+      "type": "text/plain"
+    }
+  }
+}

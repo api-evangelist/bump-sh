@@ -1,0 +1,197 @@
+{
+  "item": [
+    {
+      "id": "23025d47-2ab5-4181-b916-54935e8e5127",
+      "name": "Validations",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "72108f9a-535b-4729-aae8-1447a6351bd5",
+          "name": "Validate a Documentation Definition",
+          "request": {
+            "name": "Validate a Documentation Definition",
+            "description": {
+              "content": "Validate a definition against its schema (OpenAPI or AsyncAPI) and return errors without creating a new version. This is useful in a CI process, to validate that a changed definition file is valid and won't fail when being deployed on Bump.sh.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "validations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "noauth"
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"documentation\": \"<string>\",\n  \"hub\": \"<string>\",\n  \"documentation_name\": \"<string>\",\n  \"auto_create_documentation\": false,\n  \"definition\": \"<string>\",\n  \"references\": [\n    {\n      \"location\": \"<string>\",\n      \"content\": \"<string>\"\n    },\n    {\n      \"location\": \"<string>\",\n      \"content\": \"<string>\"\n    }\n  ],\n  \"url\": \"<uri>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d3acb6d0-8bf5-453a-afe9-d55bf9ce1470",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "validations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"specification\": \"openapi/v3/json\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5f195914-b089-4c93-8aa0-12eb283d970a",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "validations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"You need to upgrade your subscription plan to perform this request.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c8a9af40-9aa4-431f-b98b-548e59d7d5c6",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "validations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Invalid definition file\",\n  \"errors\": {\n    \"raw_definition\": [\n      \"The property '#/paths//docs/{:id}/validations/post' contains additional properties [\\\"yolo\\\"] outside of the schema when none are allowed\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://bump.sh/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "b460f008-3507-43ce-94d7-5aca944f5f4d",
+    "name": "Bump.sh Api Branches Validations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is the official Bump.sh API documentation.  Obviously created\nwith Bump.sh.\n\nThe Bump.sh API is a REST API. It enables you to [create, update](#operation-post-versions)\nor [preview](#operation-post-previews) your API(s) documentation,\n[create stand-alone documentation diffs](#operation-post-diffs) or\n[validate a documentation definition](#operation-post-validations)\n(currently in OpenAPI or AsyncAPI).\n\nOur [webhook](#webhook-documentation-change) also lets you get\nnotifications every time a change is introduced in your API.\n",
+      "type": "text/plain"
+    }
+  }
+}

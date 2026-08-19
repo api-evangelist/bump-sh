@@ -1,0 +1,549 @@
+{
+  "item": [
+    {
+      "id": "b8439557-d275-4b8b-95e1-18c19f436398",
+      "name": "Versions",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9aa1b4ba-70ae-4306-984f-556547e90cd2",
+          "name": "Create a New Version",
+          "request": {
+            "name": "Create a New Version",
+            "description": {
+              "content": "Deploy a new version for a given documentation, which will become the current version.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "versions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"definition\": \"<string>\",\n  \"documentation\": \"<string>\",\n  \"hub\": \"<string>\",\n  \"documentation_name\": \"<string>\",\n  \"auto_create_documentation\": false,\n  \"references\": [\n    {\n      \"location\": \"<string>\",\n      \"content\": \"<string>\"\n    },\n    {\n      \"location\": \"<string>\",\n      \"content\": \"<string>\"\n    }\n  ],\n  \"branch_name\": \"<string>\",\n  \"previous_version_id\": \"<string>\",\n  \"temporary\": \"<boolean>\",\n  \"unpublished\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "06367c2e-38d2-49f4-bb99-0d8d60816370",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "versions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"2361df99-3467-4c80-a0cc-45c9fe565812\",\n  \"doc_id\": \"3ef8f52f-9056-4113-840e-2f7183b90e06\",\n  \"doc_public_url\": \"https://bump.sh/doc/my-own-documentation\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "751048cc-cc07-4221-b368-9e644e9516bb",
+              "name": "Documentation is unchanged",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "versions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ee5f7445-a7a1-47aa-b756-d6b27a60fb38",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "versions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"You need to upgrade your subscription plan to perform this request.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8bbc17fa-cb99-4add-9712-a70c27caf26b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "versions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+              "code": 422,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"Invalid definition file\",\n  \"errors\": {\n    \"raw_definition\": [\n      \"The property '#/paths//docs/{:id}/validations/post' contains additional properties [\\\"yolo\\\"] outside of the schema when none are allowed\"\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d6a551e0-f693-4cb5-bb0b-6d05e4877a04",
+          "name": "Fetch a Full Documentation Version Including Diff Summary",
+          "request": {
+            "name": "Fetch a Full Documentation Version Including Diff Summary",
+            "description": {
+              "content": "Fetch a full documentation version including diff summary.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "versions",
+                ":version_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "formats",
+                  "value": "<string>",
+                  "description": "A list of formats to render in the response. Possible\nvalues are `text`, `markdown`, `html` or `json`. If not\nprovided defaults to render both `text`, `markdown` and\n`json` formats.\n"
+                },
+                {
+                  "disabled": false,
+                  "key": "formats",
+                  "value": "<string>",
+                  "description": "A list of formats to render in the response. Possible\nvalues are `text`, `markdown`, `html` or `json`. If not\nprovided defaults to render both `text`, `markdown` and\n`json` formats.\n"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "version_id",
+                  "description": "(Required) UUID of an existing version from which to fetch a documentation change"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "db161902-0bac-4513-bb2b-4efe94a310af",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "versions",
+                    ":version_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "formats",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "formats",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version_id",
+                      "description": "(Required) UUID of an existing version from which to fetch a documentation change"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"2361df99-3467-4c80-a0cc-45c9fe565812\",\n  \"doc_id\": \"3ef8f52f-9056-4113-840e-2f7183b90e06\",\n  \"doc_public_url\": \"https://bump.sh/doc/my-own-documentation\",\n  \"diff_details\": [\n    {\n      \"id\": \"post-versions\",\n      \"name\": \"POST /versions\",\n      \"status\": \"modified\",\n      \"type\": \"endpoint\",\n      \"breaking\": true,\n      \"previous\": {\n        \"path\": \"/versions\",\n        \"deprecated\": false,\n        \"verb\": \"POST\"\n      },\n      \"current\": {\n        \"path\": \"/version\",\n        \"deprecated\": false,\n        \"verb\": \"PUT\"\n      },\n      \"breaking_details\": {\n        \"message_key\": \"removed_not_deprecated\",\n        \"breaking_attributes\": [\n          \"verb\",\n          \"path\"\n        ]\n      },\n      \"children\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/DiffItem detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/DiffItem detected>\"\n        }\n      ]\n    },\n    {\n      \"id\": \"post-versions\",\n      \"name\": \"POST /versions\",\n      \"status\": \"modified\",\n      \"type\": \"endpoint\",\n      \"breaking\": true,\n      \"previous\": {\n        \"path\": \"/versions\",\n        \"deprecated\": false,\n        \"verb\": \"POST\"\n      },\n      \"current\": {\n        \"path\": \"/version\",\n        \"deprecated\": false,\n        \"verb\": \"PUT\"\n      },\n      \"breaking_details\": {\n        \"message_key\": \"removed_not_deprecated\",\n        \"breaking_attributes\": [\n          \"verb\",\n          \"path\"\n        ]\n      },\n      \"children\": [\n        {\n          \"value\": \"<Circular reference to #/components/schemas/DiffItem detected>\"\n        },\n        {\n          \"value\": \"<Circular reference to #/components/schemas/DiffItem detected>\"\n        }\n      ]\n    }\n  ],\n  \"diff_markdown\": \"## Modified (1)\\n\\n* `POST /user`\\n  * Path parameters added: `id`, `email`\\n  * Query parameters added: `period`, `limit`\\n\",\n  \"diff_summary\": \"Updated: POST /versions\\n  Response modified: 201\\n    Body attribute added: doc_id\\n\",\n  \"diff_public_url\": \"https://bump.sh/doc/my-own-documentation/change/2361df99-3467-4c80-a0cc-45c9fe565812\",\n  \"diff_breaking\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b7294e30-a91c-4dfe-90f9-c003a1d69df2",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "versions",
+                    ":version_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "formats",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "formats",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version_id",
+                      "description": "(Required) UUID of an existing version from which to fetch a documentation change"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Accepted",
+              "code": 202,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fc08e3aa-4cac-4900-b188-29d7225a3eac",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "versions",
+                    ":version_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "formats",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "formats",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version_id",
+                      "description": "(Required) UUID of an existing version from which to fetch a documentation change"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"You need to upgrade your subscription plan to perform this request.\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "65504b1d-9ac3-4cd5-aee3-5e44a3a7045f",
+              "name": "Version not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "versions",
+                    ":version_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "formats",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "formats",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "version_id",
+                      "description": "(Required) UUID of an existing version from which to fetch a documentation change"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: basic",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Basic <credentials>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://bump.sh/api/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": [
+      {
+        "key": "username",
+        "value": "{{basicAuthUsername}}"
+      },
+      {
+        "key": "password",
+        "value": "{{basicAuthPassword}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "1dda2fba-f8cc-46de-948b-1d0c690a1aea",
+    "name": "Bump.sh Api Branches Versions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "This is the official Bump.sh API documentation.  Obviously created\nwith Bump.sh.\n\nThe Bump.sh API is a REST API. It enables you to [create, update](#operation-post-versions)\nor [preview](#operation-post-previews) your API(s) documentation,\n[create stand-alone documentation diffs](#operation-post-diffs) or\n[validate a documentation definition](#operation-post-validations)\n(currently in OpenAPI or AsyncAPI).\n\nOur [webhook](#webhook-documentation-change) also lets you get\nnotifications every time a change is introduced in your API.\n",
+      "type": "text/plain"
+    }
+  }
+}

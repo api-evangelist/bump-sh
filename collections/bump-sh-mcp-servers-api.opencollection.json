@@ -1,0 +1,41 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Bump.sh Api Branches MCP servers API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "MCP servers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Deploy a New MCP Server Document",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://bump.sh/api/v1/mcp_servers/:mcp_server_id_or_slug/deploy",
+            "params": [
+              {
+                "name": "mcp_server_id_or_slug",
+                "value": "holiday-booking",
+                "type": "path",
+                "description": "UUID or slug of a MCP server"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Deploy a new workflow document for a given MCP server.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

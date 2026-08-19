@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Bump.sh Api Branches Hubs API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Hubs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List All Hubs",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://bump.sh/api/v1/hubs"
+          },
+          "docs": "List all hubs belonging to the authenticated organization.\nThe API key used to make the request must be set at the organization level.\n"
+        },
+        {
+          "info": {
+            "name": "Fetch Information of an Existing Hub",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://bump.sh/api/v1/hubs/:hub_id_or_slug",
+            "params": [
+              {
+                "name": "hub_id_or_slug",
+                "value": "",
+                "type": "path",
+                "description": "UUID or slug of a Hub which can be Automatic Deployment settings page of your hub"
+              }
+            ]
+          },
+          "docs": "Fetch information of an existing Hub including the list of\nAPIs it contains. The response follows the [APIs.json\nspecification](http://apisjson.org/).\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

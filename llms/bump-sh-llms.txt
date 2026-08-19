@@ -1,0 +1,98 @@
+# Bump.sh Workspace API
+
+OpenAPI file: https://developers.bump.sh/doc/workspace.yaml
+
+## Description
+
+This is version `1.0` of this API documentation. Last update on Jun 12, 2026.
+This is the official Bump.sh API documentation.  Obviously created
+with Bump.sh.
+
+The Bump.sh API is a REST API. It enables you to [create, update](#operation-post-versions)
+or [preview](#operation-post-previews) your API(s) documentation,
+[create stand-alone documentation diffs](#operation-post-diffs) or
+[validate a documentation definition](#operation-post-validations)
+(currently in OpenAPI or AsyncAPI).
+
+Our [webhook](#webhook-documentation-change) also lets you get
+notifications every time a change is introduced in your API.
+
+
+## Servers
+
+- Production: https://bump.sh/api/v1 ()
+
+
+## Topics
+
+### [Authentication](https://developers.bump.sh/doc/workspace/authentication.md)
+
+
+
+## Endpoints
+
+### [Branches](https://developers.bump.sh/doc/workspace/group/endpoint-branches.md)
+
+- [Promote branch as the default one](https://developers.bump.sh/doc/workspace/operation/operation-patch-docs-parameter-branches-parameter-set_default.md)
+
+- [Delete a branch](https://developers.bump.sh/doc/workspace/operation/operation-delete-docs-parameter-branches-parameter.md)
+
+- [List available branches](https://developers.bump.sh/doc/workspace/operation/operation-get-docs-parameter-branches.md)
+
+- [Create a new branch](https://developers.bump.sh/doc/workspace/operation/operation-post-docs-parameter-branches.md)
+
+
+### [Diffs](https://developers.bump.sh/doc/workspace/group/endpoint-diffs.md)
+
+- [Create a diff](https://developers.bump.sh/doc/workspace/operation/operation-post-diffs.md)
+
+- [Fetch detailed information from an existing diff](https://developers.bump.sh/doc/workspace/operation/operation-get-diffs-parameter.md)
+
+
+### [Hubs](https://developers.bump.sh/doc/workspace/group/endpoint-hubs.md)
+
+- [List all hubs](https://developers.bump.sh/doc/workspace/operation/operation-listhubs.md)
+
+- [Fetch information of an existing Hub](https://developers.bump.sh/doc/workspace/operation/operation-get-hubs-parameter.md)
+
+
+### [Ping](https://developers.bump.sh/doc/workspace/group/endpoint-ping.md)
+
+- [Check the API status](https://developers.bump.sh/doc/workspace/operation/operation-get-ping.md)
+
+
+### [Previews](https://developers.bump.sh/doc/workspace/group/endpoint-previews.md)
+
+- [Create a preview](https://developers.bump.sh/doc/workspace/operation/operation-post-previews.md)
+
+- [Update an existing preview](https://developers.bump.sh/doc/workspace/operation/operation-put-previews-parameter.md)
+
+
+### [Versions](https://developers.bump.sh/doc/workspace/group/endpoint-versions.md)
+
+- [Create a new version](https://developers.bump.sh/doc/workspace/operation/operation-post-versions.md)
+
+- [Fetch a full documentation version including diff summary](https://developers.bump.sh/doc/workspace/operation/operation-get-versions-parameter.md)
+
+
+### [Validations](https://developers.bump.sh/doc/workspace/group/endpoint-validations.md)
+
+- [Validate a documentation definition](https://developers.bump.sh/doc/workspace/operation/operation-post-validations.md)
+
+
+### [MCP servers](https://developers.bump.sh/doc/workspace/group/endpoint-mcp-servers.md)
+
+- [Deploy a new MCP server document](https://developers.bump.sh/doc/workspace/operation/operation-mcpserverdeploy.md)
+
+
+
+## Webhooks
+
+### [Documentation change](https://developers.bump.sh/doc/workspace/group/webhook-documentation-change.md)
+
+- [Structure change](https://developers.bump.sh/doc/workspace/operation/operation-webhookdocstructurechange.md)
+
+
+
+
+[Powered by Bump.sh](https://bump.sh)

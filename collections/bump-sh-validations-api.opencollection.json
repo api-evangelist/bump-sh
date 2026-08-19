@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Bump.sh Api Branches Validations API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Validations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Validate a Documentation Definition",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://bump.sh/api/v1/validations",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Validate a definition against its schema (OpenAPI or AsyncAPI) and return errors without creating a new version. This is useful in a CI process, to validate that a changed definition file is valid and won't fail when being deployed on Bump.sh.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
