@@ -126,6 +126,8 @@ apis:
   humanURL: https://bump.sh
   baseURL: https://bump.sh/api/v1
   tags:
+  - Hub
+  tags_raw:
   - Hubs
   properties:
   - type: OpenAPI
@@ -166,6 +168,8 @@ apis:
   humanURL: https://bump.sh
   baseURL: https://bump.sh/api/v1
   tags:
+  - MCP Servers
+  tags_raw:
   - MCP servers
   properties:
   - type: OpenAPI
