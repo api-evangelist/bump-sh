@@ -378,6 +378,16 @@ apis:
     url: https://github.com/api-evangelist/bump-sh/blob/main/finops/bump-sh-finops.yml
   - type: Webhooks
     url: https://docs.bump.sh
+- aid: bump-sh:bump-sh-documentation-change-api
+  name: Bump.sh Documentation change API
+  description: The Documentation change API from Bump.sh — 0 operation(s) for documentation change.
+  humanURL: https://bump.sh
+  baseURL: https://bump.sh/api/v1
+  tags:
+  - Documentation change
+  properties:
+  - type: OpenAPI
+    url: openapi/bump-sh-documentation-change-api-openapi.yml
 common:
   - type: IssueTracker
     url: https://github.com/bump-sh/cli/issues

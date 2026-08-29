@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Bump.sh Api Branches Ping API
+  title: Bump.sh Ping API
   description: 'This is the official Bump.sh API documentation.  Obviously created
 
     with Bump.sh.
@@ -57,10 +57,10 @@ components:
           description: Sentence about ping and pong
           example: And that's how ping-pong ball is bumped
   securitySchemes:
-    Authorization token:
+    Authorization_token:
       type: http
       scheme: token
-    Basic token:
+    Basic_token:
       type: http
       scheme: basic
       deprecated: true

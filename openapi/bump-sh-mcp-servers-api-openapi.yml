@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Bump.sh Api Branches MCP servers API
+  title: Bump.sh MCP servers API
   description: 'This is the official Bump.sh API documentation.  Obviously created
 
     with Bump.sh.
@@ -104,10 +104,10 @@ components:
             raw_definition:
             - The property '#/paths//docs/{:id}/validations/post' contains additional properties ["yolo"] outside of the schema when none are allowed
   securitySchemes:
-    Authorization token:
+    Authorization_token:
       type: http
       scheme: token
-    Basic token:
+    Basic_token:
       type: http
       scheme: basic
       deprecated: true

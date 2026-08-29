@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Bump.sh Api Branches Previews API
+  title: Bump.sh Previews API
   description: 'This is the official Bump.sh API documentation.  Obviously created
 
     with Bump.sh.
@@ -80,26 +80,7 @@ paths:
         '422':
           $ref: '#/components/responses/InvalidDefinition'
 components:
-  responses:
-    InvalidDefinition:
-      summary: Definition is not valid.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
-    Error:
-      properties:
-        message:
-          type: string
-          description: Human readable error message.
-          example: Invalid definition file
-        errors:
-          type: object
-          description: Hash of invalid attributes with their error messages.
-          example:
-            raw_definition:
-            - The property '#/paths//docs/{:id}/validations/post' contains additional properties ["yolo"] outside of the schema when none are allowed
     Reference:
       type: object
       properties:
@@ -163,6 +144,18 @@ components:
           type: string
           description: The public URL where the preview will be visible.
           example: https://bump.sh/preview/3ef8f52f-9056-4113-840e-2f7183b90e06
+    Error:
+      properties:
+        message:
+          type: string
+          description: Human readable error message.
+          example: Invalid definition file
+        errors:
+          type: object
+          description: Hash of invalid attributes with their error messages.
+          example:
+            raw_definition:
+            - The property '#/paths//docs/{:id}/validations/post' contains additional properties ["yolo"] outside of the schema when none are allowed
   requestBodies:
     Preview:
       description: The preview creation request object
@@ -170,11 +163,18 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Preview'
+  responses:
+    InvalidDefinition:
+      summary: Definition is not valid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
-    Authorization token:
+    Authorization_token:
       type: http
       scheme: token
-    Basic token:
+    Basic_token:
       type: http
       scheme: basic
       deprecated: true

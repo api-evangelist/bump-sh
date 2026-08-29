@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Bump.sh Api Branches API
+  title: Bump.sh Branches API
   description: 'This is the official Bump.sh API documentation.  Obviously created
 
     with Bump.sh.
@@ -152,6 +152,20 @@ paths:
           summary: Invalid branch creation request
 components:
   schemas:
+    Branch:
+      properties:
+        name:
+          type: string
+          description: Unique id of the branch.
+          example: 3ef8f52f-9056-4113-840e-2f7183b90e06
+        slug:
+          type: string
+          description: Slug of the branch used in public documentation URL
+          example: my-branch
+        is_default:
+          type: boolean
+          default: false
+          description: Whether the branch is the default one or not.
     BranchRequest:
       type: object
       required:
@@ -170,20 +184,6 @@ components:
             > your documentation public URL
 
             '
-    Branch:
-      properties:
-        name:
-          type: string
-          description: Unique id of the branch.
-          example: 3ef8f52f-9056-4113-840e-2f7183b90e06
-        slug:
-          type: string
-          description: Slug of the branch used in public documentation URL
-          example: my-branch
-        is_default:
-          type: boolean
-          default: false
-          description: Whether the branch is the default one or not.
   requestBodies:
     Branch:
       description: The branch creation request object
@@ -192,10 +192,10 @@ components:
           schema:
             $ref: '#/components/schemas/BranchRequest'
   securitySchemes:
-    Authorization token:
+    Authorization_token:
       type: http
       scheme: token
-    Basic token:
+    Basic_token:
       type: http
       scheme: basic
       deprecated: true

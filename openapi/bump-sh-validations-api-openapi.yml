@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Bump.sh Api Branches Validations API
+  title: Bump.sh Validations API
   description: 'This is the official Bump.sh API documentation.  Obviously created
 
     with Bump.sh.
@@ -62,20 +62,22 @@ paths:
         '422':
           $ref: '#/components/responses/InvalidDefinition'
 components:
+  requestBodies:
+    Validate:
+      description: The version validation request object
+      content:
+        application/json:
+          schema:
+            allOf:
+            - $ref: '#/components/schemas/DocumentationRequest'
+            - $ref: '#/components/schemas/Preview'
   schemas:
-    Validation:
+    ErrorDisabledOwner:
       properties:
-        specification:
+        message:
           type: string
-          description: 'Specification of the given definition as a path: `speficiation_name/specification_version/format`.'
-          enum:
-          - openapi/v2/yaml
-          - openapi/v2/json
-          - openapi/v3/yaml
-          - openapi/v3/json
-          - asyncapi/v2/yaml
-          - asyncapi/v2/json
-          example: openapi/v3/json
+          description: Human readable error message for status 400.
+          example: You need to upgrade your subscription plan to perform this request.
     DocumentationRequest:
       type: object
       required:
@@ -96,24 +98,6 @@ components:
           type: boolean
           default: false
           description: Create the documentation if it does not exist yet. Must be used with a `hub` and a `documentation`.
-    Error:
-      properties:
-        message:
-          type: string
-          description: Human readable error message.
-          example: Invalid definition file
-        errors:
-          type: object
-          description: Hash of invalid attributes with their error messages.
-          example:
-            raw_definition:
-            - The property '#/paths//docs/{:id}/validations/post' contains additional properties ["yolo"] outside of the schema when none are allowed
-    ErrorDisabledOwner:
-      properties:
-        message:
-          type: string
-          description: Human readable error message for status 400.
-          example: You need to upgrade your subscription plan to perform this request.
     Reference:
       type: object
       properties:
@@ -177,6 +161,31 @@ components:
           type: string
           description: The public URL where the preview will be visible.
           example: https://bump.sh/preview/3ef8f52f-9056-4113-840e-2f7183b90e06
+    Validation:
+      properties:
+        specification:
+          type: string
+          description: 'Specification of the given definition as a path: `speficiation_name/specification_version/format`.'
+          enum:
+          - openapi/v2/yaml
+          - openapi/v2/json
+          - openapi/v3/yaml
+          - openapi/v3/json
+          - asyncapi/v2/yaml
+          - asyncapi/v2/json
+          example: openapi/v3/json
+    Error:
+      properties:
+        message:
+          type: string
+          description: Human readable error message.
+          example: Invalid definition file
+        errors:
+          type: object
+          description: Hash of invalid attributes with their error messages.
+          example:
+            raw_definition:
+            - The property '#/paths//docs/{:id}/validations/post' contains additional properties ["yolo"] outside of the schema when none are allowed
   responses:
     InvalidDefinition:
       summary: Definition is not valid.
@@ -184,20 +193,11 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
-  requestBodies:
-    Validate:
-      description: The version validation request object
-      content:
-        application/json:
-          schema:
-            allOf:
-            - $ref: '#/components/schemas/DocumentationRequest'
-            - $ref: '#/components/schemas/Preview'
   securitySchemes:
-    Authorization token:
+    Authorization_token:
       type: http
       scheme: token
-    Basic token:
+    Basic_token:
       type: http
       scheme: basic
       deprecated: true

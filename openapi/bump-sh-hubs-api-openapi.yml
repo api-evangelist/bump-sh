@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Bump.sh Api Branches Hubs API
+  title: Bump.sh Hubs API
   description: 'This is the official Bump.sh API documentation.  Obviously created
 
     with Bump.sh.
@@ -93,6 +93,16 @@ paths:
           summary: Hub not found
 components:
   schemas:
+    HubWithApis:
+      allOf:
+      - $ref: '#/components/schemas/Hub'
+      - type: object
+        properties:
+          apis:
+            type: array
+            description: The list of APIs belonging to this Hub
+            items:
+              $ref: '#/components/schemas/Api'
     Api:
       type: object
       properties:
@@ -209,21 +219,11 @@ components:
           type: string
           description: Human readable error message for status 400.
           example: You need to upgrade your subscription plan to perform this request.
-    HubWithApis:
-      allOf:
-      - $ref: '#/components/schemas/Hub'
-      - type: object
-        properties:
-          apis:
-            type: array
-            description: The list of APIs belonging to this Hub
-            items:
-              $ref: '#/components/schemas/Api'
   securitySchemes:
-    Authorization token:
+    Authorization_token:
       type: http
       scheme: token
-    Basic token:
+    Basic_token:
       type: http
       scheme: basic
       deprecated: true

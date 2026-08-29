@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Bump.sh Api Branches Diffs API
+  title: Bump.sh Diffs API
   description: 'This is the official Bump.sh API documentation.  Obviously created
 
     with Bump.sh.
@@ -116,6 +116,23 @@ paths:
           description: Diff not found
 components:
   schemas:
+    DiffForApi:
+      allOf:
+      - $ref: '#/components/schemas/Diff'
+      - type: object
+        properties:
+          markdown:
+            type: string
+            description: The comparaison diff summary in markdown format. Present only if `markdown` format has been requested.
+            example: "## Modified (1)\n\n* `POST /user`\n  * Path parameters added: `id`, `email`\n  * Query parameters added: `period`, `limit`\n"
+          html:
+            type: string
+            description: The comparaison diff summary in HTML format. Present only if `html` format has been requested.
+            example: "<ul class=\"changelog-event__diff expandable\" data-expander-target=\"content\">\n    <li class=\"changelog-event__diff-operation added\">\n         Added: <a href=\"http://localhost:3000/diff/c1e36203-5b04-4adc-b8c5-8ac626ce8592#operation-get-diffs-parameter\"><code class=\"code-inline root\">GET /diffs/{id}</code></a>\n    </li>\n</ul>\n"
+          text:
+            type: string
+            description: The comparaison diff summary in plain text format. Present only if `text` format has been requested.
+            example: "Updated: POST /versions\n  Response modified: 201\n    Body attribute added: doc_id\n"
     DiffRequest:
       type: object
       properties:
@@ -186,6 +203,48 @@ components:
           format: date-time
           description: Public change expiration date and time. After this date, this documentation change will be destroyed.
           example: 2022-02-22 22:20:22.020000+00:00
+    Reference:
+      type: object
+      properties:
+        location:
+          type: string
+          description: Location of the external reference as it's called from `definition`, without the relative path (the part after `#/`). Can be an URL of a file system path.
+          example: https://example.com/api/models/pet.yml
+        content:
+          type: string
+          description: Content of the external reference, as a string.
+    Diff:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique id of your diff
+          example: 2361df99-1234-4c80-a0cc-45c9fe565812
+        title:
+          type: string
+          description: The title of the last parsed definition
+          example: Bump.sh Api
+        public_url:
+          type: string
+          description: The public URL of your diff
+          example: https://bump.sh/doc/my-own-documentation/change/2361df99
+        breaking:
+          type: boolean
+          description: Identifies if the diff includes breaking changes
+          example: false
+        details:
+          type: array
+          description: Details of each change as a list of diff items. Present only if `json` format has been requested
+          items:
+            $ref: '#/components/schemas/DiffItem'
+        previous_version_url:
+          type: string
+          description: URL of previous version specification, in JSON format
+          example: https://developers.bump.sh/changes/750f15d8/previous.json
+        current_version_url:
+          type: string
+          description: URL of current version specification, in JSON format
+          example: https://developers.bump.sh/changes/750f15d8/current.json
     DiffItem:
       properties:
         id:
@@ -258,23 +317,6 @@ components:
           description: A list of children item changes
           items:
             $ref: '#/components/schemas/DiffItem'
-    DiffForApi:
-      allOf:
-      - $ref: '#/components/schemas/Diff'
-      - type: object
-        properties:
-          markdown:
-            type: string
-            description: The comparaison diff summary in markdown format. Present only if `markdown` format has been requested.
-            example: "## Modified (1)\n\n* `POST /user`\n  * Path parameters added: `id`, `email`\n  * Query parameters added: `period`, `limit`\n"
-          html:
-            type: string
-            description: The comparaison diff summary in HTML format. Present only if `html` format has been requested.
-            example: "<ul class=\"changelog-event__diff expandable\" data-expander-target=\"content\">\n    <li class=\"changelog-event__diff-operation added\">\n         Added: <a href=\"http://localhost:3000/diff/c1e36203-5b04-4adc-b8c5-8ac626ce8592#operation-get-diffs-parameter\"><code class=\"code-inline root\">GET /diffs/{id}</code></a>\n    </li>\n</ul>\n"
-          text:
-            type: string
-            description: The comparaison diff summary in plain text format. Present only if `text` format has been requested.
-            example: "Updated: POST /versions\n  Response modified: 201\n    Body attribute added: doc_id\n"
     Error:
       properties:
         message:
@@ -287,71 +329,14 @@ components:
           example:
             raw_definition:
             - The property '#/paths//docs/{:id}/validations/post' contains additional properties ["yolo"] outside of the schema when none are allowed
+  requestBodies:
     Diff:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique id of your diff
-          example: 2361df99-1234-4c80-a0cc-45c9fe565812
-        title:
-          type: string
-          description: The title of the last parsed definition
-          example: Bump.sh Api
-        public_url:
-          type: string
-          description: The public URL of your diff
-          example: https://bump.sh/doc/my-own-documentation/change/2361df99
-        breaking:
-          type: boolean
-          description: Identifies if the diff includes breaking changes
-          example: false
-        details:
-          type: array
-          description: Details of each change as a list of diff items. Present only if `json` format has been requested
-          items:
-            $ref: '#/components/schemas/DiffItem'
-        previous_version_url:
-          type: string
-          description: URL of previous version specification, in JSON format
-          example: https://developers.bump.sh/changes/750f15d8/previous.json
-        current_version_url:
-          type: string
-          description: URL of current version specification, in JSON format
-          example: https://developers.bump.sh/changes/750f15d8/current.json
-    Reference:
-      type: object
-      properties:
-        location:
-          type: string
-          description: Location of the external reference as it's called from `definition`, without the relative path (the part after `#/`). Can be an URL of a file system path.
-          example: https://example.com/api/models/pet.yml
-        content:
-          type: string
-          description: Content of the external reference, as a string.
-  responses:
-    InvalidDefinition:
-      summary: Definition is not valid.
+      description: The diff creation request object
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Error'
+            $ref: '#/components/schemas/DiffRequest'
   examples:
-    JSONDiff:
-      summary: JSON only response
-      value:
-        id: 2361df99-1234-4c80-a0cc-45c9fe565812
-        public_url: https://bump.sh/diff/2361df99-3467-4c80-a0cc-45c9fe565812
-        breaking: false
-        previous_version_url: https://bump.sh/diff/2361df99-3467-4c80-a0cc-45c9fe565812/previous.json
-        current_version_url: https://bump.sh/diff/2361df99-3467-4c80-a0cc-45c9fe565812/current.json
-        details:
-        - id: post-versions
-          name: POST /versions
-          status: added
-          type: endpoint
-          breaking: false
-          children: []
     HTMLDiff:
       summary: HTML only response
       value:
@@ -371,18 +356,33 @@ components:
         current_version_url: https://bump.sh/diff/2361df99-3467-4c80-a0cc-45c9fe565812/current.json
         text: "Updated: POST /versions\n  Response modified: 201\n    Body attribute added: doc_id\n"
         markdown: "## Modified (1)\n\n* `POST /user`\n  * Path parameters added: `id`, `email`\n  * Query parameters added: `period`, `limit`\n"
-  requestBodies:
-    Diff:
-      description: The diff creation request object
+    JSONDiff:
+      summary: JSON only response
+      value:
+        id: 2361df99-1234-4c80-a0cc-45c9fe565812
+        public_url: https://bump.sh/diff/2361df99-3467-4c80-a0cc-45c9fe565812
+        breaking: false
+        previous_version_url: https://bump.sh/diff/2361df99-3467-4c80-a0cc-45c9fe565812/previous.json
+        current_version_url: https://bump.sh/diff/2361df99-3467-4c80-a0cc-45c9fe565812/current.json
+        details:
+        - id: post-versions
+          name: POST /versions
+          status: added
+          type: endpoint
+          breaking: false
+          children: []
+  responses:
+    InvalidDefinition:
+      summary: Definition is not valid.
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/DiffRequest'
+            $ref: '#/components/schemas/Error'
   securitySchemes:
-    Authorization token:
+    Authorization_token:
       type: http
       scheme: token
-    Basic token:
+    Basic_token:
       type: http
       scheme: basic
       deprecated: true
