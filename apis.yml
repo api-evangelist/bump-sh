@@ -140,7 +140,7 @@ apis:
   humanURL: https://bump.sh
   baseURL: https://bump.sh/api/v1
   tags:
-  - Hub
+  - Hubs
   tags_raw:
   - Hubs
   properties:
@@ -182,7 +182,7 @@ apis:
   humanURL: https://bump.sh
   baseURL: https://bump.sh/api/v1
   tags:
-  - MCP Servers
+  - MCP servers
   tags_raw:
   - MCP servers
   properties:
