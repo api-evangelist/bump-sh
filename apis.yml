@@ -37,6 +37,9 @@ accessModel:
   generated: '2026-09-03'
   method: derived
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/bump-sh.png
+x-docs-platform: bump
+x-docs-platform-confidence: medium
+x-docs-platform-checked: 2026-09-21
 tags:
   - API Changelog
   - API Documentation
