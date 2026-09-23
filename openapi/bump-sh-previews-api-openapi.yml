@@ -1,27 +1,25 @@
 openapi: 3.2.0
 info:
   title: Bump.sh Previews API
-  description: 'This is the official Bump.sh API documentation.  Obviously created
+  description: 'This is the official Bump.sh API documentation. Obviously created
 
     with Bump.sh.
 
 
-    The Bump.sh API is a REST API. It enables you to [create, update](#operation-post-versions)
+    The Bump.sh API is a REST API. It enables you to create, update
 
-    or [preview](#operation-post-previews) your API(s) documentation,
+    or preview your API(s) documentation,
 
-    [create stand-alone documentation diffs](#operation-post-diffs) or
+    create stand-alone documentation diffs or
 
-    [validate a documentation definition](#operation-post-validations)
+    validate a documentation definition
 
     (currently in OpenAPI or AsyncAPI).
 
 
-    Our [webhook](#webhook-documentation-change) also lets you get
+    Our webhook also lets you get
 
-    notifications every time a change is introduced in your API.
-
-    '
+    notifications every time a change is introduced in your API.'
   version: '1.0'
 servers:
 - url: https://bump.sh/api/v1
@@ -37,9 +35,7 @@ paths:
       tags:
       - Previews
       summary: Create a Preview
-      description: 'Create a preview for a given documentation file. The preview will have a unique temporary URL, and will be active for 30 minutes.
-
-        '
+      description: Create a preview for a given documentation file. The preview will have a unique temporary URL, and will be active for 30 minutes.
       security: []
       requestBody:
         $ref: '#/components/requestBodies/Preview'
@@ -52,14 +48,14 @@ paths:
                 $ref: '#/components/schemas/Preview'
         '422':
           $ref: '#/components/responses/InvalidDefinition'
+      operationId: postPreviews
+      x-operation-id-source: derived
   /previews/{preview_id}:
     put:
       tags:
       - Previews
       summary: Update an Existing Preview
-      description: 'Update a preview with the given documentation file. The preview will stay active for 30 minutes after the last update.
-
-        '
+      description: Update a preview with the given documentation file. The preview will stay active for 30 minutes after the last update.
       security: []
       parameters:
       - in: path
@@ -79,18 +75,22 @@ paths:
                 $ref: '#/components/schemas/Preview'
         '422':
           $ref: '#/components/responses/InvalidDefinition'
+      operationId: putPreviewsByPreviewId
+      x-operation-id-source: derived
 components:
   schemas:
-    Reference:
-      type: object
+    Error:
       properties:
-        location:
+        message:
           type: string
-          description: Location of the external reference as it's called from `definition`, without the relative path (the part after `#/`). Can be an URL of a file system path.
-          example: https://example.com/api/models/pet.yml
-        content:
-          type: string
-          description: Content of the external reference, as a string.
+          description: Human readable error message.
+          example: Invalid definition file
+        errors:
+          type: object
+          description: Hash of invalid attributes with their error messages.
+          example:
+            raw_definition:
+            - The property '#/paths//docs/{:id}/validations/post' contains additional properties ["yolo"] outside of the schema when none are allowed
     Preview:
       type: object
       properties:
@@ -144,25 +144,16 @@ components:
           type: string
           description: The public URL where the preview will be visible.
           example: https://bump.sh/preview/3ef8f52f-9056-4113-840e-2f7183b90e06
-    Error:
+    Reference:
+      type: object
       properties:
-        message:
+        location:
           type: string
-          description: Human readable error message.
-          example: Invalid definition file
-        errors:
-          type: object
-          description: Hash of invalid attributes with their error messages.
-          example:
-            raw_definition:
-            - The property '#/paths//docs/{:id}/validations/post' contains additional properties ["yolo"] outside of the schema when none are allowed
-  requestBodies:
-    Preview:
-      description: The preview creation request object
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Preview'
+          description: Location of the external reference as it's called from `definition`, without the relative path (the part after `#/`). Can be an URL of a file system path.
+          example: https://example.com/api/models/pet.yml
+        content:
+          type: string
+          description: Content of the external reference, as a string.
   responses:
     InvalidDefinition:
       summary: Definition is not valid.
@@ -170,6 +161,13 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+  requestBodies:
+    Preview:
+      description: The preview creation request object
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Preview'
   securitySchemes:
     Authorization_token:
       type: http

@@ -1,27 +1,25 @@
 openapi: 3.2.0
 info:
   title: Bump.sh Ping API
-  description: 'This is the official Bump.sh API documentation.  Obviously created
+  description: 'This is the official Bump.sh API documentation. Obviously created
 
     with Bump.sh.
 
 
-    The Bump.sh API is a REST API. It enables you to [create, update](#operation-post-versions)
+    The Bump.sh API is a REST API. It enables you to create, update
 
-    or [preview](#operation-post-previews) your API(s) documentation,
+    or preview your API(s) documentation,
 
-    [create stand-alone documentation diffs](#operation-post-diffs) or
+    create stand-alone documentation diffs or
 
-    [validate a documentation definition](#operation-post-validations)
+    validate a documentation definition
 
     (currently in OpenAPI or AsyncAPI).
 
 
-    Our [webhook](#webhook-documentation-change) also lets you get
+    Our webhook also lets you get
 
-    notifications every time a change is introduced in your API.
-
-    '
+    notifications every time a change is introduced in your API.'
   version: '1.0'
 servers:
 - url: https://bump.sh/api/v1
@@ -48,6 +46,8 @@ paths:
                 $ref: '#/components/schemas/Pong'
         default:
           summary: API is currently down
+      operationId: getPing
+      x-operation-id-source: derived
 components:
   schemas:
     Pong:

@@ -19,11 +19,13 @@
   "warnings": [],
   "notes": [
     "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
-    "bump-sh-openapi.yaml: renamed 2 component key(s) illegal in 3.x (e.g. Authorization token)"
+    "bump-sh-openapi.yaml: renamed 2 component key(s) illegal in 3.x (e.g. Authorization token)",
+    "apis.yml register: already-registered"
   ],
   "skipped": [
     "bump-sh-branches-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "bump-sh-diffs-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "bump-sh-documentation-change-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "bump-sh-hubs-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "bump-sh-mcp-servers-api-openapi.yml: previously refined output, superseded by openapi/_original/",
     "bump-sh-ping-api-openapi.yml: previously refined output, superseded by openapi/_original/",

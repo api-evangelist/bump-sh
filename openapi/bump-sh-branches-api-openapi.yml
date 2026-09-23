@@ -1,27 +1,25 @@
 openapi: 3.2.0
 info:
   title: Bump.sh Branches API
-  description: 'This is the official Bump.sh API documentation.  Obviously created
+  description: 'This is the official Bump.sh API documentation. Obviously created
 
     with Bump.sh.
 
 
-    The Bump.sh API is a REST API. It enables you to [create, update](#operation-post-versions)
+    The Bump.sh API is a REST API. It enables you to create, update
 
-    or [preview](#operation-post-previews) your API(s) documentation,
+    or preview your API(s) documentation,
 
-    [create stand-alone documentation diffs](#operation-post-diffs) or
+    create stand-alone documentation diffs or
 
-    [validate a documentation definition](#operation-post-validations)
+    validate a documentation definition
 
     (currently in OpenAPI or AsyncAPI).
 
 
-    Our [webhook](#webhook-documentation-change) also lets you get
+    Our webhook also lets you get
 
-    notifications every time a change is introduced in your API.
-
-    '
+    notifications every time a change is introduced in your API.'
   version: '1.0'
 servers:
 - url: https://bump.sh/api/v1
@@ -31,9 +29,7 @@ security:
 - Basic token: []
 tags:
 - name: Branches
-  description: 'Manage branches of a given documentation
-
-    '
+  description: Manage branches of a given documentation
   externalDocs:
     url: https://docs.bump.sh/help/branching
 paths:
@@ -67,6 +63,8 @@ paths:
           summary: Branch not found
         '422':
           summary: Branch has an empty history
+      operationId: patchDocsByDocIdOrSlugBranchesBySlugSetDefault
+      x-operation-id-source: derived
   /docs/{doc_id_or_slug}/branches/{slug}:
     delete:
       tags:
@@ -95,14 +93,14 @@ paths:
           summary: The default branch can't be deleted
         '404':
           summary: Branch not found
+      operationId: deleteDocsByDocIdOrSlugBranchesBySlug
+      x-operation-id-source: derived
   /docs/{doc_id_or_slug}/branches:
     get:
       tags:
       - Branches
       summary: List Available Branches
-      description: 'List the available branches of a given documentation.
-
-        '
+      description: List the available branches of a given documentation.
       parameters:
       - in: path
         name: doc_id_or_slug
@@ -122,13 +120,13 @@ paths:
                   $ref: '#/components/schemas/Branch'
         '404':
           summary: Documentation does not exist
+      operationId: getDocsByDocIdOrSlugBranches
+      x-operation-id-source: derived
     post:
       tags:
       - Branches
       summary: Create a New Branch
-      description: 'Create an empty new branch.
-
-        '
+      description: Create an empty new branch.
       parameters:
       - in: path
         name: doc_id_or_slug
@@ -150,22 +148,17 @@ paths:
           summary: Branch already exists
         '422':
           summary: Invalid branch creation request
+      operationId: postDocsByDocIdOrSlugBranches
+      x-operation-id-source: derived
 components:
-  schemas:
+  requestBodies:
     Branch:
-      properties:
-        name:
-          type: string
-          description: Unique id of the branch.
-          example: 3ef8f52f-9056-4113-840e-2f7183b90e06
-        slug:
-          type: string
-          description: Slug of the branch used in public documentation URL
-          example: my-branch
-        is_default:
-          type: boolean
-          default: false
-          description: Whether the branch is the default one or not.
+      description: The branch creation request object
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BranchRequest'
+  schemas:
     BranchRequest:
       type: object
       required:
@@ -184,13 +177,20 @@ components:
             > your documentation public URL
 
             '
-  requestBodies:
     Branch:
-      description: The branch creation request object
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/BranchRequest'
+      properties:
+        name:
+          type: string
+          description: Unique id of the branch.
+          example: 3ef8f52f-9056-4113-840e-2f7183b90e06
+        slug:
+          type: string
+          description: Slug of the branch used in public documentation URL
+          example: my-branch
+        is_default:
+          type: boolean
+          default: false
+          description: Whether the branch is the default one or not.
   securitySchemes:
     Authorization_token:
       type: http

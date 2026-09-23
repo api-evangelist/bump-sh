@@ -1,27 +1,25 @@
 openapi: 3.2.0
 info:
   title: Bump.sh Versions API
-  description: 'This is the official Bump.sh API documentation.  Obviously created
+  description: 'This is the official Bump.sh API documentation. Obviously created
 
     with Bump.sh.
 
 
-    The Bump.sh API is a REST API. It enables you to [create, update](#operation-post-versions)
+    The Bump.sh API is a REST API. It enables you to create, update
 
-    or [preview](#operation-post-previews) your API(s) documentation,
+    or preview your API(s) documentation,
 
-    [create stand-alone documentation diffs](#operation-post-diffs) or
+    create stand-alone documentation diffs or
 
-    [validate a documentation definition](#operation-post-validations)
+    validate a documentation definition
 
     (currently in OpenAPI or AsyncAPI).
 
 
-    Our [webhook](#webhook-documentation-change) also lets you get
+    Our webhook also lets you get
 
-    notifications every time a change is introduced in your API.
-
-    '
+    notifications every time a change is introduced in your API.'
   version: '1.0'
 servers:
 - url: https://bump.sh/api/v1
@@ -37,9 +35,7 @@ paths:
       tags:
       - Versions
       summary: Create a New Version
-      description: 'Deploy a new version for a given documentation, which will become the current version.
-
-        '
+      description: Deploy a new version for a given documentation, which will become the current version.
       requestBody:
         $ref: '#/components/requestBodies/Version'
       responses:
@@ -59,14 +55,14 @@ paths:
                 $ref: '#/components/schemas/ErrorDisabledOwner'
         '422':
           $ref: '#/components/responses/InvalidDefinition'
+      operationId: postVersions
+      x-operation-id-source: derived
   /versions/{version_id}:
     get:
       tags:
       - Versions
       summary: Fetch a Full Documentation Version Including Diff Summary
-      description: 'Fetch a full documentation version including diff summary.
-
-        '
+      description: Fetch a full documentation version including diff summary.
       parameters:
       - in: path
         name: version_id
@@ -109,14 +105,9 @@ paths:
                 $ref: '#/components/schemas/ErrorDisabledOwner'
         '404':
           description: Version not found
+      operationId: getVersionsByVersionId
+      x-operation-id-source: derived
 components:
-  responses:
-    InvalidDefinition:
-      summary: Definition is not valid.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
     VersionRequest:
       type: object
@@ -169,42 +160,18 @@ components:
           type: boolean
           description: Identifies if the diff includes breaking changes
           example: false
-    ErrorDisabledOwner:
+    Error:
       properties:
         message:
           type: string
-          description: Human readable error message for status 400.
-          example: You need to upgrade your subscription plan to perform this request.
-    DocumentationRequest:
-      type: object
-      required:
-      - documentation
-      properties:
-        documentation:
-          type: string
-          description: UUID or slug of the documentation.
-          example: 0776d85d-e097-47c1-8c60-cb1190d11945
-        hub:
-          type: string
-          description: UUID or slug of the hub if the documentation is part of a hub.
-          example: my_hub_slug
-        documentation_name:
-          type: string
-          description: Name of the documentation to create. Used only if `auto_create_documentation` is set.
-        auto_create_documentation:
-          type: boolean
-          default: false
-          description: Create the documentation if it does not exist yet. Must be used with a `hub` and a `documentation`.
-    Reference:
-      type: object
-      properties:
-        location:
-          type: string
-          description: Location of the external reference as it's called from `definition`, without the relative path (the part after `#/`). Can be an URL of a file system path.
-          example: https://example.com/api/models/pet.yml
-        content:
-          type: string
-          description: Content of the external reference, as a string.
+          description: Human readable error message.
+          example: Invalid definition file
+        errors:
+          type: object
+          description: Hash of invalid attributes with their error messages.
+          example:
+            raw_definition:
+            - The property '#/paths//docs/{:id}/validations/post' contains additional properties ["yolo"] outside of the schema when none are allowed
     Version:
       properties:
         id:
@@ -291,18 +258,42 @@ components:
           description: A list of children item changes
           items:
             $ref: '#/components/schemas/DiffItem'
-    Error:
+    DocumentationRequest:
+      type: object
+      required:
+      - documentation
+      properties:
+        documentation:
+          type: string
+          description: UUID or slug of the documentation.
+          example: 0776d85d-e097-47c1-8c60-cb1190d11945
+        hub:
+          type: string
+          description: UUID or slug of the hub if the documentation is part of a hub.
+          example: my_hub_slug
+        documentation_name:
+          type: string
+          description: Name of the documentation to create. Used only if `auto_create_documentation` is set.
+        auto_create_documentation:
+          type: boolean
+          default: false
+          description: Create the documentation if it does not exist yet. Must be used with a `hub` and a `documentation`.
+    ErrorDisabledOwner:
       properties:
         message:
           type: string
-          description: Human readable error message.
-          example: Invalid definition file
-        errors:
-          type: object
-          description: Hash of invalid attributes with their error messages.
-          example:
-            raw_definition:
-            - The property '#/paths//docs/{:id}/validations/post' contains additional properties ["yolo"] outside of the schema when none are allowed
+          description: Human readable error message for status 400.
+          example: You need to upgrade your subscription plan to perform this request.
+    Reference:
+      type: object
+      properties:
+        location:
+          type: string
+          description: Location of the external reference as it's called from `definition`, without the relative path (the part after `#/`). Can be an URL of a file system path.
+          example: https://example.com/api/models/pet.yml
+        content:
+          type: string
+          description: Content of the external reference, as a string.
   examples:
     NewVersion:
       ExistingDocumentation:
@@ -366,6 +357,13 @@ components:
               $ref: '#/components/examples/NewVersion/CreatingStandaloneDocumentation'
             auto_create_in_hub:
               $ref: '#/components/examples/NewVersion/CreatingDocumentationInHub'
+  responses:
+    InvalidDefinition:
+      summary: Definition is not valid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   securitySchemes:
     Authorization_token:
       type: http

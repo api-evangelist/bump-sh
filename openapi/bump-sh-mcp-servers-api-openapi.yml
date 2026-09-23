@@ -1,27 +1,25 @@
 openapi: 3.2.0
 info:
   title: Bump.sh MCP servers API
-  description: 'This is the official Bump.sh API documentation.  Obviously created
+  description: 'This is the official Bump.sh API documentation. Obviously created
 
     with Bump.sh.
 
 
-    The Bump.sh API is a REST API. It enables you to [create, update](#operation-post-versions)
+    The Bump.sh API is a REST API. It enables you to create, update
 
-    or [preview](#operation-post-previews) your API(s) documentation,
+    or preview your API(s) documentation,
 
-    [create stand-alone documentation diffs](#operation-post-diffs) or
+    create stand-alone documentation diffs or
 
-    [validate a documentation definition](#operation-post-validations)
+    validate a documentation definition
 
     (currently in OpenAPI or AsyncAPI).
 
 
-    Our [webhook](#webhook-documentation-change) also lets you get
+    Our webhook also lets you get
 
-    notifications every time a change is introduced in your API.
-
-    '
+    notifications every time a change is introduced in your API.'
   version: '1.0'
 servers:
 - url: https://bump.sh/api/v1
@@ -30,17 +28,15 @@ security:
 - Authorization token: []
 - Basic token: []
 tags:
-- name: MCP servers
+- name: MCP Servers
 paths:
   /mcp_servers/{mcp_server_id_or_slug}/deploy:
     post:
       tags:
-      - MCP servers
+      - MCP Servers
       x-beta: true
       summary: Deploy a New MCP Server Document
-      description: 'Deploy a new workflow document for a given MCP server.
-
-        '
+      description: Deploy a new workflow document for a given MCP server.
       security:
       - Authorization token: []
       parameters:
@@ -80,17 +76,10 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
+      operationId: postMcpServersByMcpServerIdOrSlugDeploy
+      x-operation-id-source: derived
 components:
   schemas:
-    WorkflowDocument:
-      type: object
-      properties:
-        id:
-          type: string
-          description: UUID of the workflow deployment
-        mcp_server_id:
-          type: string
-          description: UUID of the MCP server
     Error:
       properties:
         message:
@@ -103,6 +92,15 @@ components:
           example:
             raw_definition:
             - The property '#/paths//docs/{:id}/validations/post' contains additional properties ["yolo"] outside of the schema when none are allowed
+    WorkflowDocument:
+      type: object
+      properties:
+        id:
+          type: string
+          description: UUID of the workflow deployment
+        mcp_server_id:
+          type: string
+          description: UUID of the MCP server
   securitySchemes:
     Authorization_token:
       type: http

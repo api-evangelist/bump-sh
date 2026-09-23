@@ -1,27 +1,25 @@
 openapi: 3.2.0
 info:
   title: Bump.sh Documentation change API
-  description: 'This is the official Bump.sh API documentation.  Obviously created
+  description: 'This is the official Bump.sh API documentation. Obviously created
 
     with Bump.sh.
 
 
-    The Bump.sh API is a REST API. It enables you to [create, update](#operation-post-versions)
+    The Bump.sh API is a REST API. It enables you to create, update
 
-    or [preview](#operation-post-previews) your API(s) documentation,
+    or preview your API(s) documentation,
 
-    [create stand-alone documentation diffs](#operation-post-diffs) or
+    create stand-alone documentation diffs or
 
-    [validate a documentation definition](#operation-post-validations)
+    validate a documentation definition
 
     (currently in OpenAPI or AsyncAPI).
 
 
-    Our [webhook](#webhook-documentation-change) also lets you get
+    Our webhook also lets you get
 
-    notifications every time a change is introduced in your API.
-
-    '
+    notifications every time a change is introduced in your API.'
   version: '1.0'
 servers:
 - url: https://bump.sh/api/v1
@@ -67,6 +65,78 @@ webhooks:
                   $ref: '#/components/schemas/Diff'
 components:
   schemas:
+    DiffItem:
+      properties:
+        id:
+          type: string
+          description: The identifier of the diff change
+          example: post-versions
+        name:
+          type: string
+          description: The human name of diff change
+          example: POST /versions
+        status:
+          type: string
+          enum:
+          - added
+          - modified
+          - removed
+          example: modified
+        type:
+          type: string
+          description: The object type of the diff change
+          example: endpoint
+        breaking:
+          type: boolean
+          description: Identifies if the item is a breaking change
+          example: true
+        previous:
+          type: object
+          description: Object attributes values, before change. Possible attributes depend on the object `type` ('endpoint', 'body', 'response'…)
+          example:
+            path: /versions
+            deprecated: false
+            verb: POST
+        current:
+          type: object
+          description: Object attributes values, after change. Possible attributes depend on the object `type` ('property', 'operation', 'message'…)
+          example:
+            path: /version
+            deprecated: false
+            verb: PUT
+        breaking_details:
+          type: object
+          description: 'Represents breaking change reasons, used to give more
+
+            context about this question: _why is this change
+
+            breaking?_
+
+            '
+          properties:
+            message_key:
+              type: string
+              description: This property is used to generate the human message about breaking change reason
+              example: removed_not_deprecated
+            breaking_attributes:
+              type: array
+              description: 'When diff status is modified, this property is an
+
+                array including every modified attribute responsible
+
+                of the breaking change.
+
+                '
+              items:
+                type: string
+              example:
+              - verb
+              - path
+        children:
+          type: array
+          description: A list of children item changes
+          items:
+            $ref: '#/components/schemas/DiffItem'
     Diff:
       type: object
       properties:
@@ -165,78 +235,6 @@ components:
           type: date
           description: Last udpate date of this API
           example: '2022-04-07'
-    DiffItem:
-      properties:
-        id:
-          type: string
-          description: The identifier of the diff change
-          example: post-versions
-        name:
-          type: string
-          description: The human name of diff change
-          example: POST /versions
-        status:
-          type: string
-          enum:
-          - added
-          - modified
-          - removed
-          example: modified
-        type:
-          type: string
-          description: The object type of the diff change
-          example: endpoint
-        breaking:
-          type: boolean
-          description: Identifies if the item is a breaking change
-          example: true
-        previous:
-          type: object
-          description: Object attributes values, before change. Possible attributes depend on the object `type` ('endpoint', 'body', 'response'…)
-          example:
-            path: /versions
-            deprecated: false
-            verb: POST
-        current:
-          type: object
-          description: Object attributes values, after change. Possible attributes depend on the object `type` ('property', 'operation', 'message'…)
-          example:
-            path: /version
-            deprecated: false
-            verb: PUT
-        breaking_details:
-          type: object
-          description: 'Represents breaking change reasons, used to give more
-
-            context about this question: _why is this change
-
-            breaking?_
-
-            '
-          properties:
-            message_key:
-              type: string
-              description: This property is used to generate the human message about breaking change reason
-              example: removed_not_deprecated
-            breaking_attributes:
-              type: array
-              description: 'When diff status is modified, this property is an
-
-                array including every modified attribute responsible
-
-                of the breaking change.
-
-                '
-              items:
-                type: string
-              example:
-              - verb
-              - path
-        children:
-          type: array
-          description: A list of children item changes
-          items:
-            $ref: '#/components/schemas/DiffItem'
   securitySchemes:
     Authorization_token:
       type: http
