@@ -89,12 +89,16 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    ErrorDisabledOwner:
-      properties:
-        message:
-          type: string
-          description: Human readable error message for status 400.
-          example: You need to upgrade your subscription plan to perform this request.
+    HubWithApis:
+      allOf:
+      - $ref: '#/components/schemas/Hub'
+      - type: object
+        properties:
+          apis:
+            type: array
+            description: The list of APIs belonging to this Hub
+            items:
+              $ref: '#/components/schemas/Api'
     Hub:
       type: object
       properties:
@@ -139,6 +143,12 @@ components:
 
             '
           example: '0.16'
+    ErrorDisabledOwner:
+      properties:
+        message:
+          type: string
+          description: Human readable error message for status 400.
+          example: You need to upgrade your subscription plan to perform this request.
     Api:
       type: object
       properties:
@@ -205,16 +215,6 @@ components:
           type: date
           description: Last udpate date of this API
           example: '2022-04-07'
-    HubWithApis:
-      allOf:
-      - $ref: '#/components/schemas/Hub'
-      - type: object
-        properties:
-          apis:
-            type: array
-            description: The list of APIs belonging to this Hub
-            items:
-              $ref: '#/components/schemas/Api'
   securitySchemes:
     Authorization_token:
       type: http

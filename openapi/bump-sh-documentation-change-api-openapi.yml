@@ -137,38 +137,6 @@ components:
           description: A list of children item changes
           items:
             $ref: '#/components/schemas/DiffItem'
-    Diff:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique id of your diff
-          example: 2361df99-1234-4c80-a0cc-45c9fe565812
-        title:
-          type: string
-          description: The title of the last parsed definition
-          example: Bump.sh Api
-        public_url:
-          type: string
-          description: The public URL of your diff
-          example: https://bump.sh/doc/my-own-documentation/change/2361df99
-        breaking:
-          type: boolean
-          description: Identifies if the diff includes breaking changes
-          example: false
-        details:
-          type: array
-          description: Details of each change as a list of diff items. Present only if `json` format has been requested
-          items:
-            $ref: '#/components/schemas/DiffItem'
-        previous_version_url:
-          type: string
-          description: URL of previous version specification, in JSON format
-          example: https://developers.bump.sh/changes/750f15d8/previous.json
-        current_version_url:
-          type: string
-          description: URL of current version specification, in JSON format
-          example: https://developers.bump.sh/changes/750f15d8/current.json
     Api:
       type: object
       properties:
@@ -235,6 +203,38 @@ components:
           type: date
           description: Last udpate date of this API
           example: '2022-04-07'
+    Diff:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique id of your diff
+          example: 2361df99-1234-4c80-a0cc-45c9fe565812
+        title:
+          type: string
+          description: The title of the last parsed definition
+          example: Bump.sh Api
+        public_url:
+          type: string
+          description: The public URL of your diff
+          example: https://bump.sh/doc/my-own-documentation/change/2361df99
+        breaking:
+          type: boolean
+          description: Identifies if the diff includes breaking changes
+          example: false
+        details:
+          type: array
+          description: Details of each change as a list of diff items. Present only if `json` format has been requested
+          items:
+            $ref: '#/components/schemas/DiffItem'
+        previous_version_url:
+          type: string
+          description: URL of previous version specification, in JSON format
+          example: https://developers.bump.sh/changes/750f15d8/previous.json
+        current_version_url:
+          type: string
+          description: URL of current version specification, in JSON format
+          example: https://developers.bump.sh/changes/750f15d8/current.json
   securitySchemes:
     Authorization_token:
       type: http

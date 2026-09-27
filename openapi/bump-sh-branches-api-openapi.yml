@@ -151,13 +151,6 @@ paths:
       operationId: postDocsByDocIdOrSlugBranches
       x-operation-id-source: derived
 components:
-  requestBodies:
-    Branch:
-      description: The branch creation request object
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/BranchRequest'
   schemas:
     BranchRequest:
       type: object
@@ -191,6 +184,13 @@ components:
           type: boolean
           default: false
           description: Whether the branch is the default one or not.
+  requestBodies:
+    Branch:
+      description: The branch creation request object
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/BranchRequest'
   securitySchemes:
     Authorization_token:
       type: http
