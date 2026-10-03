@@ -78,43 +78,7 @@ paths:
       operationId: putPreviewsByPreviewId
       x-operation-id-source: derived
 components:
-  requestBodies:
-    Preview:
-      description: The preview creation request object
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Preview'
-  responses:
-    InvalidDefinition:
-      summary: Definition is not valid.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   schemas:
-    Reference:
-      type: object
-      properties:
-        location:
-          type: string
-          description: Location of the external reference as it's called from `definition`, without the relative path (the part after `#/`). Can be an URL of a file system path.
-          example: https://example.com/api/models/pet.yml
-        content:
-          type: string
-          description: Content of the external reference, as a string.
-    Error:
-      properties:
-        message:
-          type: string
-          description: Human readable error message.
-          example: Invalid definition file
-        errors:
-          type: object
-          description: Hash of invalid attributes with their error messages.
-          example:
-            raw_definition:
-            - The property '#/paths//docs/{:id}/validations/post' contains additional properties ["yolo"] outside of the schema when none are allowed
     Preview:
       type: object
       properties:
@@ -168,6 +132,42 @@ components:
           type: string
           description: The public URL where the preview will be visible.
           example: https://bump.sh/preview/3ef8f52f-9056-4113-840e-2f7183b90e06
+    Error:
+      properties:
+        message:
+          type: string
+          description: Human readable error message.
+          example: Invalid definition file
+        errors:
+          type: object
+          description: Hash of invalid attributes with their error messages.
+          example:
+            raw_definition:
+            - The property '#/paths//docs/{:id}/validations/post' contains additional properties ["yolo"] outside of the schema when none are allowed
+    Reference:
+      type: object
+      properties:
+        location:
+          type: string
+          description: Location of the external reference as it's called from `definition`, without the relative path (the part after `#/`). Can be an URL of a file system path.
+          example: https://example.com/api/models/pet.yml
+        content:
+          type: string
+          description: Content of the external reference, as a string.
+  responses:
+    InvalidDefinition:
+      summary: Definition is not valid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  requestBodies:
+    Preview:
+      description: The preview creation request object
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Preview'
   securitySchemes:
     Authorization_token:
       type: http

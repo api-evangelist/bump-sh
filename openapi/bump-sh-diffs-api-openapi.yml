@@ -113,14 +113,17 @@ paths:
       operationId: getDiffsById
       x-operation-id-source: derived
 components:
-  requestBodies:
-    Diff:
-      description: The diff creation request object
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/DiffRequest'
   examples:
+    DefaultDiff:
+      summary: Default response
+      value:
+        id: 2361df99-1234-4c80-a0cc-45c9fe565812
+        public_url: https://bump.sh/diff/2361df99-3467-4c80-a0cc-45c9fe565812
+        breaking: false
+        previous_version_url: https://bump.sh/diff/2361df99-3467-4c80-a0cc-45c9fe565812/previous.json
+        current_version_url: https://bump.sh/diff/2361df99-3467-4c80-a0cc-45c9fe565812/current.json
+        text: "Updated: POST /versions\n  Response modified: 201\n    Body attribute added: doc_id\n"
+        markdown: "## Modified (1)\n\n* `POST /user`\n  * Path parameters added: `id`, `email`\n  * Query parameters added: `period`, `limit`\n"
     HTMLDiff:
       summary: HTML only response
       value:
@@ -145,16 +148,13 @@ components:
           type: endpoint
           breaking: false
           children: []
-    DefaultDiff:
-      summary: Default response
-      value:
-        id: 2361df99-1234-4c80-a0cc-45c9fe565812
-        public_url: https://bump.sh/diff/2361df99-3467-4c80-a0cc-45c9fe565812
-        breaking: false
-        previous_version_url: https://bump.sh/diff/2361df99-3467-4c80-a0cc-45c9fe565812/previous.json
-        current_version_url: https://bump.sh/diff/2361df99-3467-4c80-a0cc-45c9fe565812/current.json
-        text: "Updated: POST /versions\n  Response modified: 201\n    Body attribute added: doc_id\n"
-        markdown: "## Modified (1)\n\n* `POST /user`\n  * Path parameters added: `id`, `email`\n  * Query parameters added: `period`, `limit`\n"
+  responses:
+    InvalidDefinition:
+      summary: Definition is not valid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
     DiffRequest:
       type: object
@@ -369,13 +369,13 @@ components:
         content:
           type: string
           description: Content of the external reference, as a string.
-  responses:
-    InvalidDefinition:
-      summary: Definition is not valid.
+  requestBodies:
+    Diff:
+      description: The diff creation request object
       content:
         application/json:
           schema:
-            $ref: '#/components/schemas/Error'
+            $ref: '#/components/schemas/DiffRequest'
   securitySchemes:
     Authorization_token:
       type: http

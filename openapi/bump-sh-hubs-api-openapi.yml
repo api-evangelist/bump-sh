@@ -89,60 +89,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    HubWithApis:
-      allOf:
-      - $ref: '#/components/schemas/Hub'
-      - type: object
-        properties:
-          apis:
-            type: array
-            description: The list of APIs belonging to this Hub
-            items:
-              $ref: '#/components/schemas/Api'
-    Hub:
-      type: object
-      properties:
-        id:
-          type: string
-          description: UUID of this Hub
-          example: 3ef8f52f-9056-4113-840e-2f7183b90e06
-        name:
-          type: string
-          description: The name of the Hub
-          example: My train company hub
-        description:
-          type: string
-          description: The description of the Hub
-          example: '# Welcome to my train company
-
-
-            This hub contains all APIs belonging to [my train company](https://demo.bump.sh/).
-
-            Feel free to visit the documentation or changes of our APIs lifecycle.
-
-            '
-        url:
-          type: string
-          description: The public URL of the hub
-          example: https://demo.bump.sh/
-        created:
-          type: string
-          format: date
-          description: Creation date of this Hub
-          example: '2022-01-07'
-        modified:
-          type: string
-          format: date
-          description: Last udpate date of this Hub
-          example: '2022-04-07'
-        specificationVersion:
-          type: string
-          description: 'version of the [APIs.json
-
-            specification](http://apisjson.org/) specification in use.
-
-            '
-          example: '0.16'
     ErrorDisabledOwner:
       properties:
         message:
@@ -215,6 +161,60 @@ components:
           type: date
           description: Last udpate date of this API
           example: '2022-04-07'
+    HubWithApis:
+      allOf:
+      - $ref: '#/components/schemas/Hub'
+      - type: object
+        properties:
+          apis:
+            type: array
+            description: The list of APIs belonging to this Hub
+            items:
+              $ref: '#/components/schemas/Api'
+    Hub:
+      type: object
+      properties:
+        id:
+          type: string
+          description: UUID of this Hub
+          example: 3ef8f52f-9056-4113-840e-2f7183b90e06
+        name:
+          type: string
+          description: The name of the Hub
+          example: My train company hub
+        description:
+          type: string
+          description: The description of the Hub
+          example: '# Welcome to my train company
+
+
+            This hub contains all APIs belonging to [my train company](https://demo.bump.sh/).
+
+            Feel free to visit the documentation or changes of our APIs lifecycle.
+
+            '
+        url:
+          type: string
+          description: The public URL of the hub
+          example: https://demo.bump.sh/
+        created:
+          type: string
+          format: date
+          description: Creation date of this Hub
+          example: '2022-01-07'
+        modified:
+          type: string
+          format: date
+          description: Last udpate date of this Hub
+          example: '2022-04-07'
+        specificationVersion:
+          type: string
+          description: 'version of the [APIs.json
+
+            specification](http://apisjson.org/) specification in use.
+
+            '
+          example: '0.16'
   securitySchemes:
     Authorization_token:
       type: http

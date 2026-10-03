@@ -65,6 +65,104 @@ webhooks:
                   $ref: '#/components/schemas/Diff'
 components:
   schemas:
+    Diff:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique id of your diff
+          example: 2361df99-1234-4c80-a0cc-45c9fe565812
+        title:
+          type: string
+          description: The title of the last parsed definition
+          example: Bump.sh Api
+        public_url:
+          type: string
+          description: The public URL of your diff
+          example: https://bump.sh/doc/my-own-documentation/change/2361df99
+        breaking:
+          type: boolean
+          description: Identifies if the diff includes breaking changes
+          example: false
+        details:
+          type: array
+          description: Details of each change as a list of diff items. Present only if `json` format has been requested
+          items:
+            $ref: '#/components/schemas/DiffItem'
+        previous_version_url:
+          type: string
+          description: URL of previous version specification, in JSON format
+          example: https://developers.bump.sh/changes/750f15d8/previous.json
+        current_version_url:
+          type: string
+          description: URL of current version specification, in JSON format
+          example: https://developers.bump.sh/changes/750f15d8/current.json
+    Api:
+      type: object
+      properties:
+        id:
+          type: string
+          description: UUID of this API
+          example: 3ef8f52f-9056-4113-840e-2f7183b90e06
+        name:
+          type: string
+          description: Name of this API
+          example: Bump.sh
+        description:
+          type: string
+          description: Description of this API from the latest definition
+          example: This is the official Bump.sh API documentation. Obviously created with Bump.sh
+        slug:
+          type: string
+          description: Slug of this API
+          example: bump
+        url:
+          type: string
+          deprecated: true
+        humanUrl:
+          type: string
+          description: public documentation URL
+          example: https://developers.bump.sh/
+        tags:
+          type: array
+          items:
+            type: string
+          description: a list of descriptive strings which identify the API within a Hub
+        version:
+          type: string
+          description: Version of this API taken from the latest definition
+          example: '1.0'
+        properties:
+          type: array
+          description: Extra properties attached to this API
+          items:
+            type: object
+            properties:
+              type:
+                type: string
+                description: Type of the extra property
+                enum:
+                - OpenAPI
+                - AsyncAPI
+                - x-access-level
+                - x-definition-type
+              data:
+                type: string
+                description: Content of the extra property (`data` or `url`)
+              url:
+                type: string
+                description: Content of the extra property (`data` or `url`)
+            example:
+              type: OpenAPI
+              url: https://developers.bump.sh/source.json
+        created:
+          type: date
+          description: Creation date of this API
+          example: '2022-01-07'
+        modified:
+          type: date
+          description: Last udpate date of this API
+          example: '2022-04-07'
     DiffItem:
       properties:
         id:
@@ -137,104 +235,6 @@ components:
           description: A list of children item changes
           items:
             $ref: '#/components/schemas/DiffItem'
-    Api:
-      type: object
-      properties:
-        id:
-          type: string
-          description: UUID of this API
-          example: 3ef8f52f-9056-4113-840e-2f7183b90e06
-        name:
-          type: string
-          description: Name of this API
-          example: Bump.sh
-        description:
-          type: string
-          description: Description of this API from the latest definition
-          example: This is the official Bump.sh API documentation. Obviously created with Bump.sh
-        slug:
-          type: string
-          description: Slug of this API
-          example: bump
-        url:
-          type: string
-          deprecated: true
-        humanUrl:
-          type: string
-          description: public documentation URL
-          example: https://developers.bump.sh/
-        tags:
-          type: array
-          items:
-            type: string
-          description: a list of descriptive strings which identify the API within a Hub
-        version:
-          type: string
-          description: Version of this API taken from the latest definition
-          example: '1.0'
-        properties:
-          type: array
-          description: Extra properties attached to this API
-          items:
-            type: object
-            properties:
-              type:
-                type: string
-                description: Type of the extra property
-                enum:
-                - OpenAPI
-                - AsyncAPI
-                - x-access-level
-                - x-definition-type
-              data:
-                type: string
-                description: Content of the extra property (`data` or `url`)
-              url:
-                type: string
-                description: Content of the extra property (`data` or `url`)
-            example:
-              type: OpenAPI
-              url: https://developers.bump.sh/source.json
-        created:
-          type: date
-          description: Creation date of this API
-          example: '2022-01-07'
-        modified:
-          type: date
-          description: Last udpate date of this API
-          example: '2022-04-07'
-    Diff:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique id of your diff
-          example: 2361df99-1234-4c80-a0cc-45c9fe565812
-        title:
-          type: string
-          description: The title of the last parsed definition
-          example: Bump.sh Api
-        public_url:
-          type: string
-          description: The public URL of your diff
-          example: https://bump.sh/doc/my-own-documentation/change/2361df99
-        breaking:
-          type: boolean
-          description: Identifies if the diff includes breaking changes
-          example: false
-        details:
-          type: array
-          description: Details of each change as a list of diff items. Present only if `json` format has been requested
-          items:
-            $ref: '#/components/schemas/DiffItem'
-        previous_version_url:
-          type: string
-          description: URL of previous version specification, in JSON format
-          example: https://developers.bump.sh/changes/750f15d8/previous.json
-        current_version_url:
-          type: string
-          description: URL of current version specification, in JSON format
-          example: https://developers.bump.sh/changes/750f15d8/current.json
   securitySchemes:
     Authorization_token:
       type: http

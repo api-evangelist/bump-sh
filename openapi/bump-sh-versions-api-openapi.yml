@@ -108,39 +108,98 @@ paths:
       operationId: getVersionsByVersionId
       x-operation-id-source: derived
 components:
-  examples:
-    NewVersion:
-      ExistingDocumentation:
-        summary: Create new version on an existing documentation
-        value:
-          definition: '{"openapi": "3.1.0", "info": { "title": … }}'
-          references:
-          - location: https://example.com/api/models/pet.yml
-            content: string
-          branch_name: dev
-          documentation: my_api_slug
-      CreatingStandaloneDocumentation:
-        summary: Create a new standalone documentation with the given version
-        value:
-          definition: '{"openapi": "3.1.0", "info": { "title": … }}'
-          references:
-          - location: https://example.com/api/models/pet.yml
-            content: string
-          documentation: my_new_api_slug
-          documentation_name: My new API documentation
-          auto_create_documentation: true
-      CreatingDocumentationInHub:
-        summary: Create a new documentation inside a hub
-        value:
-          definition: '{"openapi": "3.1.0", "info": { "title": … }}'
-          references:
-          - location: https://example.com/api/models/pet.yml
-            content: string
-          documentation: my_new_api_slug
-          documentation_name: My new API documentation
-          auto_create_documentation: true
-          hub: my_hub_slug
   schemas:
+    ErrorDisabledOwner:
+      properties:
+        message:
+          type: string
+          description: Human readable error message for status 400.
+          example: You need to upgrade your subscription plan to perform this request.
+    Version:
+      properties:
+        id:
+          type: string
+          description: Unique id of your version.
+          example: 2361df99-3467-4c80-a0cc-45c9fe565812
+        doc_id:
+          type: string
+          description: Unique id of your documentation.
+          example: 3ef8f52f-9056-4113-840e-2f7183b90e06
+        doc_public_url:
+          type: string
+          description: The public URL of your documentation.
+          example: https://bump.sh/doc/my-own-documentation
+    VersionRequest:
+      type: object
+      required:
+      - definition
+      properties:
+        definition:
+          type: string
+          description: 'Serialized definition of the version. This should be an OpenAPI 2.x, 3.x or AsyncAPI 2.x file serialized as a string, in YAML or JSON.
+
+            '
+          example: '{"openapi": "3.0", "info": { "title": … }}
+
+            '
+        references:
+          type: array
+          description: Import external references used by `definition`. It's usually resources not accessible by Bump.sh servers, like local files or internal URLs.
+          items:
+            $ref: '#/components/schemas/Reference'
+        branch_name:
+          type: string
+          description: 'Select a branch for this new version (branch will be
+
+            created if it doesn''t exist).
+
+
+            *Defaults to the main branch*.
+
+            '
+    DocumentationRequest:
+      type: object
+      required:
+      - documentation
+      properties:
+        documentation:
+          type: string
+          description: UUID or slug of the documentation.
+          example: 0776d85d-e097-47c1-8c60-cb1190d11945
+        hub:
+          type: string
+          description: UUID or slug of the hub if the documentation is part of a hub.
+          example: my_hub_slug
+        documentation_name:
+          type: string
+          description: Name of the documentation to create. Used only if `auto_create_documentation` is set.
+        auto_create_documentation:
+          type: boolean
+          default: false
+          description: Create the documentation if it does not exist yet. Must be used with a `hub` and a `documentation`.
+    WithDiff:
+      properties:
+        diff_details:
+          type: array
+          description: Details of each change as a list of diff items
+          items:
+            $ref: '#/components/schemas/DiffItem'
+        diff_markdown:
+          type: string
+          description: The comparaison diff summary in markdown format
+          example: "## Modified (1)\n\n* `POST /user`\n  * Path parameters added: `id`, `email`\n  * Query parameters added: `period`, `limit`\n"
+        diff_summary:
+          type: string
+          description: The comparaison diff summary
+          example: "Updated: POST /versions\n  Response modified: 201\n    Body attribute added: doc_id\n"
+        diff_public_url:
+          type: string
+          description: The public URL of your diff
+          example: https://bump.sh/doc/my-own-documentation/change/2361df99-3467-4c80-a0cc-45c9fe565812
+        diff_breaking:
+          type: boolean
+          description: Identifies if the diff includes breaking changes
+          example: false
     Error:
       properties:
         message:
@@ -225,91 +284,6 @@ components:
           description: A list of children item changes
           items:
             $ref: '#/components/schemas/DiffItem'
-    WithDiff:
-      properties:
-        diff_details:
-          type: array
-          description: Details of each change as a list of diff items
-          items:
-            $ref: '#/components/schemas/DiffItem'
-        diff_markdown:
-          type: string
-          description: The comparaison diff summary in markdown format
-          example: "## Modified (1)\n\n* `POST /user`\n  * Path parameters added: `id`, `email`\n  * Query parameters added: `period`, `limit`\n"
-        diff_summary:
-          type: string
-          description: The comparaison diff summary
-          example: "Updated: POST /versions\n  Response modified: 201\n    Body attribute added: doc_id\n"
-        diff_public_url:
-          type: string
-          description: The public URL of your diff
-          example: https://bump.sh/doc/my-own-documentation/change/2361df99-3467-4c80-a0cc-45c9fe565812
-        diff_breaking:
-          type: boolean
-          description: Identifies if the diff includes breaking changes
-          example: false
-    DocumentationRequest:
-      type: object
-      required:
-      - documentation
-      properties:
-        documentation:
-          type: string
-          description: UUID or slug of the documentation.
-          example: 0776d85d-e097-47c1-8c60-cb1190d11945
-        hub:
-          type: string
-          description: UUID or slug of the hub if the documentation is part of a hub.
-          example: my_hub_slug
-        documentation_name:
-          type: string
-          description: Name of the documentation to create. Used only if `auto_create_documentation` is set.
-        auto_create_documentation:
-          type: boolean
-          default: false
-          description: Create the documentation if it does not exist yet. Must be used with a `hub` and a `documentation`.
-    VersionRequest:
-      type: object
-      required:
-      - definition
-      properties:
-        definition:
-          type: string
-          description: 'Serialized definition of the version. This should be an OpenAPI 2.x, 3.x or AsyncAPI 2.x file serialized as a string, in YAML or JSON.
-
-            '
-          example: '{"openapi": "3.0", "info": { "title": … }}
-
-            '
-        references:
-          type: array
-          description: Import external references used by `definition`. It's usually resources not accessible by Bump.sh servers, like local files or internal URLs.
-          items:
-            $ref: '#/components/schemas/Reference'
-        branch_name:
-          type: string
-          description: 'Select a branch for this new version (branch will be
-
-            created if it doesn''t exist).
-
-
-            *Defaults to the main branch*.
-
-            '
-    Version:
-      properties:
-        id:
-          type: string
-          description: Unique id of your version.
-          example: 2361df99-3467-4c80-a0cc-45c9fe565812
-        doc_id:
-          type: string
-          description: Unique id of your documentation.
-          example: 3ef8f52f-9056-4113-840e-2f7183b90e06
-        doc_public_url:
-          type: string
-          description: The public URL of your documentation.
-          example: https://bump.sh/doc/my-own-documentation
     Reference:
       type: object
       properties:
@@ -320,12 +294,38 @@ components:
         content:
           type: string
           description: Content of the external reference, as a string.
-    ErrorDisabledOwner:
-      properties:
-        message:
-          type: string
-          description: Human readable error message for status 400.
-          example: You need to upgrade your subscription plan to perform this request.
+  examples:
+    NewVersion:
+      ExistingDocumentation:
+        summary: Create new version on an existing documentation
+        value:
+          definition: '{"openapi": "3.1.0", "info": { "title": … }}'
+          references:
+          - location: https://example.com/api/models/pet.yml
+            content: string
+          branch_name: dev
+          documentation: my_api_slug
+      CreatingStandaloneDocumentation:
+        summary: Create a new standalone documentation with the given version
+        value:
+          definition: '{"openapi": "3.1.0", "info": { "title": … }}'
+          references:
+          - location: https://example.com/api/models/pet.yml
+            content: string
+          documentation: my_new_api_slug
+          documentation_name: My new API documentation
+          auto_create_documentation: true
+      CreatingDocumentationInHub:
+        summary: Create a new documentation inside a hub
+        value:
+          definition: '{"openapi": "3.1.0", "info": { "title": … }}'
+          references:
+          - location: https://example.com/api/models/pet.yml
+            content: string
+          documentation: my_new_api_slug
+          documentation_name: My new API documentation
+          auto_create_documentation: true
+          hub: my_hub_slug
   responses:
     InvalidDefinition:
       summary: Definition is not valid.

@@ -67,48 +67,6 @@ components:
           type: string
           description: Human readable error message for status 400.
           example: You need to upgrade your subscription plan to perform this request.
-    DocumentationRequest:
-      type: object
-      required:
-      - documentation
-      properties:
-        documentation:
-          type: string
-          description: UUID or slug of the documentation.
-          example: 0776d85d-e097-47c1-8c60-cb1190d11945
-        hub:
-          type: string
-          description: UUID or slug of the hub if the documentation is part of a hub.
-          example: my_hub_slug
-        documentation_name:
-          type: string
-          description: Name of the documentation to create. Used only if `auto_create_documentation` is set.
-        auto_create_documentation:
-          type: boolean
-          default: false
-          description: Create the documentation if it does not exist yet. Must be used with a `hub` and a `documentation`.
-    Reference:
-      type: object
-      properties:
-        location:
-          type: string
-          description: Location of the external reference as it's called from `definition`, without the relative path (the part after `#/`). Can be an URL of a file system path.
-          example: https://example.com/api/models/pet.yml
-        content:
-          type: string
-          description: Content of the external reference, as a string.
-    Error:
-      properties:
-        message:
-          type: string
-          description: Human readable error message.
-          example: Invalid definition file
-        errors:
-          type: object
-          description: Hash of invalid attributes with their error messages.
-          example:
-            raw_definition:
-            - The property '#/paths//docs/{:id}/validations/post' contains additional properties ["yolo"] outside of the schema when none are allowed
     Preview:
       type: object
       properties:
@@ -162,6 +120,26 @@ components:
           type: string
           description: The public URL where the preview will be visible.
           example: https://bump.sh/preview/3ef8f52f-9056-4113-840e-2f7183b90e06
+    DocumentationRequest:
+      type: object
+      required:
+      - documentation
+      properties:
+        documentation:
+          type: string
+          description: UUID or slug of the documentation.
+          example: 0776d85d-e097-47c1-8c60-cb1190d11945
+        hub:
+          type: string
+          description: UUID or slug of the hub if the documentation is part of a hub.
+          example: my_hub_slug
+        documentation_name:
+          type: string
+          description: Name of the documentation to create. Used only if `auto_create_documentation` is set.
+        auto_create_documentation:
+          type: boolean
+          default: false
+          description: Create the documentation if it does not exist yet. Must be used with a `hub` and a `documentation`.
     Validation:
       properties:
         specification:
@@ -175,6 +153,35 @@ components:
           - asyncapi/v2/yaml
           - asyncapi/v2/json
           example: openapi/v3/json
+    Error:
+      properties:
+        message:
+          type: string
+          description: Human readable error message.
+          example: Invalid definition file
+        errors:
+          type: object
+          description: Hash of invalid attributes with their error messages.
+          example:
+            raw_definition:
+            - The property '#/paths//docs/{:id}/validations/post' contains additional properties ["yolo"] outside of the schema when none are allowed
+    Reference:
+      type: object
+      properties:
+        location:
+          type: string
+          description: Location of the external reference as it's called from `definition`, without the relative path (the part after `#/`). Can be an URL of a file system path.
+          example: https://example.com/api/models/pet.yml
+        content:
+          type: string
+          description: Content of the external reference, as a string.
+  responses:
+    InvalidDefinition:
+      summary: Definition is not valid.
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   requestBodies:
     Validate:
       description: The version validation request object
@@ -184,13 +191,6 @@ components:
             allOf:
             - $ref: '#/components/schemas/DocumentationRequest'
             - $ref: '#/components/schemas/Preview'
-  responses:
-    InvalidDefinition:
-      summary: Definition is not valid.
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   securitySchemes:
     Authorization_token:
       type: http

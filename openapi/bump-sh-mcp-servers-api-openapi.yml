@@ -80,6 +80,15 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    WorkflowDocument:
+      type: object
+      properties:
+        id:
+          type: string
+          description: UUID of the workflow deployment
+        mcp_server_id:
+          type: string
+          description: UUID of the MCP server
     Error:
       properties:
         message:
@@ -92,15 +101,6 @@ components:
           example:
             raw_definition:
             - The property '#/paths//docs/{:id}/validations/post' contains additional properties ["yolo"] outside of the schema when none are allowed
-    WorkflowDocument:
-      type: object
-      properties:
-        id:
-          type: string
-          description: UUID of the workflow deployment
-        mcp_server_id:
-          type: string
-          description: UUID of the MCP server
   securitySchemes:
     Authorization_token:
       type: http
