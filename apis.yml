@@ -457,3 +457,10 @@ common:
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
+x-correction-request:
+  requested: '2026-10-03'
+  source:
+  - apis.io Influence-tier request queue (kinlane-test-influence)
+  request: 'Influence-tier artifact submission c2956cb2 (2026-09-24): MCP at https://docs.bump.sh/mcp. Verify it
+    is live and real (MCP: initialize/tools/list or server card; OpenAPI: paths), then record it as a pointer and
+    harvest it.'
