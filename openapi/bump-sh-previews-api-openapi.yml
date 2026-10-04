@@ -132,6 +132,16 @@ components:
           type: string
           description: The public URL where the preview will be visible.
           example: https://bump.sh/preview/3ef8f52f-9056-4113-840e-2f7183b90e06
+    Reference:
+      type: object
+      properties:
+        location:
+          type: string
+          description: Location of the external reference as it's called from `definition`, without the relative path (the part after `#/`). Can be an URL of a file system path.
+          example: https://example.com/api/models/pet.yml
+        content:
+          type: string
+          description: Content of the external reference, as a string.
     Error:
       properties:
         message:
@@ -144,16 +154,6 @@ components:
           example:
             raw_definition:
             - The property '#/paths//docs/{:id}/validations/post' contains additional properties ["yolo"] outside of the schema when none are allowed
-    Reference:
-      type: object
-      properties:
-        location:
-          type: string
-          description: Location of the external reference as it's called from `definition`, without the relative path (the part after `#/`). Can be an URL of a file system path.
-          example: https://example.com/api/models/pet.yml
-        content:
-          type: string
-          description: Content of the external reference, as a string.
   responses:
     InvalidDefinition:
       summary: Definition is not valid.

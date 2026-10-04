@@ -109,26 +109,6 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
-    ErrorDisabledOwner:
-      properties:
-        message:
-          type: string
-          description: Human readable error message for status 400.
-          example: You need to upgrade your subscription plan to perform this request.
-    Version:
-      properties:
-        id:
-          type: string
-          description: Unique id of your version.
-          example: 2361df99-3467-4c80-a0cc-45c9fe565812
-        doc_id:
-          type: string
-          description: Unique id of your documentation.
-          example: 3ef8f52f-9056-4113-840e-2f7183b90e06
-        doc_public_url:
-          type: string
-          description: The public URL of your documentation.
-          example: https://bump.sh/doc/my-own-documentation
     VersionRequest:
       type: object
       required:
@@ -157,26 +137,12 @@ components:
             *Defaults to the main branch*.
 
             '
-    DocumentationRequest:
-      type: object
-      required:
-      - documentation
+    ErrorDisabledOwner:
       properties:
-        documentation:
+        message:
           type: string
-          description: UUID or slug of the documentation.
-          example: 0776d85d-e097-47c1-8c60-cb1190d11945
-        hub:
-          type: string
-          description: UUID or slug of the hub if the documentation is part of a hub.
-          example: my_hub_slug
-        documentation_name:
-          type: string
-          description: Name of the documentation to create. Used only if `auto_create_documentation` is set.
-        auto_create_documentation:
-          type: boolean
-          default: false
-          description: Create the documentation if it does not exist yet. Must be used with a `hub` and a `documentation`.
+          description: Human readable error message for status 400.
+          example: You need to upgrade your subscription plan to perform this request.
     WithDiff:
       properties:
         diff_details:
@@ -200,18 +166,16 @@ components:
           type: boolean
           description: Identifies if the diff includes breaking changes
           example: false
-    Error:
+    Reference:
+      type: object
       properties:
-        message:
+        location:
           type: string
-          description: Human readable error message.
-          example: Invalid definition file
-        errors:
-          type: object
-          description: Hash of invalid attributes with their error messages.
-          example:
-            raw_definition:
-            - The property '#/paths//docs/{:id}/validations/post' contains additional properties ["yolo"] outside of the schema when none are allowed
+          description: Location of the external reference as it's called from `definition`, without the relative path (the part after `#/`). Can be an URL of a file system path.
+          example: https://example.com/api/models/pet.yml
+        content:
+          type: string
+          description: Content of the external reference, as a string.
     DiffItem:
       properties:
         id:
@@ -284,16 +248,52 @@ components:
           description: A list of children item changes
           items:
             $ref: '#/components/schemas/DiffItem'
-    Reference:
-      type: object
+    Version:
       properties:
-        location:
+        id:
           type: string
-          description: Location of the external reference as it's called from `definition`, without the relative path (the part after `#/`). Can be an URL of a file system path.
-          example: https://example.com/api/models/pet.yml
-        content:
+          description: Unique id of your version.
+          example: 2361df99-3467-4c80-a0cc-45c9fe565812
+        doc_id:
           type: string
-          description: Content of the external reference, as a string.
+          description: Unique id of your documentation.
+          example: 3ef8f52f-9056-4113-840e-2f7183b90e06
+        doc_public_url:
+          type: string
+          description: The public URL of your documentation.
+          example: https://bump.sh/doc/my-own-documentation
+    DocumentationRequest:
+      type: object
+      required:
+      - documentation
+      properties:
+        documentation:
+          type: string
+          description: UUID or slug of the documentation.
+          example: 0776d85d-e097-47c1-8c60-cb1190d11945
+        hub:
+          type: string
+          description: UUID or slug of the hub if the documentation is part of a hub.
+          example: my_hub_slug
+        documentation_name:
+          type: string
+          description: Name of the documentation to create. Used only if `auto_create_documentation` is set.
+        auto_create_documentation:
+          type: boolean
+          default: false
+          description: Create the documentation if it does not exist yet. Must be used with a `hub` and a `documentation`.
+    Error:
+      properties:
+        message:
+          type: string
+          description: Human readable error message.
+          example: Invalid definition file
+        errors:
+          type: object
+          description: Hash of invalid attributes with their error messages.
+          example:
+            raw_definition:
+            - The property '#/paths//docs/{:id}/validations/post' contains additional properties ["yolo"] outside of the schema when none are allowed
   examples:
     NewVersion:
       ExistingDocumentation:

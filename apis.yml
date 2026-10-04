@@ -1,13 +1,18 @@
 aid: bump-sh
+
 name: Bump.sh
+
 description: >-
   Bump.sh is "the modern API doc platform" — automatic, diff-aware
   documentation for OpenAPI and AsyncAPI specifications, plus a managed
   Model Context Protocol (MCP) platform that compiles Flower or Arazzo
   workflow documents into deterministic, observable MCP servers for AI
   agents. Customers include Aviobook, MongoDB, Elastic, Lightspeed, and BigID.
+
 type: Index
+
 kind: company
+
 deliveryModel:
   model: open-core
   license: MIT
@@ -22,6 +27,7 @@ deliveryModel:
   - pricing
   generated: '2026-08-28'
   method: derived
+
 accessModel:
   pricing: freemium
   onboarding: self-serve
@@ -36,10 +42,24 @@ accessModel:
   - security
   generated: '2026-09-03'
   method: derived
+
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/bump-sh.png
+
 x-docs-platform: bump
+
 x-docs-platform-confidence: medium
+
 x-docs-platform-checked: 2026-09-21
+
+x-coverage:
+  state: unreadable
+  reason: js-rendered-docs
+  detail: MCP documentation page returns a JavaScript-rendered HTML shell without a usable API description.
+  evidence:
+    - url: https://docs.bump.sh/mcp
+      status: 405
+  checked: '2026-10-04'
+
 tags:
   - API Changelog
   - API Documentation
@@ -55,11 +75,133 @@ tags:
   - Developer Tools
   - Documentation
   - Developer Portal
+
 url: >-
   https://raw.githubusercontent.com/api-evangelist/bump-sh/refs/heads/main/apis.yml
+
 created: '2026-03-16'
+
 modified: '2026-05-22'
+
 specificationVersion: '0.23'
+
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
+
+common:
+  - type: FinOps
+    url: finops/bump-sh-finops.yml
+  - type: RateLimits
+    url: rate-limits/bump-sh-rate-limits.yml
+  - type: Plans
+    url: plans/bump-sh-plans-pricing.yml
+  - type: Spectral
+    url: rules/bump-sh-rules.yml
+  - type: Spectral
+    url: rules/bump-sh-jsonschema-spectral-rules.yml
+  - type: Spectral
+    url: rules/bump-sh-api-rules.yml
+  - type: JSONLD
+    url: json-ld/bump-sh-context.jsonld
+  - type: Vocabulary
+    url: vocabulary/bump-sh-vocabulary.yml
+  - type: AgentSkill
+    url: skills/_index.yml
+  - type: Webhooks
+    url: asyncapi/bump-sh-webhooks.yml
+  - type: DataModel
+    url: data-model/bump-sh-data-model.yml
+  - type: CLI
+    url: cli/bump-sh-cli.yml
+  - type: Conventions
+    url: conventions/bump-sh-conventions.yml
+  - type: ErrorCatalog
+    url: errors/bump-sh-problem-types.yml
+  - type: Conformance
+    url: conformance/bump-sh-conformance.yml
+  - type: LLMsTxt
+    url: llms/bump-sh-llms.txt
+  - type: SecurityTxt
+    url: well-known/bump-sh-bumpsh-security.txt
+  - type: SecurityTxt
+    url: well-known/bump-sh-api-security.txt
+  - type: WellKnown
+    url: well-known/bump-sh-well-known.yml
+  - type: Hosts
+    url: hosts/bump-sh-hosts.yml
+  - type: Vendors
+    url: vendors/bump-sh-vendors.yml
+  - type: TermsOfService
+    url: https://bump.sh/terms
+  - type: Security
+    url: https://bump.sh/security
+  - type: PrivacyPolicy
+    url: https://bump.sh/privacy-policy
+  - type: DeveloperPortal
+    url: https://developers.bump.sh/
+  - type: GettingStarted
+    url: https://docs.bump.sh/help/getting-started/concepts/
+    name: Bump.sh Business Capability Map
+  - type: IssueTracker
+    url: https://github.com/bump-sh/cli/issues
+  - type: Releases
+    url: https://github.com/bump-sh/cli/releases
+  - type: CodeOfConduct
+    url: https://github.com/bump-sh/.github/blob/main/CODE_OF_CONDUCT.md
+  - type: License
+    name: MIT
+    url: https://github.com/bump-sh/cli/blob/main/LICENSE
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/bumpsh/overview
+  - type: AgenticAccess
+    url: agentic-access/bump-sh-agentic-access.yml
+  - type: VulnerabilityDisclosure
+    url: security/bump-sh-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/bump-sh-domain-security.yml
+  - type: Authentication
+    url: authentication/bump-sh-authentication.yml
+  - type: Website
+    url: https://bump.sh
+  - type: Documentation
+    url: https://docs.bump.sh
+  - type: APIReference
+    url: https://developers.bump.sh
+  - type: OpenAPI
+    url: https://developers.bump.sh/source.yaml
+  - type: GitHubOrganization
+    url: https://github.com/bump-sh
+  - type: GitHubRepository
+    description: Open-source Bump.sh CLI (TypeScript, MIT).
+    url: https://github.com/bump-sh/cli
+  - type: GitHubRepository
+    description: GitHub Action to deploy API docs from CI.
+    url: https://github.com/bump-sh/github-action
+  - type: GitHubRepository
+    description: Flower workflow specification (powers MCP servers).
+    url: https://github.com/bump-sh/flower-spec
+  - type: GitHubRepository
+    description: CI integration examples (GitHub Actions, Travis, CircleCI, GitLab CI).
+    url: https://github.com/bump-sh/bump-ci-example
+  - type: GitHubRepository
+    description: Curated public OpenAPI / AsyncAPI example specs.
+    url: https://github.com/bump-sh/examples
+  - type: Blog
+    url: https://bump.sh/blog
+  - type: Pricing
+    url: https://bump.sh/pricing
+  - type: Signup
+    url: https://bump.sh/users/sign_up
+  - type: Login
+    url: https://bump.sh/users/sign_in
+  - type: StatusPage
+    url: https://bumpsh.statuspage.io/
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/bump-sh
+  - type: LlmsText
+    url: https://developers.bump.sh/llms.txt
+
 apis:
 - aid: bump-sh:bump-sh-branches-api
   name: Bump.sh Branches API
@@ -395,73 +537,7 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/bump-sh-documentation-change-api-openapi.yml
-common:
-  - type: CapabilityMap
-    url: capabilities/bump-sh-capability-edges.yml
-    name: Bump.sh Business Capability Map
-  - type: IssueTracker
-    url: https://github.com/bump-sh/cli/issues
-  - type: Releases
-    url: https://github.com/bump-sh/cli/releases
-  - type: CodeOfConduct
-    url: https://github.com/bump-sh/.github/blob/main/CODE_OF_CONDUCT.md
-  - type: License
-    name: MIT
-    url: https://github.com/bump-sh/cli/blob/main/LICENSE
-  - type: PostmanWorkspace
-    url: https://www.postman.com/kinlaneapi/bumpsh/overview
-  - type: AgenticAccess
-    url: agentic-access/bump-sh-agentic-access.yml
-  - type: VulnerabilityDisclosure
-    url: security/bump-sh-vulnerability-disclosure.yml
-  - type: DomainSecurity
-    url: security/bump-sh-domain-security.yml
-  - type: Authentication
-    url: authentication/bump-sh-authentication.yml
-  - type: Website
-    url: https://bump.sh
-  - type: Documentation
-    url: https://docs.bump.sh
-  - type: APIReference
-    url: https://developers.bump.sh
-  - type: OpenAPI
-    url: https://developers.bump.sh/source.yaml
-  - type: GitHubOrganization
-    url: https://github.com/bump-sh
-  - type: GitHubRepository
-    description: Open-source Bump.sh CLI (TypeScript, MIT).
-    url: https://github.com/bump-sh/cli
-  - type: GitHubRepository
-    description: GitHub Action to deploy API docs from CI.
-    url: https://github.com/bump-sh/github-action
-  - type: GitHubRepository
-    description: Flower workflow specification (powers MCP servers).
-    url: https://github.com/bump-sh/flower-spec
-  - type: GitHubRepository
-    description: CI integration examples (GitHub Actions, Travis, CircleCI, GitLab CI).
-    url: https://github.com/bump-sh/bump-ci-example
-  - type: GitHubRepository
-    description: Curated public OpenAPI / AsyncAPI example specs.
-    url: https://github.com/bump-sh/examples
-  - type: Blog
-    url: https://bump.sh/blog
-  - type: Pricing
-    url: https://bump.sh/pricing
-  - type: ChangeLog
-    url: https://bump.sh/changelog
-  - type: Signup
-    url: https://bump.sh/users/sign_up
-  - type: Login
-    url: https://bump.sh/users/sign_in
-  - type: StatusPage
-    url: https://bumpsh.statuspage.io/
-  - type: LinkedIn
-    url: https://www.linkedin.com/company/bump-sh
-  - type: LlmsText
-    url: https://developers.bump.sh/llms.txt
-maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+
 x-correction-request:
   requested: '2026-10-03'
   source:
@@ -469,3 +545,9 @@ x-correction-request:
   request: 'Influence-tier artifact submission c2956cb2 (2026-09-24): MCP at https://docs.bump.sh/mcp. Verify it
     is live and real (MCP: initialize/tools/list or server card; OpenAPI: paths), then record it as a pointer and
     harvest it.'
+x-enrichment:
+  date: '2026-10-04'
+  status: enriched
+  artifacts_added: 21
+  pass: modular-v1
+  engine: identity=local,contract=local,surfaces=local,docs=local,regulatory=local

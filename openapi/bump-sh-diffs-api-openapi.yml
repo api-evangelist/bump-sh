@@ -114,6 +114,21 @@ paths:
       x-operation-id-source: derived
 components:
   examples:
+    JSONDiff:
+      summary: JSON only response
+      value:
+        id: 2361df99-1234-4c80-a0cc-45c9fe565812
+        public_url: https://bump.sh/diff/2361df99-3467-4c80-a0cc-45c9fe565812
+        breaking: false
+        previous_version_url: https://bump.sh/diff/2361df99-3467-4c80-a0cc-45c9fe565812/previous.json
+        current_version_url: https://bump.sh/diff/2361df99-3467-4c80-a0cc-45c9fe565812/current.json
+        details:
+        - id: post-versions
+          name: POST /versions
+          status: added
+          type: endpoint
+          breaking: false
+          children: []
     DefaultDiff:
       summary: Default response
       value:
@@ -133,21 +148,6 @@ components:
         previous_version_url: https://bump.sh/diff/2361df99-3467-4c80-a0cc-45c9fe565812/previous.json
         current_version_url: https://bump.sh/diff/2361df99-3467-4c80-a0cc-45c9fe565812/current.json
         html: "<ul class=\"changelog-event__diff expandable\" data-expander-target=\"content\">\n  <li class=\"changelog-event__diff-operation added\">\n     Added: <a href=\"http://localhost:3000/diff/c1e36203-5b04-4adc-b8c5-8ac626ce8592#operation-get-diffs-parameter\"><code class=\"code-inline root\">GET /diffs/{id}</code></a>\n  </li>\n</ul>\n"
-    JSONDiff:
-      summary: JSON only response
-      value:
-        id: 2361df99-1234-4c80-a0cc-45c9fe565812
-        public_url: https://bump.sh/diff/2361df99-3467-4c80-a0cc-45c9fe565812
-        breaking: false
-        previous_version_url: https://bump.sh/diff/2361df99-3467-4c80-a0cc-45c9fe565812/previous.json
-        current_version_url: https://bump.sh/diff/2361df99-3467-4c80-a0cc-45c9fe565812/current.json
-        details:
-        - id: post-versions
-          name: POST /versions
-          status: added
-          type: endpoint
-          breaking: false
-          children: []
   responses:
     InvalidDefinition:
       summary: Definition is not valid.
@@ -156,105 +156,6 @@ components:
           schema:
             $ref: '#/components/schemas/Error'
   schemas:
-    DiffRequest:
-      type: object
-      properties:
-        url:
-          type: string
-          format: uri
-          description: '<small>==**REQUIRED**==</small> if `definition` is not present.
-
-
-            Current definition URL. It should be accessible through
-
-            HTTP by Bump.sh servers.
-
-            '
-        previous_url:
-          type: string
-          format: uri
-          description: '<small>==**REQUIRED**==</small> if `definition` is not present.
-
-
-            Previous definition URL. It should be accessible through
-
-            HTTP by Bump.sh servers.
-
-            '
-        previous_definition:
-          type: string
-          description: '<small>==**REQUIRED**==</small> if `url` is not present.
-
-
-            Serialized definition of the previous version. This should
-
-            be an OpenAPI 2.x, 3.x or AsyncAPI 2.x file serialized as
-
-            a string, in YAML or JSON.
-
-            '
-          example: '{"openapi": "3.0", "info": { "title": … }}
-
-            '
-        previous_references:
-          type: array
-          description: Import external references used by `previous_definition`. It's usually resources not accessible by Bump.sh servers, like local files or internal URLs.
-          items:
-            $ref: '#/components/schemas/Reference'
-        definition:
-          type: string
-          description: '<small>==**REQUIRED**==</small> if `url` is not present.
-
-
-            Serialized definition of the current version. This should
-
-            be an OpenAPI 2.x, 3.x or AsyncAPI 2.x file serialized as
-
-            a string, in YAML or JSON.
-
-            '
-          example: '{"openapi": "3.0", "info": { "title": … }}
-
-            '
-        references:
-          type: array
-          description: Import external references used by `definition`. It's usually resources not accessible by Bump.sh servers, like local files or internal URLs.
-          items:
-            $ref: '#/components/schemas/Reference'
-        expires_at:
-          type: string
-          format: date-time
-          description: Public change expiration date and time. After this date, this documentation change will be destroyed.
-          example: 2022-02-22 22:20:22.020000+00:00
-    DiffForApi:
-      allOf:
-      - $ref: '#/components/schemas/Diff'
-      - type: object
-        properties:
-          markdown:
-            type: string
-            description: The comparaison diff summary in markdown format. Present only if `markdown` format has been requested.
-            example: "## Modified (1)\n\n* `POST /user`\n  * Path parameters added: `id`, `email`\n  * Query parameters added: `period`, `limit`\n"
-          html:
-            type: string
-            description: The comparaison diff summary in HTML format. Present only if `html` format has been requested.
-            example: "<ul class=\"changelog-event__diff expandable\" data-expander-target=\"content\">\n    <li class=\"changelog-event__diff-operation added\">\n         Added: <a href=\"http://localhost:3000/diff/c1e36203-5b04-4adc-b8c5-8ac626ce8592#operation-get-diffs-parameter\"><code class=\"code-inline root\">GET /diffs/{id}</code></a>\n    </li>\n</ul>\n"
-          text:
-            type: string
-            description: The comparaison diff summary in plain text format. Present only if `text` format has been requested.
-            example: "Updated: POST /versions\n  Response modified: 201\n    Body attribute added: doc_id\n"
-    Error:
-      properties:
-        message:
-          type: string
-          description: Human readable error message.
-          example: Invalid definition file
-        errors:
-          type: object
-          description: Hash of invalid attributes with their error messages.
-          example:
-            raw_definition:
-            - The property '#/paths//docs/{:id}/validations/post' contains additional properties ["yolo"] outside of the schema when none are allowed
     Diff:
       type: object
       properties:
@@ -359,6 +260,18 @@ components:
           description: A list of children item changes
           items:
             $ref: '#/components/schemas/DiffItem'
+    Error:
+      properties:
+        message:
+          type: string
+          description: Human readable error message.
+          example: Invalid definition file
+        errors:
+          type: object
+          description: Hash of invalid attributes with their error messages.
+          example:
+            raw_definition:
+            - The property '#/paths//docs/{:id}/validations/post' contains additional properties ["yolo"] outside of the schema when none are allowed
     Reference:
       type: object
       properties:
@@ -369,6 +282,93 @@ components:
         content:
           type: string
           description: Content of the external reference, as a string.
+    DiffRequest:
+      type: object
+      properties:
+        url:
+          type: string
+          format: uri
+          description: '<small>==**REQUIRED**==</small> if `definition` is not present.
+
+
+            Current definition URL. It should be accessible through
+
+            HTTP by Bump.sh servers.
+
+            '
+        previous_url:
+          type: string
+          format: uri
+          description: '<small>==**REQUIRED**==</small> if `definition` is not present.
+
+
+            Previous definition URL. It should be accessible through
+
+            HTTP by Bump.sh servers.
+
+            '
+        previous_definition:
+          type: string
+          description: '<small>==**REQUIRED**==</small> if `url` is not present.
+
+
+            Serialized definition of the previous version. This should
+
+            be an OpenAPI 2.x, 3.x or AsyncAPI 2.x file serialized as
+
+            a string, in YAML or JSON.
+
+            '
+          example: '{"openapi": "3.0", "info": { "title": … }}
+
+            '
+        previous_references:
+          type: array
+          description: Import external references used by `previous_definition`. It's usually resources not accessible by Bump.sh servers, like local files or internal URLs.
+          items:
+            $ref: '#/components/schemas/Reference'
+        definition:
+          type: string
+          description: '<small>==**REQUIRED**==</small> if `url` is not present.
+
+
+            Serialized definition of the current version. This should
+
+            be an OpenAPI 2.x, 3.x or AsyncAPI 2.x file serialized as
+
+            a string, in YAML or JSON.
+
+            '
+          example: '{"openapi": "3.0", "info": { "title": … }}
+
+            '
+        references:
+          type: array
+          description: Import external references used by `definition`. It's usually resources not accessible by Bump.sh servers, like local files or internal URLs.
+          items:
+            $ref: '#/components/schemas/Reference'
+        expires_at:
+          type: string
+          format: date-time
+          description: Public change expiration date and time. After this date, this documentation change will be destroyed.
+          example: 2022-02-22 22:20:22.020000+00:00
+    DiffForApi:
+      allOf:
+      - $ref: '#/components/schemas/Diff'
+      - type: object
+        properties:
+          markdown:
+            type: string
+            description: The comparaison diff summary in markdown format. Present only if `markdown` format has been requested.
+            example: "## Modified (1)\n\n* `POST /user`\n  * Path parameters added: `id`, `email`\n  * Query parameters added: `period`, `limit`\n"
+          html:
+            type: string
+            description: The comparaison diff summary in HTML format. Present only if `html` format has been requested.
+            example: "<ul class=\"changelog-event__diff expandable\" data-expander-target=\"content\">\n    <li class=\"changelog-event__diff-operation added\">\n         Added: <a href=\"http://localhost:3000/diff/c1e36203-5b04-4adc-b8c5-8ac626ce8592#operation-get-diffs-parameter\"><code class=\"code-inline root\">GET /diffs/{id}</code></a>\n    </li>\n</ul>\n"
+          text:
+            type: string
+            description: The comparaison diff summary in plain text format. Present only if `text` format has been requested.
+            example: "Updated: POST /versions\n  Response modified: 201\n    Body attribute added: doc_id\n"
   requestBodies:
     Diff:
       description: The diff creation request object
