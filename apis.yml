@@ -53,6 +53,8 @@ tags:
   - OpenAPI
   - Workflows
   - Developer Tools
+  - Documentation
+  - Developer Portal
 url: >-
   https://raw.githubusercontent.com/api-evangelist/bump-sh/refs/heads/main/apis.yml
 created: '2026-03-16'
@@ -394,6 +396,9 @@ apis:
   - type: OpenAPI
     url: openapi/bump-sh-documentation-change-api-openapi.yml
 common:
+  - type: CapabilityMap
+    url: capabilities/bump-sh-capability-edges.yml
+    name: Bump.sh Business Capability Map
   - type: IssueTracker
     url: https://github.com/bump-sh/cli/issues
   - type: Releases
