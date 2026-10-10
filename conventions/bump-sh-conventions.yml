@@ -1,0 +1,28 @@
+generated: '2026-10-10'
+method: searched
+generator: extract-docs-artifacts.py (local)
+source: https://docs.bump.sh/openapi/v3.2/advanced/pagination/
+sources:
+- https://docs.bump.sh/openapi/v3.2/advanced/pagination/
+- https://docs.bump.sh/help/getting-started/concepts/
+- https://docs.bump.sh/help/getting-started/going-further/
+- https://docs.bump.sh/help/getting-started/
+idempotency:
+  coverage: none
+  evidence: The documentation does not describe any idempotency mechanism.
+pagination:
+  style: query parameters, response body metadata, links object, and HTTP headers
+  params:
+  - page
+  - limit
+  response_fields:
+  - data
+  - meta
+  - links
+  - X-Total-Count
+  - X-Page
+  - X-Per-Page
+  - Link
+  evidence: Pagination can be implemented via query parameters (page, limit), with optional meta object in the response body, a links object containing
+    navigation URLs, or via HTTP headers such as X-Total-Count, X-Page, X-Per-Page and Link.
+docs: https://docs.bump.sh/openapi/v3.2/advanced/pagination/

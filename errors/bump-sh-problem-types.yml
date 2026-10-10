@@ -1,0 +1,53 @@
+generated: '2026-10-10'
+method: derived
+generator: derive-problem-types.py
+source:
+- openapi/bump-sh-branches-api-openapi.yml
+- openapi/bump-sh-diffs-api-openapi.yml
+- openapi/bump-sh-documentation-change-api-openapi.yml
+- openapi/bump-sh-hubs-api-openapi.yml
+- openapi/bump-sh-mcp-servers-api-openapi.yml
+- openapi/bump-sh-ping-api-openapi.yml
+- openapi/bump-sh-previews-api-openapi.yml
+- openapi/bump-sh-validations-api-openapi.yml
+- openapi/bump-sh-versions-api-openapi.yml
+format: custom
+envelope:
+  media_type: application/json
+  schema: Error
+coverage:
+  operations: 15
+  statuses_declared: 5
+problems:
+- status: 400
+  title: Bad Request
+  description: Bad request
+  operations: 4
+  media_types:
+  - application/json
+  schema: ErrorDisabledOwner
+- status: 401
+  title: Unauthorized
+  description: Unauthorized
+  operations: 1
+  media_types: []
+  schema: null
+- status: 404
+  title: Not Found
+  description: Diff not found
+  operations: 6
+  media_types: []
+  schema: null
+- status: 422
+  title: Unprocessable Content
+  description: null
+  operations: 9
+  media_types:
+  - application/json
+  schema: Error
+- status: default
+  title: null
+  description: null
+  operations: 1
+  media_types: []
+  schema: null

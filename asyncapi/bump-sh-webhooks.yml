@@ -1,0 +1,12 @@
+generated: '2026-10-04'
+method: derived
+generator: derive-webhooks.py
+source:
+- openapi/bump-sh-documentation-change-api-openapi.yml
+description: 'Event surface derived from the provider''s own OpenAPI: webhooks. No AsyncAPI document is published by the provider; this catalog
+  lists the events the contract names.'
+management_operations: []
+events:
+- event: DocStructureChange
+  description: Structure change
+  declared_in: webhooks

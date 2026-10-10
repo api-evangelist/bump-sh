@@ -1,0 +1,20 @@
+generated: '2026-10-10'
+method: probed
+source: https://bump.sh/privacy-policy/
+signals:
+  data_subject_request:
+    evidence:
+      - source: https://bump.sh/privacy-policy/
+        http_status: 200
+        fetched: "true"
+        quote: "As per the Data Protection Laws, Users have a right of access, rectification, deletion of their Data, limitation or opposition to their processing, a right to define guidelines for the storage, deletion and communication of their Data after their death, and the right to portability of their Data."
+        section: "2.9. Users’ rights"
+        note: Provides data subject rights including access, rectification, deletion, restriction, objection, and portability.
+  data_retention:
+    evidence:
+      - source: https://bump.sh/privacy-policy/
+        http_status: 200
+        fetched: "true"
+        quote: "The purposes set out in the Privacy Policy – duration of the contract concluded with the User."
+        section: "2.6. Retention of Data"
+        note: Indicates a section on data retention but does not specify exact periods.

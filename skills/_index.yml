@@ -1,0 +1,30 @@
+generated: '2026-10-04'
+method: generated
+generator: extract-docs-artifacts.py skills (local)
+source: openapi/bump-sh-diffs-api-openapi.yml
+skills:
+- file: skills/bump-sh-create-and-fetch-diff.md
+  name: bump-sh-create-and-fetch-diff
+  api: openapi/bump-sh-diffs-api-openapi.yml
+  operations:
+  - postDiffs
+  - getDiffsById
+- file: skills/bump-sh-create-and-fetch-version.md
+  name: bump-sh-create-and-fetch-version
+  api: openapi/bump-sh-versions-api-openapi.yml
+  operations:
+  - postVersions
+  - getVersionsByVersionId
+- file: skills/bump-sh-branch-management.md
+  name: bump-sh-branch-management
+  api: openapi/bump-sh-branches-api-openapi.yml
+  operations:
+  - postDocsByDocIdOrSlugBranches
+  - getDocsByDocIdOrSlugBranches
+  - patchDocsByDocIdOrSlugBranchesBySlugSetDefault
+- file: skills/bump-sh-create-and-update-preview.md
+  name: bump-sh-create-and-update-preview
+  api: openapi/bump-sh-previews-api-openapi.yml
+  operations:
+  - postPreviews
+  - putPreviewsByPreviewId

@@ -51,14 +51,6 @@ x-docs-platform-confidence: medium
 
 x-docs-platform-checked: 2026-09-21
 
-x-coverage:
-  state: unreadable
-  reason: js-rendered-docs
-  detail: MCP documentation page returns a JavaScript-rendered HTML shell without a usable API description.
-  evidence:
-    - url: https://docs.bump.sh/mcp
-      status: 405
-  checked: '2026-10-04'
 
 tags:
   - API Changelog
@@ -201,6 +193,8 @@ common:
     url: https://www.linkedin.com/company/bump-sh
   - type: LlmsText
     url: https://developers.bump.sh/llms.txt
+  - type: MCP
+    url: https://docs.bump.sh/mcp
 
 apis:
 - aid: bump-sh:bump-sh-branches-api
@@ -213,6 +207,10 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/bump-sh-branches-api-openapi.yml
+  - type: MCP
+    url: https://docs.bump.sh/mcp
+  - type: MCPTools
+    url: mcp/bump-sh-mcp-tools.json
   - type: Documentation
     url: https://docs.bump.sh
   - type: GettingStarted
@@ -546,8 +544,8 @@ x-correction-request:
     is live and real (MCP: initialize/tools/list or server card; OpenAPI: paths), then record it as a pointer and
     harvest it.'
 x-enrichment:
-  date: '2026-10-04'
+  date: '2026-10-10'
   status: enriched
-  artifacts_added: 21
+  artifacts_added: 28
   pass: modular-v1
   engine: identity=local,contract=local,surfaces=local,docs=local,regulatory=local

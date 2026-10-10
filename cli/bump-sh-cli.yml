@@ -1,0 +1,42 @@
+generated: '2026-10-10'
+method: searched
+generator: extract-docs-artifacts.py (local)
+source: https://docs.bump.sh/help/continuous-integration/cli/
+sources:
+- https://docs.bump.sh/help/continuous-integration/cli/
+- https://docs.bump.sh/help/customization-options/head-injection-analytics-tools-integration/
+- https://docs.bump.sh/product-updates/2021/07/02/bump-diff-from-your-cli/
+- https://docs.bump.sh/product-updates/2023/06/14/bump-cli-2-7-0/
+install:
+- method: npm global
+  command: npm install -g bump-cli
+- method: yarn global
+  command: yarn global add bump-cli
+- method: npm project dev dependency
+  command: npm install --save-dev bump-cli
+- method: yarn project dev dependency
+  command: yarn add --dev bump-cli
+commands:
+- group: deploy
+  commands:
+  - bump deploy [FILE]
+  - bump deploy dir /path/to/apis/ --auto-create --hub my-hub --token $HUB_TOKEN
+- group: diff
+  commands:
+  - bump diff [FILE]
+  - bump diff path/to/your/file.yml path/to/your/next-file.yml --doc my-documentation --token $DOC_TOKEN
+- group: preview
+  commands:
+  - bump preview [FILE]
+  - bump preview --live --open api-document.yaml
+- group: overlay
+  commands:
+  - bump overlay [DEFINITION_FILE] [OVERLAY_FILE]
+  - bump overlay api-document.yaml overlay.yaml > modified-api-document.yaml
+- group: help
+  commands:
+  - bump --help
+  - bump [ COMMAND] --help
+binary: bump
+docs: https://docs.bump.sh/help/continuous-integration/cli/
+note: 1 extracted row(s) were dropped because their quote was not on the page.
