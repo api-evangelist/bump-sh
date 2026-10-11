@@ -1,0 +1,48 @@
+slug: bump-sh
+provider: Bump.sh
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Software & Technology
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 3
+edges:
+- tag: Hubs
+  spec_file: bump-sh-hubs-api-openapi.yml
+  capability_id: BC-4270.30
+  capability_id_l1: BC-4270
+  capability_name: Developer Portal Management
+  confidence: 0.7
+  evidence: GET /hubs — 'List All Hubs'; GET /hubs/{hub_id_or_slug} — 'Fetch Information of an Existing
+    Hub'; schema HubWithApis
+  reason: Hubs are catalogues grouping published API documentation for consumers, i.e. operation of the
+    documentation/developer portal surface on an API documentation platform.
+- tag: Previews
+  spec_file: bump-sh-previews-api-openapi.yml
+  capability_id: BC-4270.30
+  capability_id_l1: BC-4270
+  capability_name: Developer Portal Management
+  confidence: 0.7
+  evidence: 'POST /previews — ''Create a Preview''; vendor description: ''enables you to create, update
+    or preview your API(s) documentation'''
+  reason: Bump.sh is an API documentation platform; the Previews tag creates/updates shareable renderings
+    of API reference documentation, which is developer-portal/documentation management rather than any
+    technical plumbing. L2 chosen as Developer Portal Management since the artefact is published API documentation;
+    some ambiguity with API lifecycle management, hence 0.7.
+- tag: Versions
+  spec_file: bump-sh-versions-api-openapi.yml
+  capability_id: BC-4270.10
+  capability_id_l1: BC-4270
+  capability_name: Public API Lifecycle Management
+  confidence: 0.7
+  evidence: POST /versions 'Create a New Version'; GET /versions/{version_id} 'Fetch a Full Documentation
+    Version Including Diff Summary'; schemas Version, VersionRequest, WithDiff, DiffItem
+  reason: Creating and retrieving versions of an API specification/documentation with change diffs is
+    versioning of public API specs — Public API Lifecycle Management. Not generic IT change management
+    since the object is the API spec itself.
