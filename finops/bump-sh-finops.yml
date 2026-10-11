@@ -6,6 +6,7 @@ specification: FinOps Framework
 specificationVersion: '1.0'
 provider: Bump.sh
 providerId: bump-sh
+name: Bump.sh API FinOps
 publisherName: Bump.sh
 serviceCategory: API
 created: '2026-05-04'
