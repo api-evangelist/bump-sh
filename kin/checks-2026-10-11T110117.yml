@@ -2,17 +2,17 @@
 kin_checks:
   slug: bump-sh
   schema_version: 0.23.0
-  scored_at: '2026-10-03'
-  run_ts: 2026-10-03T024842
+  scored_at: '2026-10-11'
+  run_ts: 2026-10-11T110117
   note: Actionable checks (missed + partial) in `checks`, plus the ids that did not
     apply in `na`. Everything else in rubric/scoring-0.23.0.yml was earned; counts
     below let you verify that.
   counts:
     total: 153
-    earned: 32
+    earned: 37
     partial: 34
-    missed: 65
-    na: 22
+    missed: 59
+    na: 23
   checks:
   - id: newsroom_present
     status: missed
@@ -38,8 +38,6 @@ kin_checks:
       (unknown)
   - id: inbound_contract_published
     status: missed
-  - id: asyncapi_present
-    status: missed
   - id: json_schema_per_resource
     status: missed
   - id: json_ld_property_depth
@@ -57,11 +55,7 @@ kin_checks:
     detail: pointer liveness 0.0
   - id: deprecation_policy
     status: missed
-  - id: security_disclosure
-    status: missed
   - id: roadmap_present
-    status: missed
-  - id: portal_present
     status: missed
   - id: sdk_count_1
     status: missed
@@ -75,19 +69,11 @@ kin_checks:
     status: missed
   - id: support_channel
     status: missed
-  - id: terms_of_service
-    status: missed
-  - id: privacy_policy
-    status: missed
   - id: compliance_published
     status: missed
   - id: trust_center
     status: missed
   - id: reg_oauth_scopes
-    status: missed
-  - id: reg_terms_of_service
-    status: missed
-  - id: reg_privacy_policy
     status: missed
   - id: reg_compliance_published
     status: missed
@@ -130,6 +116,8 @@ kin_checks:
   - id: upsert_declared_conflict
     status: missed
   - id: reversibility_documented
+    status: missed
+  - id: mcp_server
     status: missed
   - id: idempotency
     status: missed
@@ -298,6 +286,7 @@ kin_checks:
   - graphql_descriptions
   - graphql_sdl_present
   - graphql_type_depth
+  - mcp_endpoint_discoverable
   - messages_with_schema
   - reg_ai_transparency
   - reg_camara_conformance
