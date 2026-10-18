@@ -1,6 +1,7 @@
 generated: '2026-10-14'
 method: searched
 checked:
+- https://api-gw.platform.linuxfoundation.org/project-service/v1/public/projects/a0941000002wBykAAE/members
 - https://github.com/marketplace?type=actions
 marketplace_apps: []
 edges:
@@ -21,5 +22,29 @@ edges:
   - Verified creator
   detected_by: sweep-devtools.py
   detected: '2026-10-14'
+- partner_name: OpenAPI Initiative (members)
+  partner: openapi-initiative
+  partner_match: register
+  type: register
+  direction: partner-built
+  category: API description standard
+  evidence: https://api-gw.platform.linuxfoundation.org/project-service/v1/public/projects/a0941000002wBykAAE/members
+  channel: standard-directory
+  relationship: standard-participant
+  contract_reference:
+    register: OpenAPI Initiative members (Linux Foundation project service, public members endpoint)
+    spec_file: null
+    standard: OpenAPI
+    role: oai-member
+    registered_name: bump.sh
+    member_tier: Participating Membership
+    membership_status: Active
+    matched_domain: bump.sh
+    matched_by: domain
+    signal_note: 'participation only: a membership is not conformance'
+    detected_by: sweep-api-management.py
+    detected: '2026-10-18'
+  detected_by: sweep-api-management.py
+  first_seen: '2026-10-18'
 source:
 - https://github.com/marketplace?type=actions
