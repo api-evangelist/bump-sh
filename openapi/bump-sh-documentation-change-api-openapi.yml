@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Bump.sh Documentation change API
+  title: Bump.sh Workspace Documentation change API
   description: 'This is the official Bump.sh API documentation. Obviously created
 
     with Bump.sh.
@@ -65,6 +65,38 @@ webhooks:
                   $ref: '#/components/schemas/Diff'
 components:
   schemas:
+    Diff:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique id of your diff
+          example: 2361df99-1234-4c80-a0cc-45c9fe565812
+        title:
+          type: string
+          description: The title of the last parsed definition
+          example: Bump.sh Api
+        public_url:
+          type: string
+          description: The public URL of your diff
+          example: https://bump.sh/doc/my-own-documentation/change/2361df99
+        breaking:
+          type: boolean
+          description: Identifies if the diff includes breaking changes
+          example: false
+        details:
+          type: array
+          description: Details of each change as a list of diff items. Present only if `json` format has been requested
+          items:
+            $ref: '#/components/schemas/DiffItem'
+        previous_version_url:
+          type: string
+          description: URL of previous version specification, in JSON format
+          example: https://developers.bump.sh/doc/workspace/changes/750f15d8/previous.json
+        current_version_url:
+          type: string
+          description: URL of current version specification, in JSON format
+          example: https://developers.bump.sh/doc/workspace/changes/750f15d8/current.json
     DiffItem:
       properties:
         id:
@@ -137,38 +169,6 @@ components:
           description: A list of children item changes
           items:
             $ref: '#/components/schemas/DiffItem'
-    Diff:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique id of your diff
-          example: 2361df99-1234-4c80-a0cc-45c9fe565812
-        title:
-          type: string
-          description: The title of the last parsed definition
-          example: Bump.sh Api
-        public_url:
-          type: string
-          description: The public URL of your diff
-          example: https://bump.sh/doc/my-own-documentation/change/2361df99
-        breaking:
-          type: boolean
-          description: Identifies if the diff includes breaking changes
-          example: false
-        details:
-          type: array
-          description: Details of each change as a list of diff items. Present only if `json` format has been requested
-          items:
-            $ref: '#/components/schemas/DiffItem'
-        previous_version_url:
-          type: string
-          description: URL of previous version specification, in JSON format
-          example: https://developers.bump.sh/changes/750f15d8/previous.json
-        current_version_url:
-          type: string
-          description: URL of current version specification, in JSON format
-          example: https://developers.bump.sh/changes/750f15d8/current.json
     Api:
       type: object
       properties:
@@ -194,7 +194,7 @@ components:
         humanUrl:
           type: string
           description: public documentation URL
-          example: https://developers.bump.sh/
+          example: https://developers.bump.sh/doc/workspace/
         tags:
           type: array
           items:
@@ -226,7 +226,7 @@ components:
                 description: Content of the extra property (`data` or `url`)
             example:
               type: OpenAPI
-              url: https://developers.bump.sh/source.json
+              url: https://developers.bump.sh/doc/workspace/source.json
         created:
           type: date
           description: Creation date of this API

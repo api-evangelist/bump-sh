@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Bump.sh Hubs API
+  title: Bump.sh Workspace Hubs API
   description: 'This is the official Bump.sh API documentation. Obviously created
 
     with Bump.sh.
@@ -35,7 +35,7 @@ paths:
       operationId: listHubs
       tags:
       - Hubs
-      summary: List All Hubs
+      summary: List all hubs
       security:
       - Authorization token: []
       description: 'List all hubs belonging to the authenticated organization.
@@ -56,7 +56,7 @@ paths:
     get:
       tags:
       - Hubs
-      summary: Fetch Information of an Existing Hub
+      summary: Fetch information of an existing Hub
       description: 'Fetch information of an existing Hub including the list of
 
         APIs it contains. The response follows the APIs.json
@@ -89,6 +89,22 @@ paths:
       x-operation-id-source: derived
 components:
   schemas:
+    ErrorDisabledOwner:
+      properties:
+        message:
+          type: string
+          description: Human readable error message for status 400.
+          example: You need to upgrade your subscription plan to perform this request.
+    HubWithApis:
+      allOf:
+      - $ref: '#/components/schemas/Hub'
+      - type: object
+        properties:
+          apis:
+            type: array
+            description: The list of APIs belonging to this Hub
+            items:
+              $ref: '#/components/schemas/Api'
     Api:
       type: object
       properties:
@@ -114,7 +130,7 @@ components:
         humanUrl:
           type: string
           description: public documentation URL
-          example: https://developers.bump.sh/
+          example: https://developers.bump.sh/doc/workspace/
         tags:
           type: array
           items:
@@ -146,7 +162,7 @@ components:
                 description: Content of the extra property (`data` or `url`)
             example:
               type: OpenAPI
-              url: https://developers.bump.sh/source.json
+              url: https://developers.bump.sh/doc/workspace/source.json
         created:
           type: date
           description: Creation date of this API
@@ -199,22 +215,6 @@ components:
 
             '
           example: '0.16'
-    HubWithApis:
-      allOf:
-      - $ref: '#/components/schemas/Hub'
-      - type: object
-        properties:
-          apis:
-            type: array
-            description: The list of APIs belonging to this Hub
-            items:
-              $ref: '#/components/schemas/Api'
-    ErrorDisabledOwner:
-      properties:
-        message:
-          type: string
-          description: Human readable error message for status 400.
-          example: You need to upgrade your subscription plan to perform this request.
   securitySchemes:
     Authorization_token:
       type: http

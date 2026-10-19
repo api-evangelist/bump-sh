@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Bump.sh Branches API
+  title: Bump.sh Workspace Branches API
   description: 'This is the official Bump.sh API documentation. Obviously created
 
     with Bump.sh.
@@ -37,7 +37,7 @@ paths:
     patch:
       tags:
       - Branches
-      summary: Promote Branch as the Default One
+      summary: Promote branch as the default one
       parameters:
       - in: path
         name: doc_id_or_slug
@@ -69,7 +69,7 @@ paths:
     delete:
       tags:
       - Branches
-      summary: Delete a Branch
+      summary: Delete a branch
       parameters:
       - in: path
         name: doc_id_or_slug
@@ -99,7 +99,7 @@ paths:
     get:
       tags:
       - Branches
-      summary: List Available Branches
+      summary: List available branches
       description: List the available branches of a given documentation.
       parameters:
       - in: path
@@ -125,7 +125,7 @@ paths:
     post:
       tags:
       - Branches
-      summary: Create a New Branch
+      summary: Create a new branch
       description: Create an empty new branch.
       parameters:
       - in: path

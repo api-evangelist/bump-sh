@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Bump.sh MCP servers API
+  title: Bump.sh Workspace MCP servers API
   description: 'This is the official Bump.sh API documentation. Obviously created
 
     with Bump.sh.
@@ -30,13 +30,17 @@ security:
 tags:
 - name: MCP Servers
 paths:
-  /mcp_servers/{mcp_server_id_or_slug}/deploy:
+  /mcp-servers/{mcp_server_id_or_slug}/deploy:
     post:
       tags:
       - MCP Servers
       x-beta: true
-      summary: Deploy a New MCP Server Document
+      summary: Deploy a new MCP server document
+      operationId: MCPServerDeploy
       description: Deploy a new workflow document for a given MCP server.
+      externalDocs:
+        description: Learn more about MCP servers
+        url: https://docs.bump.sh/help/mcp-servers/
       security:
       - Authorization token: []
       parameters:
@@ -61,6 +65,25 @@ paths:
                   example: '{"flower": "0.1", "title": "About crabs"}
 
                     '
+                references:
+                  type: array
+                  description: 'List of external references required for Arazzo workflow documents (_aka_ API sources definitions following the OpenAPI specification).
+
+                    More details about Arazzo and `sourcesDescriptions` in the [Arazzo documentation](https://docs.bump.sh/arazzo/v1.0/).
+
+                    '
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                        example: firstSource
+                      content:
+                        type: string
+                        example: '{openapi: 3.0.0, title: My first Source}'
+                      location:
+                        type: string
+                        example: ./openapi/first-source.yml
       responses:
         '201':
           summary: MCP server workflow document successfully deployed
@@ -76,8 +99,6 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Error'
-      operationId: postMcpServersByMcpServerIdOrSlugDeploy
-      x-operation-id-source: derived
 components:
   schemas:
     WorkflowDocument:
@@ -89,6 +110,10 @@ components:
         mcp_server_id:
           type: string
           description: UUID of the MCP server
+        mcp_server_name:
+          type: string
+          description: The name of the MCP server
+          example: My MCP Server
     Error:
       properties:
         message:

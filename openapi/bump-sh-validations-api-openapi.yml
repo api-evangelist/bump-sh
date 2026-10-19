@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Bump.sh Validations API
+  title: Bump.sh Workspace Validations API
   description: 'This is the official Bump.sh API documentation. Obviously created
 
     with Bump.sh.
@@ -34,7 +34,7 @@ paths:
     post:
       tags:
       - Validations
-      summary: Validate a Documentation Definition
+      summary: Validate a documentation definition
       description: Validate a definition against its schema (OpenAPI or AsyncAPI) and return errors without creating a new version. This is useful in a CI process, to validate that a changed definition file is valid and won't fail when being deployed on Bump.sh.
       security:
       - {}
@@ -60,13 +60,16 @@ paths:
       operationId: postValidations
       x-operation-id-source: derived
 components:
+  requestBodies:
+    Validate:
+      description: The version validation request object
+      content:
+        application/json:
+          schema:
+            allOf:
+            - $ref: '#/components/schemas/DocumentationRequest'
+            - $ref: '#/components/schemas/Preview'
   schemas:
-    ErrorDisabledOwner:
-      properties:
-        message:
-          type: string
-          description: Human readable error message for status 400.
-          example: You need to upgrade your subscription plan to perform this request.
     Reference:
       type: object
       properties:
@@ -77,19 +80,18 @@ components:
         content:
           type: string
           description: Content of the external reference, as a string.
-    Validation:
+    Error:
       properties:
-        specification:
+        message:
           type: string
-          description: 'Specification of the given definition as a path: `speficiation_name/specification_version/format`.'
-          enum:
-          - openapi/v2/yaml
-          - openapi/v2/json
-          - openapi/v3/yaml
-          - openapi/v3/json
-          - asyncapi/v2/yaml
-          - asyncapi/v2/json
-          example: openapi/v3/json
+          description: Human readable error message.
+          example: Invalid definition file
+        errors:
+          type: object
+          description: Hash of invalid attributes with their error messages.
+          example:
+            raw_definition:
+            - The property '#/paths//docs/{:id}/validations/post' contains additional properties ["yolo"] outside of the schema when none are allowed
     DocumentationRequest:
       type: object
       required:
@@ -163,27 +165,25 @@ components:
           type: string
           description: The public URL where the preview will be visible.
           example: https://bump.sh/preview/3ef8f52f-9056-4113-840e-2f7183b90e06
-    Error:
+    ErrorDisabledOwner:
       properties:
         message:
           type: string
-          description: Human readable error message.
-          example: Invalid definition file
-        errors:
-          type: object
-          description: Hash of invalid attributes with their error messages.
-          example:
-            raw_definition:
-            - The property '#/paths//docs/{:id}/validations/post' contains additional properties ["yolo"] outside of the schema when none are allowed
-  requestBodies:
-    Validate:
-      description: The version validation request object
-      content:
-        application/json:
-          schema:
-            allOf:
-            - $ref: '#/components/schemas/DocumentationRequest'
-            - $ref: '#/components/schemas/Preview'
+          description: Human readable error message for status 400.
+          example: You need to upgrade your subscription plan to perform this request.
+    Validation:
+      properties:
+        specification:
+          type: string
+          description: 'Specification of the given definition as a path: `speficiation_name/specification_version/format`.'
+          enum:
+          - openapi/v2/yaml
+          - openapi/v2/json
+          - openapi/v3/yaml
+          - openapi/v3/json
+          - asyncapi/v2/yaml
+          - asyncapi/v2/json
+          example: openapi/v3/json
   responses:
     InvalidDefinition:
       summary: Definition is not valid.

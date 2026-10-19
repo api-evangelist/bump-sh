@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Bump.sh Previews API
+  title: Bump.sh Workspace Previews API
   description: 'This is the official Bump.sh API documentation. Obviously created
 
     with Bump.sh.
@@ -34,7 +34,7 @@ paths:
     post:
       tags:
       - Previews
-      summary: Create a Preview
+      summary: Create a preview
       description: Create a preview for a given documentation file. The preview will have a unique temporary URL, and will be active for 30 minutes.
       security: []
       requestBody:
@@ -54,7 +54,7 @@ paths:
     put:
       tags:
       - Previews
-      summary: Update an Existing Preview
+      summary: Update an existing preview
       description: Update a preview with the given documentation file. The preview will stay active for 30 minutes after the last update.
       security: []
       parameters:
@@ -154,13 +154,6 @@ components:
           type: string
           description: The public URL where the preview will be visible.
           example: https://bump.sh/preview/3ef8f52f-9056-4113-840e-2f7183b90e06
-  requestBodies:
-    Preview:
-      description: The preview creation request object
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Preview'
   responses:
     InvalidDefinition:
       summary: Definition is not valid.
@@ -168,6 +161,13 @@ components:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
+  requestBodies:
+    Preview:
+      description: The preview creation request object
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Preview'
   securitySchemes:
     Authorization_token:
       type: http

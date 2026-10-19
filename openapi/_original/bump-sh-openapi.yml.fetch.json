@@ -1,0 +1,12 @@
+{
+ "url": "https://developers.bump.sh/doc/workspace.yaml",
+ "final": "https://developers.bump.sh/doc/workspace.yaml",
+ "status": 200,
+ "content_type": "text/yaml; charset=utf-8",
+ "bytes": 46040,
+ "sha256": "c9445c71cd59925b8d5db78a4ca33742d0d343eb1e8a6ed5a8284dabbb5dce1d",
+ "fetched_at": "2026-10-19",
+ "fetched_by": "APIEvangelist-Harvest/1.0 (+https://apievangelist.com)",
+ "match": "byte-identical",
+ "note": "re-archived: the provider's current document replaced a stale archive (roadmap#793); the old files are in openapi/_superseded/2026-10-19-stale"
+}

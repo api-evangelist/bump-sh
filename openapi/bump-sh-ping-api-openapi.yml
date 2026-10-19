@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Bump.sh Ping API
+  title: Bump.sh Workspace Ping API
   description: 'This is the official Bump.sh API documentation. Obviously created
 
     with Bump.sh.
@@ -34,7 +34,7 @@ paths:
     get:
       tags:
       - Ping
-      summary: Check the API Status
+      summary: Check the API status
       description: Responds a pong if the API is up and running.
       security: []
       responses:
