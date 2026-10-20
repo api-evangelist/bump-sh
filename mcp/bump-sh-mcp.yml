@@ -52,3 +52,29 @@ tool_quality:
   scored: false
   note: Facts from the saved tools/list capture (mcp_tool_quality.py); recorded, not scored. Checks learned
     from Glimind's agent-readiness audit.
+tools:
+- name: search
+  description: 'Search across all documentation pages in the portal by keyword. Returns matching pages
+    with their URL, title, type, and a text excerpt. Use this to find specific endpoints, schemas, or
+    topics when the user asks about a particular feature or concept. Supports filtering by object type
+    (api, operation, request, response, property, guide..) 2 outputs are returned: "data" returns a maximum
+    of 20 results, and "total" returns the total number of results.'
+- name: get_pages
+  description: Retrieve the full content of one or more documentation pages by their URLs. Returns the
+    full content of the pages, including their titles and types. Use this when you already know which
+    pages you need (e.g., from search results or from list_pages) and want to read their full content.
+    Pass multiple URLs in a single call to batch-fetch several pages at once.
+- name: list_pages
+  description: List all child pages under a given URL in the portal hierarchy. Use this to explore and
+    navigate the portal structure. Returns a summary of each child page (URL, title, type and description)
+    without full content. This is the best starting point to understand what documentation is available
+    before fetching specific pages with get_pages.
+- name: list_changes
+  description: List visible documentation changes for a given resource. Supported resource types are a
+    Hub, an API documentation, or a specific version. Returns changes ordered from most recent to oldest,
+    with pagination support.
+- name: get_change
+  description: Retrieve a single visible documentation change by its identifier. Returns the full change
+    details including title, description, markdown diff content, and creation date. Use this after list_changes
+    to read the full content of a specific change.
+tools_count: 5
