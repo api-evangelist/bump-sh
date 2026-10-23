@@ -140,3 +140,9 @@ x-topics:
     $ref: ./authentication.md
   example:
     $ref: ./authentication-example.md
+x-provenance:
+  method: harvested
+  publisher: Bump.sh
+  source: https://developers.bump.sh/doc/workspace.yaml
+  note: split by refine-openapis from the provider's own published document, verified by fetch (openapi/_original/*.fetch.json);
+    stamped by stamp-openapi-provenance.py (roadmap#793)
